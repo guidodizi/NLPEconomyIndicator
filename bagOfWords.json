@@ -1,0 +1,131 @@
+{
+    "concepts": [
+        {
+            "id": 0,
+            "name": "economía",
+            "required": "True",
+            "values": ["economía", "económico", "económica", "economista", "comercio", "inflación"]
+        },
+        {
+            "id": 1,
+            "name": "incertidumbre",
+            "required": "True",
+            "values": ["incertidumbre", "incierto", "incierta", "riesgo", "riesgo país"]
+        },
+        {
+            "id": 2,
+            "name": "política impositiva",
+            "required": "False",
+            "values": ["impuestos", "impuesto", "impositivo", "gravado"]
+        },
+        {
+            "id": 3,
+            "name": "política de gasto gubernamental",
+            "required": "False",
+            "values": ["gasto gubernamental", "gasto del gobierno", "presupuesto departamental", "equilibrio presupuestal", 
+                "gasto en defensa", "gasto social", "estímulo fiscal", "déficit fiscal", "deuda nacional", "tope de deuda", 
+                "déficit gubernamental", "déficit del gobierno", "equilibrar el presupuesto", "afap", "ley de cincuentones", 
+                "conflicto poder judicial", "reforma caja militar"]
+        },
+        {
+            "id": 4,
+            "name": "política fiscal",
+            "required": "False",
+            "values": ["ajuste fiscal", "política fiscal", "ley de presupuesto", "rendición de cuentas", "déficit fiscal", 
+                "espacio fiscal", "deuda pública", "sostenibilidad fiscal", "déficit estructural", "endeudamiento público", 
+                "regla fiscal", "programa fiscal", "restricción fiscal", "política tarifaria", "tarifas públicas"]
+        },
+        {
+            "id": 5,
+            "name": "política monetaria",
+            "required": "False",
+            "values": ["reserva federal", "la fed", "oferta monetaria", "operaciones de mercado abierto", "política monetaria", 
+                "tasa interés fed", "tasa de interés depósitos overnight", "la fed", "bernanke", "volker", "greenspan", "yellen", 
+                "banco central", "tasa de interés", "ventana de descuento", "banco central europeo", "banco de inglaterra",
+                "banco central de alemania", "banco de china", "banco de japón", "banco de francia", "banco de italia", 
+                "banco de españa", "bcu", "banco central del uruguay", "comité de política monetaria", "ministerio de economía y finanzas", 
+                "copom", "oficina de planeamiento y presupuesto",  "opp", "mario bergara", "álvaro garcía", "ramón díaz", "fernando lorenzo", 
+                "danilo astori", "isaac alfie"," alejandro atchugarry", "andrés masoller", "andrés bensión", "luis mosca", "ignacio de posadas"]
+        },
+        {
+            "id": 6,
+            "name": "política de salud",
+            "required": "False",
+            "values": ["cuidado de la salud", "prescripción de medicamentos", "política de drogas", "mala práxis médica", "responsabilidad médica", 
+                "asse", "snis", "mutualismo", "ministerio de salud pública", "seguro privado de salud", "banco de previsión social", "fonasa", 
+                "bps", "devolución fonasa", "subsidios por invalidez", "subisidio por maternidad"]
+        },
+        {
+            "id": 7,
+            "name": "política de seguridad nacional",
+            "required": "False",
+            "values": ["seguridad nacional", "guerra", "conflicto militar", "terrorismo", "terror", "9/11", "gasto en defensa", "gasto militar", 
+                "acción policial", "fuerzas armadas", "cierre de bases", "abastecimiento militar", "invasión militar", "embargo militar"]
+        },
+        {
+            "id": 8,
+            "name": "política de regulación financiera",
+            "required": "False",
+            "values": ["supervisión bancaria", "supervisión de bancos", "supervisión de ahorros", "reforma financiera", "tratado de basilea", 
+                "requerimiento de capital", "regla de volcker", "prueba de estrés bancaria", "comisión de values", "seguro de depósito", 
+                "bolsa de values de montevideo", " rescate", "ley de inclusión financiera", "ministerio de economía y finanzas", 
+                "asesoría macroeconómica", "superintendencia de instituciones de intermediación financiera", "siif"]
+        },
+        {
+            "id": 9,
+            "name": "política de regulación",
+            "required": "False",
+            "values": ["regulación financiera", "préstamo", "derechos sindicales", "ley de negociación colectiva", "consejo nacional de trabajo", 
+                "dirección nacional de trabajo", "salario mínimo", "salario mínimo", "derecho al trabajo", "salarios y horas", 
+                "compensación de los trabajadores", "requisitos de aviso anticipado", "empleo voluntario", "asistencia de ajustes comerciales", 
+                "oportunidad de empleo equitativa", "política de competencia", "política de fusiones", "monopolio", "patentes", "derechos de autor", 
+                "comisión de comercio", "prácticas no competitivas de negocios", "ley de competencia", "fijación de precios", "acción de clase", 
+                "ley de cuidado de salud", "daños punitivos", "mala praxis médica", "política energética", "impuesto a la energía", "impuesto al carbón", 
+                "topes al comercio", "restricciones de perforación", "control de polución", "restricciones de medio ambiente", "acta de aire limpio", 
+                "acta de agua limpia (o algo parecido que tengamos aquí en uy)", "agencia de protección de medio ambiente", "política de inmigración", 
+                "dinama", "dirección nacional de medio ambiente", "ministerio de industria", "energía y minería", "ministerio de vivienda", 
+                "ordenamiento territorial y medio ambiente. carolina cosse", "roberto kreimermann", "raul sendic", "daniel martinez", "jorge lepra", 
+                "josé villar", "pedro bordaberry", "sergio abreu"]
+        },
+        {
+            "id": 10,
+            "name": "política de deuda soberana y crisis monetaria",
+            "required": "False",
+            "values": ["deuda soberana", "crisis monetaria", "colapso de moneda", "devaluación monetaria", "revaluación monetaria", "manipulación monetaria", 
+                "crisis del euro", "crisis de la eurozona", "crisis financiera europea", "deuda europea", "crisis financiera asiática", "crisis asiática", 
+                "crisis financiera rusa", "crisis rusa", "tipo de cambio", "letras de regulación monetaria", "lrm", "obligaciones negociables", "on", 
+                "tipo de cambio", "dólar", "euro", "bono global", "emisión de deuda", "vencimiento de deuda"]
+        },
+        {
+            "id": 11,
+            "name": "política de programas de derechos",
+            "required": "False",
+            "values": ["programas de derechos", "gasto en derechos", "programas de gobierno", "seguridad social", "bienestar", "gobierno", "reforma de bienestar", 
+                "seguro de desempleo", "beneficios de desempleo", "cupones de comida", "seguro por invalidez", "programa de asistencia nutricional", 
+                "crédito tributario por ingreso", "asistencia pública", "subsidio del gobierno a la vivienda", "panes", "mides", "ministerio de desarrollo social", 
+                "canasta básica", "canasta de alimentación", "canasta de medicamentos"]
+        },
+        {
+            "id": 12,
+            "name": "política comercial",
+            "required": "False",
+            "values": ["tarifas de importación", "impuestos de importación", "barreras de importación", "subsidios gubernamentales", "subsidio gubernamental", 
+                "omc", "organización mundial del comercio", "tratado comercial", "acuerdo comercial", "política comercial", "ronda doha", "ronda uruguay", 
+                "gatt", "dumping", "tlc", "tratado de libre comercio", "nafta", "alca", "restricción de importaciones", "unión europea"]
+        },
+        {
+            "id": 13,
+            "name": "otras políticas",
+            "required": "False",
+            "values": ["gobierno", "autoridades", "parlamento", "legislación", "regulación", "ley", "senado", "cámara de representantes", 
+                "diputados", "cámara de senadores", "casa de gobierno", "poder ejecutivo", "presidente"]
+        },
+        {
+            "id": 14,
+            "name": "autoridades",
+            "required": "False",
+            "values": ["trump", "obama", "bush", "temer", "lula", "cfk", "macri", "néstor kirchner", "merkel", "sarkozy", "macron", 
+                "hollande", "rajoy", "aznar", "ernesto talvi", "ignacio munyo", "javier de haedo", "aldo lema"]
+        }
+    ]
+}
