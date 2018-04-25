@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as ET
 
-def monthly_indicator_by_category(newspaper, date, bag_of_words):
+def monthly_indicator_by_category(newspaper, year, month,  bag_of_words):
     """
     Función que calcula el índice para un diario y fecha dados. 
     
@@ -37,54 +37,54 @@ def monthly_indicator_by_category(newspaper, date, bag_of_words):
 
     # PROCESAR NOTICIAS Y DEVOLVER RESULTADOS
     if (newspaper == "el_pais"):
-        news_qty_month, news_epu_month = process_news_el_pais(date, bag_of_words, qty_by_category)
+        news_qty_month, news_epu_month = process_news_el_pais(year, month, bag_of_words, qty_by_category)
     elif (newspaper == "el_observador"):
-        news_qty_month, news_epu_month = process_news_el_observador(date, bag_of_words, qty_by_category)
+        news_qty_month, news_epu_month = process_news_el_observador(year, month, bag_of_words, qty_by_category)
     elif (newspaper == "la_diaria"):
-        news_qty_month, news_epu_month = process_news_la_diaria(date, bag_of_words, qty_by_category)
+        news_qty_month, news_epu_month = process_news_la_diaria(year, month, bag_of_words, qty_by_category)
     elif (newspaper == "la_republica"):
-        news_qty_month, news_epu_month = process_news_la_republica(date, bag_of_words, qty_by_category)
+        news_qty_month, news_epu_month = process_news_la_republica(year, month, bag_of_words, qty_by_category)
 
     return news_qty_month, news_epu_month, qty_by_category
 
-def process_news_el_pais(date, bag_of_words, qty_by_category):
+def process_news_el_pais(year, month, bag_of_words, qty_by_category):
     # aca vendría abrir dinamico dependiendo de la fecha
-    #path = 'news/el_pais/' + month + '/'  
-    tree = ET.parse('news/la_republica/larepublica20141107112348Noticias.xml')
+    #path = 'news/el_pais/' + year + '/' + month + '/'  
+    tree = ET.parse('news/el_pais/elpais20140926203240Noticias.xml')
     add = tree.getroot()
 
     news_qty_month, news_epu_month = parse_xml(add,bag_of_words, qty_by_category)
     return news_qty_month, news_epu_month
 
-def process_news_el_observador(date, bag_of_words, qty_by_category):
+def process_news_el_observador(year, month, bag_of_words, qty_by_category):
     # aca vendría abrir dinamico dependiendo de la fecha
-    #path = 'news/la_republica/' + month + '/'  
+    #path = 'news/la_republica/' + year + '/' + month + '/' 
     tree = ET.parse('news/el_observador/larepublica20141107112348Noticias.xml')
     add = tree.getroot()
 
     news_qty_month, news_epu_month = parse_xml(add,bag_of_words, qty_by_category)
     return news_qty_month, news_epu_month
 
-def process_news_la_diaria(date, bag_of_words, qty_by_category):
+def process_news_la_diaria(year, month, bag_of_words, qty_by_category):
     # aca vendría abrir dinamico dependiendo de la fecha
-    #path = 'news/la_diaria/' + month + '/'  
+    #path = 'news/la_diaria/' + year + '/' + month + '/'  
     tree = ET.parse('news/la_republica/larepublica20141107112348Noticias.xml')
     add = tree.getroot()
 
     news_qty_month, news_epu_month = parse_xml(add,bag_of_words, qty_by_category)
     return news_qty_month, news_epu_month
 
-def process_news_la_republica(date, bag_of_words, qty_by_category):
+def process_news_la_republica(year, month, bag_of_words, qty_by_category):
 
     # aca vendría abrir dinamico dependiendo de la fecha
-    #path = 'news/la_republica/' + month + '/'  
+    #path = 'news/la_republica/' + year + '/' + month + '/' 
     tree = ET.parse('news/la_republica/larepublica20141107112348Noticias.xml')
     add = tree.getroot()
 
     news_qty_month, news_epu_month = parse_xml(add,bag_of_words, qty_by_category)
     return news_qty_month, news_epu_month
 
-def parse_xml(add,bag_of_words, qty_by_category):
+def parse_xml(add, bag_of_words, qty_by_category):
     
     news_qty_month = 0 
     news_epu_month = 0 
