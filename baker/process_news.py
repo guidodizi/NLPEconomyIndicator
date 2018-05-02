@@ -13,7 +13,7 @@ def process_news_el_pais(year, month, terms_bag, dict_category_epu_news):
 def process_news_la_republica(year, month, terms_bag, dict_category_epu_news):
     # aca vendría abrir dinamico dependiendo de la fecha
     #path = 'news/la_republica/' + year + '/' + month + '/'
-    tree = ET.parse('../news/la_republica/2011_2014_la_republica.xml')
+    tree = ET.parse('../news/la_republica/larepublica20141107112348Noticias.xml')
     add = tree.getroot()
 
     total_news_month, epu_news_month = process_xml_news(add, terms_bag, dict_category_epu_news)
@@ -32,6 +32,7 @@ def process_xml_news(add, terms_bag, dict_category_epu_news):
     epu_news_month = 0
 
     for doc in add:
+        total_news_month += 1        
         for field in doc:
             if field.get('name') == 'articulo':
                 article = field.text.lower().encode('utf-8')
@@ -116,7 +117,4 @@ def process_xml_news(add, terms_bag, dict_category_epu_news):
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])): 
                     dict_category_epu_news['14'] += 1
-
-            total_news_month += 1
-
     return total_news_month, epu_news_month
