@@ -2,7 +2,7 @@
 import csv
 import os
 
-def delete_results_file(newspaper):   
+def delete_results_file(newspaper):
     filepath = "results/results_" + newspaper + ".csv"
     try:
         os.remove(filepath)
