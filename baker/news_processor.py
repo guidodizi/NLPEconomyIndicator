@@ -98,62 +98,62 @@ def process_xml_news(xml_root, dict_category_epu_news):
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][2]["values"])): 
                     dict_category_epu_news['2'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][3]["values"])): 
                     dict_category_epu_news['3'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][4]["values"])): 
                     dict_category_epu_news['4'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][5]["values"])): 
                     dict_category_epu_news['5'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][6]["values"])): 
                     dict_category_epu_news['6'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][7]["values"])): 
                     dict_category_epu_news['7'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][8]["values"])): 
                     dict_category_epu_news['8'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][9]["values"])): 
                     dict_category_epu_news['9'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][10]["values"])): 
                     dict_category_epu_news['10'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][11]["values"])): 
                     dict_category_epu_news['11'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][12]["values"])): 
                     dict_category_epu_news['12'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])): 
                     dict_category_epu_news['13'] += 1
 
-                elif (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])): 
                     dict_category_epu_news['14'] += 1

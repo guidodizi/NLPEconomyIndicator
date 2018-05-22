@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import csv
 import os
+from datetime import date
 
 def delete_results_file(newspaper):
     filepath = "results/results_" + newspaper + ".csv"
@@ -20,8 +21,9 @@ def create_results_file(newspaper):
 
 def save_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news):
     filepath = "results/results_" + newspaper + ".csv"
-    date = str(month) + "-" + str(year)
-    data = [newspaper, date, total_news_month, epu_news_month, dict_category_epu_news['2'], dict_category_epu_news['3'],
+    this_date = date(year, month, 1)
+    str_date = this_date.strftime("%m-%Y")
+    data = [newspaper, str_date, total_news_month, epu_news_month, dict_category_epu_news['2'], dict_category_epu_news['3'],
             dict_category_epu_news['4'], dict_category_epu_news['5'], dict_category_epu_news['6'], dict_category_epu_news['7'],
             dict_category_epu_news['8'], dict_category_epu_news['9'], dict_category_epu_news['10'], dict_category_epu_news['11'],
             dict_category_epu_news['12'], dict_category_epu_news['13'], dict_category_epu_news['14']]
