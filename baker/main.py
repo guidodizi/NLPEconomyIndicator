@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import news_processor
+import results_processor
 
 # AUXILIAR METHODS
 def print_presentation():
@@ -63,18 +64,23 @@ def newspaper_input_section():
             input_newspaper = newspaper_input_options()
     return newspaper
 
-def monthly_indicator_by_category(newspaper):
+def process_news(newspaper):
     if (newspaper == "el_pais"):
         news_processor.process_el_pais()
-
     elif (newspaper == "el_observador"):
         news_processor.process_el_observador()
-
     elif (newspaper == "la_diaria"):
-        news_processor.process_la_diaria()
-        
+        news_processor.process_la_diaria()     
     elif (newspaper == "la_republica"):
         news_processor.process_la_republica()
+
+def scale_results_to_relative_month_count(newspaper):
+    print(u"\nProcesamiento de noticias finalizado.")
+    print(u"\nAguarde mientras se normalizan los resultados ...")
+    results_processor.scale_to_relative_count(newspaper)
+
+def scale_results_to_unit_standard_deviation(newspaper):
+    results_processor.scale_to_unit_standard_deviation(newspaper)
 
 
 # MAIN
@@ -85,7 +91,13 @@ newspaper = newspaper_input_section()
 
 print_processing_message(newspaper)
 
-# Execute news processing
-monthly_indicator_by_category(newspaper)
+# Execute news processing (generate raw results)
+process_news(newspaper)
+
+# Scale results by month articles count
+scale_results_to_relative_month_count(newspaper)
+
+# Standardize results to unit standard deviation
+scale_results_to_unit_standard_deviation(newspaper)
 
 print_finish()

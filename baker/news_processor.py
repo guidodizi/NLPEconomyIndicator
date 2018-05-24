@@ -40,8 +40,8 @@ def process_la_republica():
     date_iter = month_year_iter(date_from, date_to)
 
     newspaper = "la_republica"
-    results_handler.delete_results_file(newspaper)
-    results_handler.create_results_file(newspaper)
+    results_handler.delete_results_files(newspaper)
+    results_handler.create_step1_results_file(newspaper)
 
     for date in date_iter:
         year, month = date[0], date[1]
@@ -50,7 +50,7 @@ def process_la_republica():
         xml_root = tree.getroot()
         dict_category_epu_news = load_categories_dictionary()
         total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
-        results_handler.save_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
+        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
 def process_el_observador():
     #TODO: completar

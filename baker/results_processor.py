@@ -4,6 +4,34 @@ from datetime import date
 from datetime import timedelta
 import json
 import os
+import results_handler
+import numpy as np
+
+def scale_to_relative_count(newspaper):
+    previous_results_path = "results/step1_results_" + newspaper + ".csv"
+    filepath = "results/step2_results_" + newspaper + ".csv"
+    results_handler.create_step2_results_file(newspaper)
+    with open(previous_results_path, newline='') as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+        next(csvreader) # Skips headers row
+        for row in csvreader:
+            date = row[1]
+            count = int(row[2])
+            data = [newspaper, date, (row[3]/count), (row[4]/count), (row[5]/count), (row[6]/count), (row[7]/count),
+                   (row[8]/count), (row[9]/count), (row[10]/count), (row[11]/count), (row[12]/count), (row[13]/count), 
+                   (row[14]/count), (row[15]/count), (row[16]/count)]
+            with open(filepath, 'a', newline='') as data_file:
+                wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
+                wr.writerow(data)
+
+def scale_to_unit_standard_deviation(newspaper):
+    previous_results_path = "results/step2_results_" + newspaper + ".csv"
+    filepath = "results/step3_results_" + newspaper + ".csv"
+    results_handler.create_step3_results_file(newspaper)
+    matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14,15), skiprows=1)
+    #TODO: a partir de los resultados estos se debe hayar la desviacion estandar y hacer la division
+    print(matrix)
+
 
 def get_initial_date():
     with open('date_ranges.json') as data_file:
