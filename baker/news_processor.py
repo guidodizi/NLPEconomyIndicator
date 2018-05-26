@@ -2,6 +2,7 @@
 import json
 import xml.etree.ElementTree as ET
 import results_handler
+import sys
 
 def month_year_iter(date_from, date_to):
     start_month = int(date_from.split("-")[0])
@@ -52,17 +53,40 @@ def process_la_republica():
         total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
         results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
+def process_la_republica_fake():
+    with open('date_ranges.json') as data_file:
+        date_ranges = json.load(data_file)
+    date_from = date_ranges['ranges'][1]['datefrom']
+    date_to = date_ranges['ranges'][1]['dateto']
+    date_iter = month_year_iter(date_from, date_to)
+
+    newspaper = "la_republica_fake"
+    results_handler.delete_results_files(newspaper)
+    results_handler.create_step1_results_file(newspaper)
+
+    for date in date_iter:
+        year, month = date[0], date[1]
+        path = "../news/la_republica_fake/" + str(year) + "/" +str(month) + "/la_republica_fake.xml"
+        tree = ET.parse(path)
+        xml_root = tree.getroot()
+        dict_category_epu_news = load_categories_dictionary()
+        total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
+
 def process_el_observador():
     #TODO: completar
     print ("No hay noticias para procesar!")
+    sys.exit()
 
 def process_la_diaria():
     #TODO: completar
     print ("No hay noticias para procesar!")
+    sys.exit()
 
 def process_el_pais():
     #TODO: completar
     print ("No hay noticias para procesar!")
+    sys.exit()
 
 def process_xml_news(xml_root, dict_category_epu_news):
     with open('terms.json') as data_file:

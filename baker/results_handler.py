@@ -29,6 +29,13 @@ def delete_step3_results_file(newspaper):
     except OSError:
         pass
 
+def delete_epu_index_file():
+    filepath = "results/epu_index.csv"
+    try:
+        os.remove(filepath)
+    except OSError:
+        pass
+
 def create_step1_results_file(newspaper):
     filepath = "results/step1_results_" + newspaper + ".csv"
     base_data = ["newspaper", "date", "total_news", "epu_news", "epu_cat2_news", "epu_cat3_news", "epu_cat4_news", "epu_cat5_news", 
@@ -52,6 +59,15 @@ def create_step3_results_file(newspaper):
     base_data = ["newspaper", "date", "epu_news_std", "epu_cat2_news_std", "epu_cat3_news_std", "epu_cat4_news_std", "epu_cat5_news_std", 
                 "epu_cat6_news_std", "epu_cat7_news_std", "epu_cat8_news_std", "epu_cat9_news_std", "epu_cat10_news_std", "epu_cat11_news_std", 
                 "epu_cat12_news_std", "epu_cat13_news_std", "epu_cat14_news_std"]
+    with open(filepath, 'w', newline='') as data_file:
+        wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
+        wr.writerow(base_data)
+
+def create_epu_index_file():
+    filepath = "results/epu_index.csv"
+    base_data = ["date", "epu_index", "epu_cat2_index", "epu_cat3_index", "epu_cat4_index", "epu_cat5_index",  "epu_cat6_index",
+                "epu_cat7_index", "epu_cat8_index", "epu_cat9_index", "epu_cat10_index", "epu_cat11_index", "epu_cat12_index", 
+                "epu_cat13_index", "epu_cat14_index"]
     with open(filepath, 'w', newline='') as data_file:
         wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
         wr.writerow(base_data)

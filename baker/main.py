@@ -10,10 +10,11 @@ def print_presentation():
 
 def newspaper_input_options():
     print (u"\nIndique la opción del diario que desea procesar.")
-    print (u"  1 - El Observador")
-    print (u"  2 - El País")
-    print (u"  3 - La Diaria")
-    print (u"  4 - La República")
+    print (u"  1 - La República")
+    print (u"  2 - La República Fake")
+    print (u"  3 - El Observador")
+    print (u"  4 - La Diaria")
+    print (u"  5 - El País")
     print (u"  S - Salir\n")
     return input("Opción: ")
 
@@ -27,6 +28,8 @@ def print_processing_message(newspaper):
         print(u"  - Diario: La Diaria")
     elif (newspaper == "la_republica"):
         print(u"  - Diario: La República")
+    elif (newspaper == "la_republica_fake"):
+        print(u"  - Diario: La República Fake")
     print(u"\nAguarde unos instantes...")
 
 def print_finish():
@@ -48,16 +51,19 @@ def newspaper_input_section():
         if input_newspaper == "S" or input_newspaper == "s":
             exit()
         elif input_newspaper == "1":
-            newspaper = "el_observador"
+            newspaper = "la_republica"
             input_ok = True
         elif input_newspaper == "2":
-            newspaper = "el_pais"
+            newspaper = "la_republica_fake"
             input_ok = True
         elif input_newspaper == "3":
-            newspaper = "la_diaria"
+            newspaper = "el_observador"
             input_ok = True
         elif input_newspaper == "4":
-            newspaper = "la_republica"
+            newspaper = "la_diaria"
+            input_ok = True
+        elif input_newspaper == "5":
+            newspaper = "el_pais"
             input_ok = True
         else:
             print ("\nOpción inválida.\n")
@@ -73,6 +79,8 @@ def process_news(newspaper):
         news_processor.process_la_diaria()     
     elif (newspaper == "la_republica"):
         news_processor.process_la_republica()
+    elif (newspaper == "la_republica_fake"):
+        news_processor.process_la_republica_fake()
 
 def scale_results_to_relative_month_count(newspaper):
     print(u"\nProcesamiento de noticias finalizado.")
