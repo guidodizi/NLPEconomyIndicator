@@ -34,7 +34,7 @@ def load_categories_dictionary():
     return dict_category_epu_news
 
 def process_la_republica():
-    with open('date_ranges.json') as data_file:
+    with open('date_ranges.json', 'r+') as data_file:
         date_ranges = json.load(data_file)
     date_from = date_ranges['ranges'][0]['datefrom']
     date_to = date_ranges['ranges'][0]['dateto']
@@ -54,7 +54,7 @@ def process_la_republica():
         results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
 def process_la_republica_fake():
-    with open('date_ranges.json') as data_file:
+    with open('date_ranges.json', 'r+') as data_file:
         date_ranges = json.load(data_file)
     date_from = date_ranges['ranges'][1]['datefrom']
     date_to = date_ranges['ranges'][1]['dateto']
@@ -89,7 +89,7 @@ def process_el_pais():
     sys.exit()
 
 def process_xml_news(xml_root, dict_category_epu_news):
-    with open('terms.json') as data_file:
+    with open('terms.json', 'r+') as data_file:
         terms_bag = json.load(data_file)
 
     total_news_month = 0

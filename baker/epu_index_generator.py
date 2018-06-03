@@ -8,7 +8,7 @@ import results_handler
 import numpy as np
 
 def get_initial_date():
-    with open('date_ranges.json') as data_file:
+    with open('date_ranges.json', 'r+') as data_file:
         date_ranges = json.load(data_file)
     initial_date = date.max
     for date_range in date_ranges['ranges']:
@@ -21,7 +21,7 @@ def get_initial_date():
     return initial_date
 
 def get_last_date():
-    with open('date_ranges.json') as data_file:
+    with open('date_ranges.json', 'r+') as data_file:
         date_ranges = json.load(data_file)
     last_date = date.min
     for date_range in date_ranges['ranges']:
@@ -38,15 +38,6 @@ def add_one_month(dt0):
     dt2 = dt1 + timedelta(days=32)
     dt3 = dt2.replace(day=1)
     return dt3
-
-def generate_epu_index():
-    filepath = "results/epu_index.csv"
-    initial_date = get_initial_date()
-    last_date = get_last_date()
-
-    # Populate csv headers
-    results_handler.delete_epu_index_file()
-    results_handler.create_epu_index_file()
 
 
 # MAIN

@@ -90,6 +90,8 @@ def scale_results_to_relative_month_count(newspaper):
 def scale_results_to_unit_standard_deviation(newspaper):
     results_processor.scale_to_unit_standard_deviation(newspaper)
 
+def scale_to_100_mean(newspaper):
+    results_processor.scale_to_100_mean(newspaper)
 
 # MAIN
 print_presentation()
@@ -107,5 +109,8 @@ scale_results_to_relative_month_count(newspaper)
 
 # Standardize results to unit standard deviation
 scale_results_to_unit_standard_deviation(newspaper)
+
+# Scale results for mean to have value 100
+scale_to_100_mean(newspaper)
 
 print_finish()
