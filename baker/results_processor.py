@@ -8,7 +8,7 @@ import results_handler
 import numpy as np
 
 def scale_to_relative_count(newspaper):
-    previous_results_path = "results/step1_results_" + newspaper + ".csv"
+    previous_results_path = "results/step1_results_" + newspaper + ".csv"    
     filepath = "results/step2_results_" + newspaper + ".csv"
     results_handler.create_step2_results_file(newspaper)
     with open(previous_results_path, 'r+', newline='') as csvfile:
@@ -17,6 +17,8 @@ def scale_to_relative_count(newspaper):
         for row in csvreader:
             date = row[1]
             count = int(row[2])
+            if (count == 0):
+                count = 1
             data = [newspaper, date, (row[3]/count), (row[4]/count), (row[5]/count), (row[6]/count), (row[7]/count),
                    (row[8]/count), (row[9]/count), (row[10]/count), (row[11]/count), (row[12]/count), (row[13]/count), 
                    (row[14]/count), (row[15]/count), (row[16]/count)]

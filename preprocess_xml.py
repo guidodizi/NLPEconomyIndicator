@@ -30,7 +30,7 @@ def dump_to_file(data):
 			for idx, doc in enumerate(data[year][month]):
 				root.insert(idx, doc)
 			tree = ET.ElementTree(root)
-			file_path = os.path.join("./news", "processed", str(year), str(month), "la_republica.xml")
+			file_path = os.path.join("./news", "processed", str(year), str(month), "el_pais.xml")
 			
 			#create folder if doesnt exist
 			if not os.path.exists(os.path.dirname(file_path)):
@@ -49,6 +49,6 @@ def dump_to_file(data):
 #  MAIN
 print( "Just a sec...")
 # hacer para cada diario, por ahora solo la republica
-data_la_republica = split_xml_add_doc_structure("./news/la_republica/2011_2014_la_republica.xml")
+data_la_republica = split_xml_add_doc_structure("./news/el_pais/elpais20140911184708Noticias.xml")
 
 dump_to_file(data_la_republica)

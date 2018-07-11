@@ -9,6 +9,11 @@
             "newspaper": "el_observador",
             "datefrom": "01-2002",
             "dateto": "05-2018"
+        },
+		{
+            "newspaper": "el_pais",
+            "datefrom": "01-2000",
+            "dateto": "07-2018"
         }
     ]
 }

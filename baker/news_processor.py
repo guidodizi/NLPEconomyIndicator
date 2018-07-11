@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import csv
 import xml.etree.ElementTree as ET
 import results_handler
 import sys
@@ -32,6 +33,16 @@ def load_categories_dictionary():
         '14': 0 # autoridades
     }
     return dict_category_epu_news
+
+def load_total_news_all_months(path):
+        
+    total_news_all_month = {}
+    with open(path, 'r+', newline='') as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=',')        
+        next(csvreader)        
+        for row in csvreader:
+            total_news_all_month[row[0]+ "-" + row[1]] = row[2]                       
+    return total_news_all_month
 
 def process_la_republica():
     with open('date_ranges.json', 'r+') as data_file:
@@ -75,17 +86,60 @@ def process_la_republica_fake():
 
 def process_el_observador():
     #TODO: completar
-    print ("No hay noticias para procesar!")
-    sys.exit()
+    with open('date_ranges.json', 'r+') as data_file:
+        date_ranges = json.load(data_file)
+    date_from = date_ranges['ranges'][1]['datefrom']
+    date_to = date_ranges['ranges'][1]['dateto']
+    date_iter = month_year_iter(date_from, date_to)
+
+    newspaper = "el_observador"
+    results_handler.delete_results_files(newspaper)
+    results_handler.create_step1_results_file(newspaper)  
+
+    path = '../news/el_observador/cant_noticias_el_observador.csv'
+    total_news_all_month = load_total_news_all_months(path)    
+
+    for date in date_iter:
+        year, month = date[0], date[1]
+        monthWith0 = ""
+        if (month < 10):
+            monthWith0 = "0"+ str(month)
+        else:
+            monthWith0 = str(month)        
+        total_news_month = total_news_all_month[str(year)+"-"+str(month)]        
+        path = "../news/el_observador/" + str(year) + "/" + monthWith0 + "/data.json"                      
+        with open(path, 'r+', encoding='utf-8') as data_file:
+            tree = json.load(data_file)                        
+        json_root = tree['add']        
+        dict_category_epu_news = load_categories_dictionary()
+        epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
+    sys.exit()    
 
 def process_la_diaria():
-    #TODO: completar
+#TODO: completar
     print ("No hay noticias para procesar!")
     sys.exit()
 
 def process_el_pais():
-    #TODO: completar
-    print ("No hay noticias para procesar!")
+    with open('date_ranges.json', 'r+') as data_file:
+        date_ranges = json.load(data_file)
+    date_from = date_ranges['ranges'][2]['datefrom']
+    date_to = date_ranges['ranges'][2]['dateto']
+    date_iter = month_year_iter(date_from, date_to)
+
+    newspaper = "el_pais"
+    results_handler.delete_results_files(newspaper)
+    results_handler.create_step1_results_file(newspaper)
+
+    for date in date_iter:
+        year, month = date[0], date[1]
+        path = "../news/el_pais/" + str(year) + "/" +str(month) + "/el_pais.xml"
+        tree = ET.parse(path)
+        xml_root = tree.getroot()
+        dict_category_epu_news = load_categories_dictionary()
+        total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
     sys.exit()
 
 def process_xml_news(xml_root, dict_category_epu_news):
@@ -183,3 +237,95 @@ def process_xml_news(xml_root, dict_category_epu_news):
                     dict_category_epu_news['14'] += 1
     
     return total_news_month, epu_news_month
+
+def process_json_news(json_root, dict_category_epu_news):
+    with open('terms.json', 'r+') as data_file:
+        terms_bag = json.load(data_file)
+    
+    epu_news_month = 0      
+    for doc in json_root:                           
+        if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":            
+            article = doc['doc']['articulo'].lower().encode('utf-8')
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][2]["values"]) or 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][3]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][4]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][5]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][6]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][7]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][8]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][9]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][10]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][11]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][12]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"]) or
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])):
+                epu_news_month += 1 
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][2]["values"])): 
+                dict_category_epu_news['2'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][3]["values"])): 
+                dict_category_epu_news['3'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][4]["values"])): 
+                dict_category_epu_news['4'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][5]["values"])): 
+                dict_category_epu_news['5'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][6]["values"])): 
+                dict_category_epu_news['6'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][7]["values"])): 
+                dict_category_epu_news['7'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][8]["values"])): 
+                dict_category_epu_news['8'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][9]["values"])): 
+                dict_category_epu_news['9'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][10]["values"])): 
+                dict_category_epu_news['10'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][11]["values"])): 
+                dict_category_epu_news['11'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][12]["values"])): 
+                dict_category_epu_news['12'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])): 
+                dict_category_epu_news['13'] += 1
+
+            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])): 
+                dict_category_epu_news['14'] += 1
+    
+    return epu_news_month
