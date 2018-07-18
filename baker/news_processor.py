@@ -93,9 +93,29 @@ def process_el_observador():
         results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
 def process_la_diaria():
-#TODO: completar
-    print ("No hay noticias para procesar!")
-    sys.exit()
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
+        date_ranges = json.load(data_file)
+    date_from = date_ranges['ranges'][2]['datefrom']
+    date_to = date_ranges['ranges'][2]['dateto']
+    date_iter = month_year_iter(date_from, date_to)
+
+    newspaper = "la_diaria"
+    results_handler.delete_results_files(newspaper)
+    results_handler.create_step1_results_file(newspaper)  
+
+    path = '../news/la_diaria/cant_noticias_la_diaria.csv'
+    total_news_all_month = load_total_news_all_months(path)    
+
+    for date in date_iter:
+        year, month = date[0], date[1]     
+        total_news_month = total_news_all_month[str(year)+"-"+str(month)]        
+        path = "../news/la_diaria/" + str(year) + "/" + str(month) + "/data.json"                      
+        with open(path, 'r+', encoding='utf-8') as data_file:
+            tree = json.load(data_file)                        
+        json_root = tree['add']        
+        dict_category_epu_news = load_categories_dictionary()
+        epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
 def process_el_pais():
     # No se va a usar porque los datos no eran muy confiables
