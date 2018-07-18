@@ -23,21 +23,19 @@ def load_categories_dictionary():
         '4': 0, # política fiscal
         '5': 0, # política monetaria
         '6': 0, # política de salud
-        '7': 0, # política de seguridad nacional
-        '8': 0, # política de regulación financiera
-        '9': 0, # política de regulación
-        '10': 0, # política de deuda soberana y crisis monetaria
-        '11': 0, # política de programas de derechos
-        '12': 0, # política comercial
-        '13': 0, # otras políticas
-        '14': 0 # autoridades
+        '7': 0, # política de regulación financiera
+        '8': 0, # política de regulación
+        '9': 0, # política de deuda soberana y crisis monetaria
+        '10': 0, # política de programas de derechos
+        '11': 0, # política comercial
+        '12': 0, # otras políticas
+        '13': 0 # autoridades internacionales
     }
     return dict_category_epu_news
 
 def load_total_news_all_months(path):
-        
     total_news_all_month = {}
-    with open(path, 'r+', newline='') as csvfile:
+    with open(path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')        
         next(csvreader)        
         for row in csvreader:
@@ -45,7 +43,7 @@ def load_total_news_all_months(path):
     return total_news_all_month
 
 def process_la_republica():
-    with open('date_ranges.json', 'r+') as data_file:
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
         date_ranges = json.load(data_file)
     date_from = date_ranges['ranges'][0]['datefrom']
     date_to = date_ranges['ranges'][0]['dateto']
@@ -64,29 +62,8 @@ def process_la_republica():
         total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
         results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
-def process_la_republica_fake():
-    with open('date_ranges.json', 'r+') as data_file:
-        date_ranges = json.load(data_file)
-    date_from = date_ranges['ranges'][1]['datefrom']
-    date_to = date_ranges['ranges'][1]['dateto']
-    date_iter = month_year_iter(date_from, date_to)
-
-    newspaper = "la_republica_fake"
-    results_handler.delete_results_files(newspaper)
-    results_handler.create_step1_results_file(newspaper)
-
-    for date in date_iter:
-        year, month = date[0], date[1]
-        path = "../news/la_republica_fake/" + str(year) + "/" +str(month) + "/la_republica_fake.xml"
-        tree = ET.parse(path)
-        xml_root = tree.getroot()
-        dict_category_epu_news = load_categories_dictionary()
-        total_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
-        results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
-
 def process_el_observador():
-    #TODO: completar
-    with open('date_ranges.json', 'r+') as data_file:
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
         date_ranges = json.load(data_file)
     date_from = date_ranges['ranges'][1]['datefrom']
     date_to = date_ranges['ranges'][1]['dateto']
@@ -114,7 +91,6 @@ def process_el_observador():
         dict_category_epu_news = load_categories_dictionary()
         epu_news_month = process_json_news(json_root, dict_category_epu_news)
         results_handler.save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
-    sys.exit()    
 
 def process_la_diaria():
 #TODO: completar
@@ -122,7 +98,8 @@ def process_la_diaria():
     sys.exit()
 
 def process_el_pais():
-    with open('date_ranges.json', 'r+') as data_file:
+    # No se va a usar porque los datos no eran muy confiables
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
         date_ranges = json.load(data_file)
     date_from = date_ranges['ranges'][2]['datefrom']
     date_to = date_ranges['ranges'][2]['dateto']
@@ -143,9 +120,9 @@ def process_el_pais():
     sys.exit()
 
 def process_xml_news(xml_root, dict_category_epu_news):
-    with open('terms.json', 'r+') as data_file:
+    with open('terms.json', 'r+', encoding='utf-8') as data_file:
         terms_bag = json.load(data_file)
-
+    
     total_news_month = 0
     epu_news_month = 0
 
@@ -167,8 +144,7 @@ def process_xml_news(xml_root, dict_category_epu_news):
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][10]["values"]) or
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][11]["values"]) or
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][12]["values"]) or
-                    any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"]) or
-                    any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])):
+                    any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])):
                     epu_news_month += 1 
 
                 if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
@@ -230,16 +206,11 @@ def process_xml_news(xml_root, dict_category_epu_news):
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                     any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])): 
                     dict_category_epu_news['13'] += 1
-
-                if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
-                    any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
-                    any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])): 
-                    dict_category_epu_news['14'] += 1
     
     return total_news_month, epu_news_month
 
 def process_json_news(json_root, dict_category_epu_news):
-    with open('terms.json', 'r+') as data_file:
+    with open('terms.json', 'r+', encoding='utf-8') as data_file:
         terms_bag = json.load(data_file)
     
     epu_news_month = 0      
@@ -259,8 +230,7 @@ def process_json_news(json_root, dict_category_epu_news):
                 any(word.encode('utf-8') in article for word in terms_bag['terms'][10]["values"]) or
                 any(word.encode('utf-8') in article for word in terms_bag['terms'][11]["values"]) or
                 any(word.encode('utf-8') in article for word in terms_bag['terms'][12]["values"]) or
-                any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"]) or
-                any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])):
+                any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])):
                 epu_news_month += 1 
 
             if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
@@ -322,10 +292,5 @@ def process_json_news(json_root, dict_category_epu_news):
                 any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
                 any(word.encode('utf-8') in article for word in terms_bag['terms'][13]["values"])): 
                 dict_category_epu_news['13'] += 1
-
-            if (any(word.encode('utf-8') in article for word in terms_bag['terms'][0]["values"]) and 
-                any(word.encode('utf-8') in article for word in terms_bag['terms'][1]["values"]) ) and ( 
-                any(word.encode('utf-8') in article for word in terms_bag['terms'][14]["values"])): 
-                dict_category_epu_news['14'] += 1
     
     return epu_news_month

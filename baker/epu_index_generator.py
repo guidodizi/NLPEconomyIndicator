@@ -8,7 +8,7 @@ import results_handler
 import numpy as np
 
 def get_initial_date():
-    with open('date_ranges.json', 'r+') as data_file:
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
         date_ranges = json.load(data_file)
     initial_date = date.max
     for date_range in date_ranges['ranges']:
@@ -21,7 +21,7 @@ def get_initial_date():
     return initial_date
 
 def get_last_date():
-    with open('date_ranges.json', 'r+') as data_file:
+    with open('date_ranges.json', 'r+', encoding='utf-8') as data_file:
         date_ranges = json.load(data_file)
     last_date = date.min
     for date_range in date_ranges['ranges']:

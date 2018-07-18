@@ -11,7 +11,7 @@ def scale_to_relative_count(newspaper):
     previous_results_path = "results/step1_results_" + newspaper + ".csv"    
     filepath = "results/step2_results_" + newspaper + ".csv"
     results_handler.create_step2_results_file(newspaper)
-    with open(previous_results_path, 'r+', newline='') as csvfile:
+    with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
@@ -21,8 +21,8 @@ def scale_to_relative_count(newspaper):
                 count = 1
             data = [newspaper, date, (row[3]/count), (row[4]/count), (row[5]/count), (row[6]/count), (row[7]/count),
                    (row[8]/count), (row[9]/count), (row[10]/count), (row[11]/count), (row[12]/count), (row[13]/count), 
-                   (row[14]/count), (row[15]/count), (row[16]/count)]
-            with open(filepath, 'a', newline='') as data_file:
+                   (row[14]/count), (row[15]/count)]
+            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
                 wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
                 wr.writerow(data)
 
@@ -30,14 +30,14 @@ def scale_to_unit_standard_deviation(newspaper):
     previous_results_path = "results/step2_results_" + newspaper + ".csv"
     filepath = "results/step3_results_" + newspaper + ".csv"
     results_handler.create_step3_results_file(newspaper)
-    step2_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14,15), skiprows=1)
+    step2_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14), skiprows=1)
     categories_count = len(step2_matrix[0])
     std_dev_dict = {}
     for i in range(categories_count):
         step2_index = step2_matrix[:,i]
         std_dev = np.std(step2_index, dtype=np.float64)
         std_dev_dict[i] = std_dev
-    with open(previous_results_path, 'r+', newline='') as csvfile:
+    with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
@@ -45,8 +45,8 @@ def scale_to_unit_standard_deviation(newspaper):
             data = [newspaper, date, (row[2]/std_dev_dict[0]), (row[3]/std_dev_dict[1]), (row[4]/std_dev_dict[2]), (row[5]/std_dev_dict[3]), 
                     (row[6]/std_dev_dict[4]), (row[7]/std_dev_dict[5]), (row[8]/std_dev_dict[6]), (row[9]/std_dev_dict[7]), 
                     (row[10]/std_dev_dict[8]), (row[11]/std_dev_dict[9]), (row[12]/std_dev_dict[10]),  (row[13]/std_dev_dict[11]), 
-                    (row[14]/std_dev_dict[12]), (row[15]/std_dev_dict[13])]
-            with open(filepath, 'a', newline='') as data_file:
+                    (row[14]/std_dev_dict[12])]
+            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
                 wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
                 wr.writerow(data)
 
@@ -55,7 +55,7 @@ def scale_to_100_mean(newspaper):
     previous_results_path = "results/step3_results_" + newspaper + ".csv"
     filepath = "results/step4_results_" + newspaper + ".csv"
     results_handler.create_step4_results_file(newspaper)
-    step3_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14,15), skiprows=1)
+    step3_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14), skiprows=1)
     categories_count = len(step3_matrix[0])
     mean_coef_dict = {}
     for i in range(categories_count):
@@ -63,7 +63,7 @@ def scale_to_100_mean(newspaper):
         mean = np.mean(step3_index, dtype=np.float64)
         coef = (100 / mean)
         mean_coef_dict[i] = coef
-    with open(previous_results_path, 'r+', newline='') as csvfile:
+    with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
@@ -71,7 +71,7 @@ def scale_to_100_mean(newspaper):
             data = [newspaper, date, (row[2]*mean_coef_dict[0]), (row[3]*mean_coef_dict[1]), (row[4]*mean_coef_dict[2]), (row[5]*mean_coef_dict[3]), 
                     (row[6]*mean_coef_dict[4]), (row[7]*mean_coef_dict[5]), (row[8]*mean_coef_dict[6]), (row[9]*mean_coef_dict[7]), 
                     (row[10]*mean_coef_dict[8]), (row[11]*mean_coef_dict[9]), (row[12]*mean_coef_dict[10]),  (row[13]*mean_coef_dict[11]), 
-                    (row[14]*mean_coef_dict[12]), (row[15]*mean_coef_dict[13])]
-            with open(filepath, 'a', newline='') as data_file:
+                    (row[14]*mean_coef_dict[12])]
+            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
                 wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
                 wr.writerow(data)
