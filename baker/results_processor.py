@@ -1,77 +1,99 @@
 # -*- coding: utf-8 -*-
 import csv
-from datetime import date
-from datetime import timedelta
 import json
 import os
-import results_handler
+import results_file_handler
+import sys
 import numpy as np
+from helper_methods import *
 
 def scale_to_relative_count(newspaper):
-    previous_results_path = "results/step1_results_" + newspaper + ".csv"    
+    previous_results_path = "results/step1_results_" + newspaper + ".csv"
     filepath = "results/step2_results_" + newspaper + ".csv"
-    results_handler.create_step2_results_file(newspaper)
+    results_file_handler.create_step2_results_file(newspaper)
     with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
+            cols = len(row)
             date = row[1]
             count = int(row[2])
             if (count == 0):
-                count = 1
-            data = [newspaper, date, (row[3]/count), (row[4]/count), (row[5]/count), (row[6]/count), (row[7]/count),
-                   (row[8]/count), (row[9]/count), (row[10]/count), (row[11]/count), (row[12]/count), (row[13]/count), 
-                   (row[14]/count), (row[15]/count)]
-            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
-                wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
-                wr.writerow(data)
+                count = 1 # To avoid division by 0
+            
+            col_data = [newspaper, date]
+            for i in range(3, cols):
+                col_data.append(row[i]/count)
+
+            results_file_handler.append_csv_file_row(filepath, col_data)
 
 def scale_to_unit_standard_deviation(newspaper):
+    print(u"\nProcesamiento de noticias finalizado.")
+    print(u"\nAguarde mientras se normalizan los resultados ...")
     previous_results_path = "results/step2_results_" + newspaper + ".csv"
     filepath = "results/step3_results_" + newspaper + ".csv"
-    results_handler.create_step3_results_file(newspaper)
-    step2_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14), skiprows=1)
-    categories_count = len(step2_matrix[0])
+    results_file_handler.create_step3_results_file(newspaper)
+
+    cat_count = categories_count()
+    step2_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=range(2,cat_count+3), skiprows=1)
+
     std_dev_dict = {}
-    for i in range(categories_count):
+    for i in range(len(step2_matrix[0])):
         step2_index = step2_matrix[:,i]
         std_dev = np.std(step2_index, dtype=np.float64)
         std_dev_dict[i] = std_dev
+
     with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
+            cols = len(row)
             date = row[1]
-            data = [newspaper, date, (row[2]/std_dev_dict[0]), (row[3]/std_dev_dict[1]), (row[4]/std_dev_dict[2]), (row[5]/std_dev_dict[3]), 
-                    (row[6]/std_dev_dict[4]), (row[7]/std_dev_dict[5]), (row[8]/std_dev_dict[6]), (row[9]/std_dev_dict[7]), 
-                    (row[10]/std_dev_dict[8]), (row[11]/std_dev_dict[9]), (row[12]/std_dev_dict[10]),  (row[13]/std_dev_dict[11]), 
-                    (row[14]/std_dev_dict[12])]
-            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
-                wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
-                wr.writerow(data)
 
-def scale_to_100_mean(newspaper):
-    # TODO: esto en realidad se debe hacer una vez que ya se mezclaron todos los diarios en un solo indicador, y genera el EPU definitivo
-    previous_results_path = "results/step3_results_" + newspaper + ".csv"
-    filepath = "results/step4_results_" + newspaper + ".csv"
-    results_handler.create_step4_results_file(newspaper)
-    step3_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,3,4,5,6,7,8,9,10,11,12,13,14), skiprows=1)
-    categories_count = len(step3_matrix[0])
+            col_data = [newspaper, date]
+            for i in range(2, cols):
+                col_data.append(row[i]/std_dev_dict[i-2])
+
+            results_file_handler.append_csv_file_row(filepath, col_data)
+
+def generate_epu_index():
+     # TODO: implementar
+    print("\nFalta implementación.\n")
+    # 1) Chequear que haya archivos step3_results, sino indicar un mesaje de error
+    # 2) average_newspaper_results()
+    # 3) scale_to_100_mean()
+    sys.exit()
+
+def average_newspaper_results():
+    # TODO: implementar
+    print("\nFalta implementación.\n")
+    filepath = "results/step4_results_average.csv"
+    sys.exit()
+
+def scale_to_100_mean():
+    previous_results_path = "results/step4_results_average.csv"
+    filepath = "results/epu_index_uruguay.csv"
+    results_file_handler.create_epu_index_file()
+
+    cat_count = categories_count()
+    step4_matrix = np.loadtxt(open(previous_results_path, "rb"), delimiter=",", usecols=(2,cat_count+3), skiprows=1)
+
     mean_coef_dict = {}
-    for i in range(categories_count):
-        step3_index = step3_matrix[:,i]
-        mean = np.mean(step3_index, dtype=np.float64)
+    for i in range(len(step4_matrix[0])):
+        step4_index = step4_matrix[:,i]
+        mean = np.mean(step4_index, dtype=np.float64)
         coef = (100 / mean)
         mean_coef_dict[i] = coef
+
     with open(previous_results_path, 'r+', newline='', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         next(csvreader) # Skips headers row
         for row in csvreader:
             date = row[1]
-            data = [newspaper, date, (row[2]*mean_coef_dict[0]), (row[3]*mean_coef_dict[1]), (row[4]*mean_coef_dict[2]), (row[5]*mean_coef_dict[3]), 
-                    (row[6]*mean_coef_dict[4]), (row[7]*mean_coef_dict[5]), (row[8]*mean_coef_dict[6]), (row[9]*mean_coef_dict[7]), 
-                    (row[10]*mean_coef_dict[8]), (row[11]*mean_coef_dict[9]), (row[12]*mean_coef_dict[10]),  (row[13]*mean_coef_dict[11]), 
-                    (row[14]*mean_coef_dict[12])]
-            with open(filepath, 'a', newline='', encoding='utf-8') as data_file:
-                wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
-                wr.writerow(data)
+            cat_count = categories_count()
+            data = [date]
+
+            for i in range(2, cat_count):
+                data.append(row[i]*mean_coef_dict[i-2]) 
+
+            results_file_handler.append_csv_file_row(filepath, data)
