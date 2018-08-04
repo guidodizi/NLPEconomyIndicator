@@ -3,18 +3,23 @@ import json
 import sys
 from datetime import datetime
 
+import settings
+
 # HELPER METHODS
 
 # ----- Input -----
+
+
 def input_options_message():
-    print (u"\nIndique la operación a realizar:")
-    print (u"  1 - Procesar \"La República\"")
-    print (u"  2 - Procesar \"El Observador\"")
-    print (u"  3 - Procesar \"La Diaria\"")
-    print (u"  4 - Procesar \"Búsqueda\"")
-    print (u"  G - Generar indicador a partir de los diarios ya procesados")
-    print (u"  S - Salir\n")
+    print(u"\nIndique la operación a realizar:")
+    print(u"  1 - Procesar \"La República\"")
+    print(u"  2 - Procesar \"El Observador\"")
+    print(u"  3 - Procesar \"La Diaria\"")
+    print(u"  4 - Procesar \"Búsqueda\"")
+    print(u"  G - Generar indicador a partir de los diarios ya procesados")
+    print(u"  S - Salir\n")
     return input("Opción: ")
+
 
 def options_input_section():
     input_ok = False
@@ -27,27 +32,30 @@ def options_input_section():
             option = "generar_epu"
             input_ok = True
         elif input_opt == "1":
-            option = "la_republica"
+            option = settings.NEWSPAPERS["la_republica"]["id"]
             input_ok = True
         elif input_opt == "2":
-            option = "el_observador"
+            option = settings.NEWSPAPERS["el_observador"]["id"]
             input_ok = True
         elif input_opt == "3":
-            option = "la_diaria"
+            option = settings.NEWSPAPERS["la_diaria"]["id"]
             input_ok = True
         elif input_opt == "4":
-            option = "busqueda"
+            option = settings.NEWSPAPERS["busqueda"]["id"]
             input_ok = True
         else:
-            print ("\nOpción inválida.\n")
+            print("\nOpción inválida.\n")
             input_opt = input_options_message()
     return option
 
 # ----- Console Logging -----
+
+
 def print_presentation():
-    print (u"\n---------------------------------------------------------------")
-    print (u"---------------------------------------------------------------")
-    print (u"Bienvenido al Indicador de Incertidumbre Económica para Uruguay")
+    print(u"\n---------------------------------------------------------------")
+    print(u"---------------------------------------------------------------")
+    print(u"Bienvenido al Indicador de Incertidumbre Económica para Uruguay")
+
 
 def print_processing_message(newspaper):
     print(u"\nSe está obteniendo el Indicador de Incertidumbre Económica para:")
@@ -61,34 +69,33 @@ def print_processing_message(newspaper):
         print(u"  - Semanario: Búsqueda")
     print(u"\nAguarde unos instantes...")
 
+
 def print_finish():
-    print (u"\n¡Procesamiento finalizado!")
-    print (u"Puede ver los resultados en la carpeta \"/baker/results\" \n")
+    print(u"\n¡Procesamiento finalizado!")
+    print(u"Puede ver los resultados en la carpeta \"/baker/results\" \n")
 
 # ----- Auxiliar -----
+
+
 def month_year_iter(date_from, date_to):
     start_month = int(date_from.split("-")[0])
     start_year = int(date_from.split("-")[1])
     end_month = int(date_to.split("-")[0])
     end_year = int(date_to.split("-")[1])
-    ym_start= 12 * start_year + start_month - 1
-    ym_end= 12 * end_year + end_month - 1
+    ym_start = 12 * start_year + start_month - 1
+    ym_end = 12 * end_year + end_month - 1
     for ym in range(ym_start, ym_end):
         y, m = divmod(ym, 12)
         yield y, m+1
 
+
 def load_categories_dictionary():
     dict_category_epu_news = {}
-    total_categories = categories_count()
+    total_categories = settings.CATEGORIES_COUNT
     for i in range(2, total_categories + 2):
         dict_category_epu_news[str(i)] = 0
     return dict_category_epu_news
 
-def categories_count():
-    with open('terms.json', 'r+', encoding='utf-8') as data_file:
-        terms_bag = json.load(data_file)
-    count = len(terms_bag['terms']) - 2
-    return count
 
 # def news_date_range(newspaper):
 #     date_range = {
