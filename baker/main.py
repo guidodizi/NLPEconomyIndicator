@@ -90,8 +90,11 @@ def scale_results_to_relative_month_count(newspaper):
 def scale_results_to_unit_standard_deviation(newspaper):
     results_processor.scale_to_unit_standard_deviation(newspaper)
 
-def scale_to_100_mean(newspaper):
-    results_processor.scale_to_100_mean(newspaper)
+def join_newspaper_results():
+    results_processor.join_newspaper_results_with_average()
+
+def scale_to_100_mean():
+    results_processor.scale_to_100_mean()
 
 # MAIN
 print_presentation()
@@ -102,15 +105,18 @@ newspaper = newspaper_input_section()
 print_processing_message(newspaper)
 
 # Execute news processing (generate raw results)
-process_news(newspaper)
+#process_news(newspaper)
 
 # Scale results by month articles count
-scale_results_to_relative_month_count(newspaper)
+#scale_results_to_relative_month_count(newspaper)
 
 # Standardize results to unit standard deviation
-scale_results_to_unit_standard_deviation(newspaper)
+#scale_results_to_unit_standard_deviation(newspaper)
+
+# Average of all newspaper togheter
+join_newspaper_results()
 
 # Scale results for mean to have value 100
-scale_to_100_mean(newspaper)
+scale_to_100_mean()
 
 print_finish()

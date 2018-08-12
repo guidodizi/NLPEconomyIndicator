@@ -63,6 +63,20 @@ def create_step4_results_file(newspaper):
         wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
         wr.writerow(base_data)
 
+def create_step5_results_file(newspaper):
+    # TODO: esto en realidad se debe hacer una vez que ya se mezclaron todos los diarios en un solo indicador, y genera el EPU definitivo
+    filepath = "results/step5_results_" + newspaper + ".csv"
+    with open('terms.json', 'r+', encoding="utf8") as data_file:
+        terms_bag = json.load(data_file)
+    categories_count = len(terms_bag['terms'])
+    base_data = ["Newspaper", "Date", "EPU Uruguay"]
+    for i in range(2, categories_count):
+        category_name = terms_bag['terms'][i]["name"]
+        base_data.append(category_name)
+    with open(filepath, 'w', newline='', encoding='utf-8') as data_file:
+        wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
+        wr.writerow(base_data)
+
 def save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news):
     filepath = "results/step1_results_" + newspaper + ".csv"
     this_date = date(year, month, 1)
