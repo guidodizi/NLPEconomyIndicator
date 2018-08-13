@@ -3,6 +3,7 @@ import json
 
 # FOR GLOBAL VARIABLES AND DATA
 
+
 def init():
     global STEP_1_2_3_FILEPATH
     global STEP_4_FILEPATH
@@ -33,5 +34,5 @@ def init():
     # TODO: hacer que lo calcule a partir de la config en NEWSPAPERS
     EPU_DATE_RANGE = {
         'datefrom': '01-2002',
-        'dateto': '06-2018'
+        'dateto': '05-2018'
     }

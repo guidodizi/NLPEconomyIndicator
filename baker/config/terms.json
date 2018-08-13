@@ -3,6 +3,7 @@
 		{
 			"id": 0,
 			"name": "Economía",
+			"code": "econom",
 			"values": [
 				"economía",
 				"económico",
@@ -14,6 +15,7 @@
 		{
 			"id": 1,
 			"name": "Incertidumbre",
+			"code": "incert",
 			"values": [
 				"incertidumbre",
 				"incierto",
@@ -25,6 +27,7 @@
 		{
 			"id": 2,
 			"name": "Política impositiva",
+			"code": "pol_impositiva",
 			"values": [
 				"impuestos",
 				"impuesto",
@@ -40,6 +43,7 @@
 		{
 			"id": 3,
 			"name": "Política de gasto gubernamental",
+			"code": "pol_gasto_gub",
 			"values": [
 				"gasto gubernamental",
 				"gasto del gobierno",
@@ -72,6 +76,7 @@
 		{
 			"id": 4,
 			"name": "Política fiscal",
+			"code": "pol_fiscal",
 			"values": [
 				"ajuste fiscal",
 				"política fiscal",
@@ -97,6 +102,7 @@
 		{
 			"id": 5,
 			"name": "Política monetaria",
+			"code": "pol_monetaria",
 			"values": [
 				"reserva federal",
 				"fed",
@@ -137,6 +143,7 @@
 		{
 			"id": 6,
 			"name": "Política de salud",
+			"code": "pol_salud",
 			"values": [
 				"asse",
 				"snis",
@@ -150,6 +157,7 @@
 		{
 			"id": 7,
 			"name": "Política de regulación financiera",
+			"code": "pol_reg_financiera",
 			"required": "False",
 			"values": [
 				"supervisión bancaria",
@@ -176,6 +184,7 @@
 		{
 			"id": 8,
 			"name": "Política de regulación",
+			"code": "pol_regulacion",
 			"values": [
 				"regulación financiera",
 				"derechos sindicales",
@@ -211,6 +220,7 @@
 		{
 			"id": 9,
 			"name": "Política de deuda soberana y crisis monetaria",
+			"code": "pol_deuda_crisis",
 			"values": [
 				"deuda soberana",
 				"crisis monetaria",
@@ -258,6 +268,7 @@
 		{
 			"id": 10,
 			"name": "Política de programas de derechos",
+			"code": "pol_prog_derechos",
 			"values": [
 				"programas de gobierno",
 				"seguridad social",
@@ -282,6 +293,7 @@
 		{
 			"id": 11,
 			"name": "Política comercial",
+			"code": "pol_comercial",
 			"values": [
 				"tarifas de importación",
 				"impuestos de importación",
@@ -313,6 +325,7 @@
 		{
 			"id": 12,
 			"name": "Otras políticas",
+			"code": "otras_politicas",
 			"values": [
 				"gobierno",
 				"autoridades",
@@ -332,6 +345,7 @@
 		{
 			"id": 13,
 			"name": "Autoridades internacionales",
+			"code": "autoridades_internacionales",
 			"values": [
 				"trump",
 				"obama",

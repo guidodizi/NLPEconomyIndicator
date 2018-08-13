@@ -74,25 +74,21 @@ def create_step3_results_file(newspaper):
 
 def create_step4_results_average_file():
     filepath = settings.STEP_4_FILEPATH
-    base_data = ["newspaper", "date", "epu_news_std"]
+    base_data = ["newspaper", "date", "epu_news_avg"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news_std")
+        base_data.append("epu_cat" + str(i) + "_news_avg")
 
     write_csv_file_row(filepath, base_data)
 
 
 def create_epu_index_file():
     filepath = settings.EPU_INDEX_FILEPATH
-    base_data = ["Newspaper", "Date", "EPU Uruguay"]
+    base_data = ["newspaper", "date", "epu_uruguay"]
 
-    # with open('config/terms.json', 'r+', encoding='utf-8') as data_file:
-    #     settings.TERMS_BAG = json.load(data_file)
-    # for i in range(2, settings.CATEGORIES_COUNT + 1):
-    #     category_name = settings.TERMS_BAG[i]["name"]
-    #     base_data.append(category_name)
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news_std")
+    for i in range(2, settings.CATEGORIES_COUNT + 1):
+        category_name = settings.TERMS_BAG[i]["code"]
+        base_data.append(category_name)
 
     write_csv_file_row(filepath, base_data)
 

@@ -9,13 +9,11 @@ import settings
 
 # ----- Input -----
 
-
 def input_options_message():
     print(u"\nIndique la operación a realizar:")
-    print(u"  1 - Procesar \"La República\"")
-    print(u"  2 - Procesar \"El Observador\"")
-    print(u"  3 - Procesar \"La Diaria\"")
-    print(u"  4 - Procesar \"Búsqueda\"")
+    print(u"  1 - Procesar \"El Observador\"")
+    print(u"  2 - Procesar \"La Diaria\"")
+    print(u"  3 - Procesar \"Búsqueda\"")
     print(u"  G - Generar indicador a partir de los diarios ya procesados")
     print(u"  S - Salir\n")
     return input("Opción: ")
@@ -32,15 +30,12 @@ def options_input_section():
             option = "generar_epu"
             input_ok = True
         elif input_opt == "1":
-            option = settings.NEWSPAPERS["la_republica"]["id"]
-            input_ok = True
-        elif input_opt == "2":
             option = settings.NEWSPAPERS["el_observador"]["id"]
             input_ok = True
-        elif input_opt == "3":
+        elif input_opt == "2":
             option = settings.NEWSPAPERS["la_diaria"]["id"]
             input_ok = True
-        elif input_opt == "4":
+        elif input_opt == "3":
             option = settings.NEWSPAPERS["busqueda"]["id"]
             input_ok = True
         else:
@@ -48,8 +43,8 @@ def options_input_section():
             input_opt = input_options_message()
     return option
 
-# ----- Console Logging -----
 
+# ----- Console Logging -----
 
 def print_presentation():
     print(u"\n---------------------------------------------------------------")
@@ -63,8 +58,6 @@ def print_processing_message(newspaper):
         print(u"  - Diario: El Observador")
     elif (newspaper == "la_diaria"):
         print(u"  - Diario: La Diaria")
-    elif (newspaper == "la_republica"):
-        print(u"  - Diario: La República")
     elif (newspaper == "busqueda"):
         print(u"  - Semanario: Búsqueda")
     print(u"\nAguarde unos instantes...")
@@ -74,8 +67,8 @@ def print_finish():
     print(u"\n¡Procesamiento finalizado!")
     print(u"Puede ver los resultados en la carpeta \"/baker/results\" \n")
 
-# ----- Auxiliar -----
 
+# ----- Auxiliar -----
 
 def month_year_iter(date_from, date_to):
     start_month = int(date_from.split("-")[0])

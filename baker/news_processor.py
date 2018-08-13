@@ -9,6 +9,20 @@ import settings
 from helper_methods import *
 
 
+def process_news(newspaper):
+    if (newspaper == settings.NEWSPAPERS["la_republica"]["id"]):
+        process_la_republica()
+
+    elif (newspaper == settings.NEWSPAPERS["el_observador"]["id"]):
+        process_el_observador()
+
+    elif (newspaper == settings.NEWSPAPERS["la_diaria"]["id"]):
+        process_la_diaria()
+
+    elif (newspaper == settings.NEWSPAPERS["busqueda"]["id"]):
+        process_busqueda()
+
+
 def read_news_count_from_csv(path):
     monthly_news_count = {}
     with open(path, 'r+', newline='', encoding='utf-8') as csvfile:
@@ -20,7 +34,7 @@ def read_news_count_from_csv(path):
 
 
 def process_la_republica():
-    # TODO: ver si se va a usar
+    # No se va a usar porque se tienen pocos años
     newspaper = settings.NEWSPAPERS["la_republica"]["id"]
     date_from = settings.NEWSPAPERS[newspaper]['datefrom']
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
@@ -117,10 +131,24 @@ def process_el_pais():
 
 
 def process_busqueda():
-    # TODO: implementar
     newspaper = settings.NEWSPAPERS["busqueda"]["id"]
-    print("\nNo se tienen noticias de Búsqueda para procesar.\n")
-    sys.exit()
+    date_from = settings.NEWSPAPERS[newspaper]['datefrom']
+    date_to = settings.NEWSPAPERS[newspaper]['dateto']
+    date_iter = month_year_iter(date_from, date_to)
+
+    results_file_handler.delete_results_files(newspaper)
+    results_file_handler.create_step1_results_file(newspaper)
+
+    for date in date_iter:
+        year, month = date[0], date[1]
+        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
+        with open(path, 'r+', encoding='utf-8') as data_file:
+            tree = json.load(data_file)
+        json_root = tree['add']
+        dict_category_epu_news = load_categories_dictionary()
+        total_news_month, epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        results_file_handler.save_step1_results(
+            newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news)
 
 
 def check_if_news_is_epu(article, dict_category_epu_news, category_index):
@@ -140,7 +168,7 @@ def process_xml_news(xml_root, dict_category_epu_news):
         for field in doc:
             found_epu_news = False
             if field.get('name') == 'articulo':
-                total_news_month += 1  # TODO: chequear por qué da 8000 noticias a la republica
+                total_news_month += 1
                 article = field.text.lower().encode('utf-8')
                 for i in range(2, settings.CATEGORIES_COUNT + 2):
                     is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
