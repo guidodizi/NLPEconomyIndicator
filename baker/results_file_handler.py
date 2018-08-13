@@ -86,7 +86,7 @@ def create_epu_index_file():
     filepath = settings.EPU_INDEX_FILEPATH
     base_data = ["newspaper", "date", "epu_uruguay"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 1):
+    for i in range(2, settings.CATEGORIES_COUNT + 2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name)
 

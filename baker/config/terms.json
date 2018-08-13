@@ -345,7 +345,7 @@
 		{
 			"id": 13,
 			"name": "Autoridades internacionales",
-			"code": "autoridades_internacionales",
+			"code": "autoridades_intls",
 			"values": [
 				"trump",
 				"obama",
