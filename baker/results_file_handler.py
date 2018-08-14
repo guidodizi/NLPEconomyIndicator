@@ -44,10 +44,11 @@ def append_csv_file_row(filepath, data):
 
 def create_step1_results_file(newspaper):
     filepath = settings.STEP_1_2_3_FILEPATH.format("1", newspaper)
-    base_data = ["newspaper", "date", "total_news", "epu_news"]
+    base_data = ["newspaper", "date", "total_news", "epu_news_count"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news")
+        category_name = settings.TERMS_BAG[i]["code"]
+        base_data.append(category_name + "_count")
 
     write_csv_file_row(filepath, base_data)
 
@@ -57,7 +58,8 @@ def create_step2_results_file(newspaper):
     base_data = ["newspaper", "date", "epu_news_rel"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news_rel")
+        category_name = settings.TERMS_BAG[i]["code"]
+        base_data.append(category_name + "_rel")
 
     write_csv_file_row(filepath, base_data)
 
@@ -67,7 +69,8 @@ def create_step3_results_file(newspaper):
     base_data = ["newspaper", "date", "epu_news_std"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news_std")
+        category_name = settings.TERMS_BAG[i]["code"]
+        base_data.append(category_name + "_std")
 
     write_csv_file_row(filepath, base_data)
 
@@ -77,7 +80,8 @@ def create_step4_results_average_file():
     base_data = ["newspaper", "date", "epu_news_avg"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
-        base_data.append("epu_cat" + str(i) + "_news_avg")
+        category_name = settings.TERMS_BAG[i]["code"]
+        base_data.append(category_name + "_avg")
 
     write_csv_file_row(filepath, base_data)
 

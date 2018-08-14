@@ -10,10 +10,7 @@ from helper_methods import *
 
 
 def process_news(newspaper):
-    if (newspaper == settings.NEWSPAPERS["la_republica"]["id"]):
-        process_la_republica()
-
-    elif (newspaper == settings.NEWSPAPERS["el_observador"]["id"]):
+    if (newspaper == settings.NEWSPAPERS["el_observador"]["id"]):
         process_el_observador()
 
     elif (newspaper == settings.NEWSPAPERS["la_diaria"]["id"]):

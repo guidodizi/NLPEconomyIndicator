@@ -1,4 +1,4 @@
-"newspaper","date","total_news","epu_news","epu_cat2_news","epu_cat3_news","epu_cat4_news","epu_cat5_news","epu_cat6_news","epu_cat7_news","epu_cat8_news","epu_cat9_news","epu_cat10_news","epu_cat11_news","epu_cat12_news","epu_cat13_news"
+"newspaper","date","total_news","epu_news_count","pol_impositiva_count","pol_gasto_gub_count","pol_fiscal_count","pol_monetaria_count","pol_salud_count","pol_reg_financiera_count","pol_regulacion_count","pol_deuda_crisis_count","pol_prog_derechos_count","pol_comercial_count","otras_politicas_count","autoridades_intls_count"
 "la_diaria","08-2009","86",4,4,1,0,2,1,0,0,4,3,1,4,0
 "la_diaria","09-2009","74",4,4,0,1,2,0,1,1,4,3,3,3,0
 "la_diaria","10-2009","114",6,6,2,2,2,0,0,1,6,4,3,5,1

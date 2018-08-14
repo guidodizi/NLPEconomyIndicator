@@ -1,4 +1,4 @@
-"newspaper","date","total_news","epu_news","epu_cat2_news","epu_cat3_news","epu_cat4_news","epu_cat5_news","epu_cat6_news","epu_cat7_news","epu_cat8_news","epu_cat9_news","epu_cat10_news","epu_cat11_news","epu_cat12_news","epu_cat13_news"
+"newspaper","date","total_news","epu_news_count","pol_impositiva_count","pol_gasto_gub_count","pol_fiscal_count","pol_monetaria_count","pol_salud_count","pol_reg_financiera_count","pol_regulacion_count","pol_deuda_crisis_count","pol_prog_derechos_count","pol_comercial_count","otras_politicas_count","autoridades_intls_count"
 "el_observador","01-2002","2317",70,62,13,18,38,1,1,1,70,46,20,55,9
 "el_observador","02-2002","2172",56,49,15,22,30,2,3,3,56,37,20,49,7
 "el_observador","03-2002","2360",55,48,8,13,20,2,5,4,55,34,21,42,5
