@@ -13,6 +13,8 @@ from helper_methods import *
 
 
 def scale_to_relative_count(newspaper):
+    print(u"\nProcesamiento de noticias finalizado.")
+    print(u"\nAguarde mientras se normalizan los resultados ...")
     previous_results_path = settings.STEP_1_2_3_FILEPATH.format("1", newspaper)
     filepath = settings.STEP_1_2_3_FILEPATH.format("2", newspaper)
     results_file_handler.create_step2_results_file(newspaper)
@@ -22,20 +24,19 @@ def scale_to_relative_count(newspaper):
         for row in csvreader:
             cols = len(row)
             date = row[1]
-            count = int(row[2])
-            if (count == 0):
-                count = 1  # To avoid division by 0
+            total_news_month = int(row[2])
+            economy_news_month = int(row[3]) # TODO: verify results dividing by economy_news_month vs. total_news_month
+            if (economy_news_month == 0):
+                economy_news_month = 1  # To avoid division by 0
 
             col_data = [newspaper, date]
-            for i in range(3, cols):
-                col_data.append(row[i]/count)
+            for i in range(4, cols):
+                col_data.append(row[i]/economy_news_month)
 
             results_file_handler.append_csv_file_row(filepath, col_data)
 
 
 def scale_to_unit_standard_deviation(newspaper):
-    print(u"\nProcesamiento de noticias finalizado.")
-    print(u"\nAguarde mientras se normalizan los resultados ...")
     previous_results_path = settings.STEP_1_2_3_FILEPATH.format("2", newspaper)
     filepath = settings.STEP_1_2_3_FILEPATH.format("3", newspaper)
     results_file_handler.create_step3_results_file(newspaper)

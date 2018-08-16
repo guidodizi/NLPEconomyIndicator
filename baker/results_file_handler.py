@@ -44,7 +44,7 @@ def append_csv_file_row(filepath, data):
 
 def create_step1_results_file(newspaper):
     filepath = settings.STEP_1_2_3_FILEPATH.format("1", newspaper)
-    base_data = ["newspaper", "date", "total_news", "epu_news_count"]
+    base_data = ["newspaper", "date", "total_news", "economy_news_count", "epu_news_count"]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
         category_name = settings.TERMS_BAG[i]["code"]
@@ -97,11 +97,11 @@ def create_epu_index_file():
     write_csv_file_row(filepath, base_data)
 
 
-def save_step1_results(newspaper, month, year, total_news_month, epu_news_month, dict_category_epu_news):
+def save_step1_results(newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news):
     filepath = settings.STEP_1_2_3_FILEPATH.format("1", newspaper)
     this_date = date(year, month, 1)
     str_date = this_date.strftime("%m-%Y")
-    data = [newspaper, str_date, total_news_month, epu_news_month]
+    data = [newspaper, str_date, total_news_month, economy_news_month, epu_news_month]
 
     for i in range(2, settings.CATEGORIES_COUNT + 2):
         data.append(dict_category_epu_news[str(i)])
