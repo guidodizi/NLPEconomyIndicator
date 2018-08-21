@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import csv
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 
@@ -152,15 +153,19 @@ def check_if_news_is_epu(article, dict_category_epu_news, category_index):
     is_economy = False
     is_epu = False
 
-    if (any(word.encode('utf-8') in article for word in settings.TERMS_BAG[0]["values"])):
+    if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[0]["values"])):
         is_economy = True
         
-        if (any(word.encode('utf-8') in article for word in settings.TERMS_BAG[1]["values"]) and 
-            any(word.encode('utf-8') in article for word in settings.TERMS_BAG[category_index]["values"])):
+        if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[1]["values"]) and 
+            any(find_whole_word(word)(article) for word in settings.TERMS_BAG[category_index]["values"])):
             is_epu = True
             dict_category_epu_news[str(category_index)] += 1
     
     return is_economy, is_epu
+
+
+def find_whole_word(word):
+    return re.compile(r'\b({0})\b'.format(word), flags=re.IGNORECASE).search
 
 
 def process_xml_news(xml_root, dict_category_epu_news):
@@ -174,7 +179,7 @@ def process_xml_news(xml_root, dict_category_epu_news):
             found_epu_news = False
             if field.get('name') == 'articulo':
                 total_news_month += 1
-                article = field.text.lower().encode('utf-8')
+                article = field.text.lower().encode('utf-8') # TODO: check if .encode is necessary (in json its not)
                 for i in range(2, settings.CATEGORIES_COUNT + 2):
                     is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
                     if is_economy and not found_economy_news:
@@ -197,7 +202,7 @@ def process_json_news(json_root, dict_category_epu_news):
             total_news_month += 1
             found_economy_news = False
             found_epu_news = False
-            article = doc['doc']['articulo'].lower().encode('utf-8')
+            article = doc['doc']['articulo'].lower()
             for i in range(2, settings.CATEGORIES_COUNT + 2):
                 is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
                 if is_economy and not found_economy_news:
