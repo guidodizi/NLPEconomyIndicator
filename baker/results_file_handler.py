@@ -46,7 +46,7 @@ def create_step1_results_file(newspaper):
     filepath = settings.STEP_1_2_3_FILEPATH.format("1", newspaper)
     base_data = ["newspaper", "date", "total_news", "economy_news_count", "epu_news_count"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name + "_count")
 
@@ -57,7 +57,7 @@ def create_step2_results_file(newspaper):
     filepath = settings.STEP_1_2_3_FILEPATH.format("2", newspaper)
     base_data = ["newspaper", "date", "epu_news_rel"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name + "_rel")
 
@@ -68,7 +68,7 @@ def create_step3_results_file(newspaper):
     filepath = settings.STEP_1_2_3_FILEPATH.format("3", newspaper)
     base_data = ["newspaper", "date", "epu_news_std"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name + "_std")
 
@@ -79,7 +79,7 @@ def create_step4_results_average_file():
     filepath = settings.STEP_4_FILEPATH
     base_data = ["newspaper", "date", "epu_news_avg"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name + "_avg")
 
@@ -90,7 +90,7 @@ def create_epu_index_file():
     filepath = settings.EPU_INDEX_FILEPATH
     base_data = ["newspaper", "date", "epu_uruguay"]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         category_name = settings.TERMS_BAG[i]["code"]
         base_data.append(category_name)
 
@@ -103,7 +103,7 @@ def save_step1_results(newspaper, month, year, total_news_month, economy_news_mo
     str_date = this_date.strftime("%m-%Y")
     data = [newspaper, str_date, total_news_month, economy_news_month, epu_news_month]
 
-    for i in range(2, settings.CATEGORIES_COUNT + 2):
+    for i in range(2, settings.COLUMNS_COUNT_2):
         data.append(dict_category_epu_news[str(i)])
 
     append_csv_file_row(filepath, data)

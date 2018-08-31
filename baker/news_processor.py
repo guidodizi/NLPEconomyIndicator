@@ -180,7 +180,7 @@ def process_xml_news(xml_root, dict_category_epu_news):
             if field.get('name') == 'articulo':
                 total_news_month += 1
                 article = field.text.lower().encode('utf-8') # TODO: check if .encode is necessary (in json its not)
-                for i in range(2, settings.CATEGORIES_COUNT + 2):
+                for i in range(2, settings.COLUMNS_COUNT_2):
                     is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
                     if is_economy and not found_economy_news:
                         found_economy_news = True
@@ -203,7 +203,7 @@ def process_json_news(json_root, dict_category_epu_news):
             found_economy_news = False
             found_epu_news = False
             article = doc['doc']['articulo'].lower()
-            for i in range(2, settings.CATEGORIES_COUNT + 2):
+            for i in range(2, settings.COLUMNS_COUNT_2):
                 is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
                 if is_economy and not found_economy_news:
                     found_economy_news = True

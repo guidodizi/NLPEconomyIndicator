@@ -26,12 +26,14 @@ def scale_to_relative_count(newspaper):
             date = row[1]
             total_news_month = int(row[2])
             economy_news_month = int(row[3]) # TODO: verify results dividing by economy_news_month vs. total_news_month
+            if (total_news_month == 0):
+                total_news_month = 1  # To avoid division by 0
             if (economy_news_month == 0):
                 economy_news_month = 1  # To avoid division by 0
 
             col_data = [newspaper, date]
             for i in range(4, cols):
-                col_data.append(row[i]/economy_news_month)
+                col_data.append(row[i]/total_news_month)
 
             results_file_handler.append_csv_file_row(filepath, col_data)
 
@@ -42,7 +44,7 @@ def scale_to_unit_standard_deviation(newspaper):
     results_file_handler.create_step3_results_file(newspaper)
 
     step2_matrix = np.loadtxt(open(previous_results_path, "rb"),
-                              delimiter=",", usecols=range(2, settings.CATEGORIES_COUNT + 3), skiprows=1)
+                              delimiter=",", usecols=range(2, settings.COLUMNS_COUNT_3), skiprows=1)
 
     std_dev_dict = {}
     for i in range(len(step2_matrix[0])):
@@ -67,7 +69,7 @@ def scale_to_unit_standard_deviation(newspaper):
 def create_matrix_full_range(incomplete_matrix,range, date_to, date_from):
     first_year = int(date_from.split("-")[1])
     cant_months =  get_index_from_a_date(date_to,first_year)
-    cant_categories = settings.CATEGORIES_COUNT + 1
+    cant_categories = settings.COLUMNS_COUNT_1
 
     zero_matrix = np.zeros(shape=(cant_months,cant_categories))
     zero_matrix[zero_matrix == 0] = -1
@@ -97,7 +99,7 @@ def average_newspaper_results():
     for file in os.listdir(directory):
         filename = os.fsdecode(file)       
         if filename.endswith(".csv") and filename.startswith("step3_results"):
-            step3_matrix = np.loadtxt(open('results/' + filename, "rb"), delimiter=",",usecols=range(2, settings.CATEGORIES_COUNT + 3), skiprows=1)
+            step3_matrix = np.loadtxt(open('results/' + filename, "rb"), delimiter=",",usecols=range(2, settings.COLUMNS_COUNT_3), skiprows=1)
             df = pd.read_csv('results/' + filename)
             date_ranges = df['date']
             if (date_ranges[df.index[0]] != date_from or date_ranges[df.index[-1]] != date_to):
@@ -171,7 +173,7 @@ def scale_to_100_mean():
     results_file_handler.create_epu_index_file()
 
     step4_matrix = np.loadtxt(open(previous_results_path, "rb"),
-                              delimiter=",", usecols=range(2, settings.CATEGORIES_COUNT + 3), skiprows=1)    
+                              delimiter=",", usecols=range(2, settings.COLUMNS_COUNT_3), skiprows=1)    
 
     mean_coef_dict = {}
     for i in range(len(step4_matrix[0])):
@@ -187,7 +189,7 @@ def scale_to_100_mean():
             date = row[1]
             data = ["EPU Final", date]
 
-            for i in range(2, settings.CATEGORIES_COUNT + 3):
+            for i in range(2, settings.COLUMNS_COUNT_3):
                 data.append(row[i]*mean_coef_dict[i-2])
 
             results_file_handler.append_csv_file_row(filepath, data)

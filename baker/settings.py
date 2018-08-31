@@ -16,6 +16,9 @@ def init():
     global TERMS_BAG
     global NEWSPAPERS
     global CATEGORIES_COUNT
+    global COLUMNS_COUNT_1
+    global COLUMNS_COUNT_2
+    global COLUMNS_COUNT_3
     global EPU_DATE_RANGE
 
     STEP_1_2_3_FILEPATH = "results/step{0}_results_{1}.csv"
@@ -29,16 +32,18 @@ def init():
         TERMS_BAG = json.load(data_file)['terms']
 
     CATEGORIES_COUNT = len(TERMS_BAG) - 2
+    COLUMNS_COUNT_1 = CATEGORIES_COUNT + 1
+    COLUMNS_COUNT_2 = CATEGORIES_COUNT + 2
+    COLUMNS_COUNT_3 = CATEGORIES_COUNT + 3
 
     with open('config/newspapers.json', 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
 
-    date_from = get_initial_date(NEWSPAPERS)
-    date_to = get_last_date(NEWSPAPERS)
     EPU_DATE_RANGE = {
-        'datefrom': date_from,
-        'dateto': date_to
+        'datefrom': get_initial_date(NEWSPAPERS),
+        'dateto': get_last_date(NEWSPAPERS)
     }
+
 
 def get_initial_date(NEWSPAPERS):
     initial_date = date.max
@@ -50,6 +55,7 @@ def get_initial_date(NEWSPAPERS):
         if this_date < initial_date:
             initial_date = this_date
     return datetime.strftime(initial_date, '%m-%Y')
+
 
 def get_last_date(NEWSPAPERS):
     last_date = date.min
