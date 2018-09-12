@@ -66,16 +66,16 @@ def scale_to_unit_standard_deviation(newspaper):
             results_file_handler.append_csv_file_row(filepath, col_data)
 
 
-def create_matrix_full_range(incomplete_matrix,range, date_to, date_from):
+def create_matrix_full_range(incomplete_matrix, range, date_to, date_from):
     first_year = int(date_from.split("-")[1])
-    cant_months =  get_index_from_a_date(date_to,first_year)
-    cant_categories = settings.COLUMNS_COUNT_1
+    n_months =  get_index_from_a_date(date_to, first_year)
+    n_categories = settings.COLUMNS_COUNT_2
 
-    zero_matrix = np.zeros(shape=(cant_months,cant_categories))
+    zero_matrix = np.zeros(shape=(n_months, n_categories))
     zero_matrix[zero_matrix == 0] = -1
     i = 0
     for r in range:
-        index = get_index_from_a_date(r,first_year)
+        index = get_index_from_a_date(r, first_year)
         zero_matrix[index] = incomplete_matrix[i]
         i += 1
     return zero_matrix
@@ -102,7 +102,8 @@ def average_newspaper_results():
             step3_matrix = np.loadtxt(open('results/' + filename, "rb"), delimiter=",",usecols=range(2, settings.COLUMNS_COUNT_3), skiprows=1)
             df = pd.read_csv('results/' + filename)
             date_ranges = df['date']
-            if (date_ranges[df.index[0]] != date_from or date_ranges[df.index[-1]] != date_to):
+            if (date_ranges[df.index[0]] != date_from and date_ranges[df.index[-1]] != date_to):
+                # TODO: ^^ check this if -> I changed the 'or' for 'and' because when newspapers range were equal then it generated a wrong matrix 
                 step3_matrix = create_matrix_full_range(step3_matrix, date_ranges, date_to, date_from)
             matrixes.append(step3_matrix)
             continue
@@ -125,30 +126,33 @@ def average_newspaper_results():
                     sum_field += matrixes[i][x][y]
                     quant += 1
                 i += 1
+
             average = sum_field / quant
             average_matrix[x][y] = average
             y += 1
         x += 1
 
-    #write the results of the average of all matrixes
+    # Write the results of the average of all matrixes
     filepath = settings.STEP_4_FILEPATH
     results_file_handler.create_step4_results_average_file()
-    i = 0
-    #recorrer todos el rango de fecha del observador
+ 
+    # Iterate over the longest period
     month_date_from = int(date_from.split("-")[0])
     year_date_from = int(date_from.split("-")[1])
     date_from_str = str(month_date_from) + "-" + str(year_date_from)
+    x = 0
     while (date_from_str != date_to):
         data = ["Promedio", date_from_str]
         y = 0
         while y < average_matrix.shape[1]:
-            data.append(average_matrix[i][y])
+            data.append(average_matrix[x][y])
             y += 1
 
         with open(filepath, 'a', newline='') as data_file:
             wr = csv.writer(data_file, quoting=csv.QUOTE_NONNUMERIC)
             wr.writerow(data)
-        i += 1
+
+        x += 1
         if month_date_from == 12:
             month_date_from = 1
             year_date_from += 1
@@ -161,8 +165,7 @@ def average_newspaper_results():
 
 
 def generate_epu_index():
-     # TODO: implementar
-    # 1) Chequear que haya archivos step3_results, sino indicar un mesaje de error
+    # TODO: Chequear que haya archivos step3_results, sino indicar un mesaje de error
     average_newspaper_results()
     scale_to_100_mean()    
 

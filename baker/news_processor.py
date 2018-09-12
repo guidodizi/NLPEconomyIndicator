@@ -47,9 +47,9 @@ def process_la_republica():
         tree = ET.parse(path)
         xml_root = tree.getroot()
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news)
         results_file_handler.save_step1_results(
-            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news)
+            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
 
 def process_el_observador():
@@ -77,9 +77,9 @@ def process_el_observador():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
         results_file_handler.save_step1_results(
-            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news)
+            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
 
 def process_la_diaria():
@@ -102,9 +102,9 @@ def process_la_diaria():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
         results_file_handler.save_step1_results(
-            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news)
+            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
 
 def process_el_pais():
@@ -123,9 +123,9 @@ def process_el_pais():
         tree = ET.parse(path)
         xml_root = tree.getroot()
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news)
         results_file_handler.save_step1_results(
-            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news)
+            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
 
 def process_busqueda():
@@ -144,24 +144,27 @@ def process_busqueda():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month = process_json_news(json_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
         results_file_handler.save_step1_results(
-            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, dict_category_epu_news)
+            newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
 
 def check_if_news_is_epu(article, dict_category_epu_news, category_index):
     is_economy = False
     is_epu = False
+    is_eu = False
 
     if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[0]["values"])):
         is_economy = True
         
-        if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[1]["values"]) and 
-            any(find_whole_word(word)(article) for word in settings.TERMS_BAG[category_index]["values"])):
-            is_epu = True
-            dict_category_epu_news[str(category_index)] += 1
+        if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[1]["values"])):
+            is_eu = True
+
+            if (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[category_index]["values"])):
+                is_epu = True
+                dict_category_epu_news[str(category_index)] += 1
     
-    return is_economy, is_epu
+    return is_economy, is_epu, is_eu
 
 
 def find_whole_word(word):
@@ -172,44 +175,54 @@ def process_xml_news(xml_root, dict_category_epu_news):
     total_news_month = 0
     economy_news_month = 0
     epu_news_month = 0
+    eu_news_month = 0
 
     for doc in xml_root:
         for field in doc:
             found_economy_news = False
             found_epu_news = False
+            found_eu_news = False
             if field.get('name') == 'articulo':
                 total_news_month += 1
                 article = field.text.lower().encode('utf-8') # TODO: check if .encode is necessary (in json its not)
                 for i in range(2, settings.COLUMNS_COUNT_2):
-                    is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
+                    is_economy, is_epu, is_eu = check_if_news_is_epu(article, dict_category_epu_news, i)
                     if is_economy and not found_economy_news:
                         found_economy_news = True
                         economy_news_month += 1
                     if is_epu and not found_epu_news:
                         found_epu_news = True
                         epu_news_month += 1
+                    if is_eu and not found_eu_news:
+                        found_eu_news = True
+                        eu_news_month += 1
 
-    return total_news_month, economy_news_month, epu_news_month
+    return total_news_month, economy_news_month, epu_news_month, eu_news_month
 
 
 def process_json_news(json_root, dict_category_epu_news):
     total_news_month = 0
     economy_news_month = 0
     epu_news_month = 0
+    eu_news_month = 0
 
     for doc in json_root:
         if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
             total_news_month += 1
             found_economy_news = False
             found_epu_news = False
+            found_eu_news = False
             article = doc['doc']['articulo'].lower()
             for i in range(2, settings.COLUMNS_COUNT_2):
-                is_economy, is_epu = check_if_news_is_epu(article, dict_category_epu_news, i)
+                is_economy, is_epu, is_eu = check_if_news_is_epu(article, dict_category_epu_news, i)
                 if is_economy and not found_economy_news:
                     found_economy_news = True
                     economy_news_month += 1
                 if is_epu and not found_epu_news:
                     found_epu_news = True
                     epu_news_month += 1
+                if is_eu and not found_eu_news:
+                    found_eu_news = True
+                    eu_news_month += 1
 
-    return total_news_month, economy_news_month, epu_news_month
+    return total_news_month, economy_news_month, epu_news_month, eu_news_month

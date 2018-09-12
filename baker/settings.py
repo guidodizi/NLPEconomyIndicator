@@ -34,7 +34,7 @@ def init():
     CATEGORIES_COUNT = len(TERMS_BAG) - 2
     COLUMNS_COUNT_1 = CATEGORIES_COUNT + 1
     COLUMNS_COUNT_2 = CATEGORIES_COUNT + 2
-    COLUMNS_COUNT_3 = CATEGORIES_COUNT + 3
+    COLUMNS_COUNT_3 = CATEGORIES_COUNT + 4
 
     with open('config/newspapers.json', 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
