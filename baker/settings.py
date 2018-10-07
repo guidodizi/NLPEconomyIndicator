@@ -11,6 +11,12 @@ def init():
     global STEP_4_FILEPATH
     global EPU_INDEX_FILEPATH
     global NEWS_JSON_FILEPATH
+    global NEWS_ECONOMY_JSON_FILEPATH
+    global NEWS_ECONOMY_DIRECTORY
+    global NEWS_EU_JSON_FILEPATH
+    global NEWS_EU_DIRECTORY
+    global NEWS_NON_ECONOMY_JSON_FILEPATH
+    global NEWS_NON_ECONOMY_DIRECTORY
     global NEWS_XML_FILEPATH
     global NEWS_COUNT_FILEPATH
     global TERMS_BAG
@@ -20,11 +26,18 @@ def init():
     global COLUMNS_COUNT_2
     global COLUMNS_COUNT_3
     global EPU_DATE_RANGE
+    global WRITE_PROCESSED_NEWS
 
     STEP_1_2_3_FILEPATH = "results/step{0}_results_{1}.csv"
     STEP_4_FILEPATH = "results/step4_results_average.csv"
     EPU_INDEX_FILEPATH = "results/epu_index_uruguay.csv"
     NEWS_JSON_FILEPATH = "../news/{0}/{1}/{2}/data.json"
+    NEWS_ECONOMY_JSON_FILEPATH = "../news/_economy/{0}/{1}/{2}/data.json"
+    NEWS_ECONOMY_DIRECTORY = "../news/_economy/{0}"
+    NEWS_EU_JSON_FILEPATH = "../news/_eu/{0}/{1}/{2}/data.json"
+    NEWS_EU_DIRECTORY = "../news/_eu/{0}"
+    NEWS_NON_ECONOMY_JSON_FILEPATH = "../news/_non_economy/{0}/{1}/{2}/data.json"
+    NEWS_NON_ECONOMY_DIRECTORY = "../news/_non_economy/{0}"
     NEWS_XML_FILEPATH = "../news/{0}/{1}/{2}/{0}.xml"
     NEWS_COUNT_FILEPATH = "../news/{0}/cant_noticias_{0}.csv"
 
@@ -43,6 +56,8 @@ def init():
         'datefrom': get_initial_date(NEWSPAPERS),
         'dateto': get_last_date(NEWSPAPERS)
     }
+
+    WRITE_PROCESSED_NEWS = True
 
 
 def get_initial_date(NEWSPAPERS):

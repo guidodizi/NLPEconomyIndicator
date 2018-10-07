@@ -6,6 +6,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 import results_file_handler
+import news_file_handler
 import settings
 from helper_methods import *
 
@@ -38,8 +39,7 @@ def process_la_republica():
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
     date_iter = month_year_iter(date_from, date_to)
 
-    results_file_handler.delete_results_files(newspaper)
-    results_file_handler.create_step1_results_file(newspaper)
+    prepare_files(newspaper)
 
     for date in date_iter:
         year, month = date[0], date[1]
@@ -47,7 +47,7 @@ def process_la_republica():
         tree = ET.parse(path)
         xml_root = tree.getroot()
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -58,8 +58,7 @@ def process_el_observador():
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
     date_iter = month_year_iter(date_from, date_to)
 
-    results_file_handler.delete_results_files(newspaper)
-    results_file_handler.create_step1_results_file(newspaper)
+    prepare_files(newspaper)
 
     count_path = settings.NEWS_COUNT_FILEPATH.format(newspaper)
     monthly_news_count = read_news_count_from_csv(count_path)
@@ -77,7 +76,7 @@ def process_el_observador():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
+        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -88,8 +87,7 @@ def process_la_diaria():
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
     date_iter = month_year_iter(date_from, date_to)
 
-    results_file_handler.delete_results_files(newspaper)
-    results_file_handler.create_step1_results_file(newspaper)
+    prepare_files(newspaper)
 
     count_path = settings.NEWS_COUNT_FILEPATH.format(newspaper)
     monthly_news_count = read_news_count_from_csv(count_path)
@@ -102,7 +100,7 @@ def process_la_diaria():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
+        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -114,8 +112,7 @@ def process_el_pais():
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
     date_iter = month_year_iter(date_from, date_to)
 
-    results_file_handler.delete_results_files(newspaper)
-    results_file_handler.create_step1_results_file(newspaper)
+    prepare_files(newspaper)
 
     for date in date_iter:
         year, month = date[0], date[1]
@@ -123,7 +120,7 @@ def process_el_pais():
         tree = ET.parse(path)
         xml_root = tree.getroot()
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_xml_news(xml_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -134,8 +131,7 @@ def process_busqueda():
     date_to = settings.NEWSPAPERS[newspaper]['dateto']
     date_iter = month_year_iter(date_from, date_to)
 
-    results_file_handler.delete_results_files(newspaper)
-    results_file_handler.create_step1_results_file(newspaper)
+    prepare_files(newspaper)
 
     for date in date_iter:
         year, month = date[0], date[1]
@@ -144,7 +140,7 @@ def process_busqueda():
             tree = json.load(data_file)
         json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news)
+        total_news_month, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -171,7 +167,7 @@ def find_whole_word(word):
     return re.compile(r'\b({0})\b'.format(word), flags=re.IGNORECASE).search
 
 
-def process_xml_news(xml_root, dict_category_epu_news):
+def process_xml_news(xml_root, dict_category_epu_news, newspaper, month, year):
     total_news_month = 0
     economy_news_month = 0
     epu_news_month = 0
@@ -188,19 +184,23 @@ def process_xml_news(xml_root, dict_category_epu_news):
                 for i in range(2, settings.COLUMNS_COUNT_2):
                     is_economy, is_epu, is_eu = check_if_news_is_epu(article, dict_category_epu_news, i, found_economy_news, found_eu_news)
                     if is_economy and not found_economy_news:
+                        news_file_handler.write_economy_news_to_file(doc, newspaper, month, year)
                         found_economy_news = True
                         economy_news_month += 1
                     if is_eu and not found_eu_news:
+                        news_file_handler.write_eu_news_to_file(doc, newspaper, month, year)
                         found_eu_news = True
                         eu_news_month += 1
                     if is_epu and not found_epu_news:
                         found_epu_news = True
                         epu_news_month += 1
+                    if not is_economy and i==2:
+                        news_file_handler.write_non_economy_news_to_file(doc, newspaper, month, year)
 
     return total_news_month, economy_news_month, epu_news_month, eu_news_month
 
 
-def process_json_news(json_root, dict_category_epu_news):
+def process_json_news(json_root, dict_category_epu_news, newspaper, month, year):
     total_news_month = 0
     economy_news_month = 0
     epu_news_month = 0
@@ -216,13 +216,24 @@ def process_json_news(json_root, dict_category_epu_news):
             for i in range(2, settings.COLUMNS_COUNT_2):
                 is_economy, is_epu, is_eu = check_if_news_is_epu(article, dict_category_epu_news, i, found_economy_news, found_eu_news)
                 if is_economy and not found_economy_news:
+                    news_file_handler.write_economy_news_to_file(doc, newspaper, month, year)
                     found_economy_news = True
                     economy_news_month += 1
                 if is_eu and not found_eu_news:
+                    news_file_handler.write_eu_news_to_file(doc, newspaper, month, year)
                     found_eu_news = True
                     eu_news_month += 1
                 if is_epu and not found_epu_news:
                     found_epu_news = True
-                    epu_news_month += 1         
+                    epu_news_month += 1
+                if not is_economy and i==2:
+                    news_file_handler.write_non_economy_news_to_file(doc, newspaper, month, year)
 
     return total_news_month, economy_news_month, epu_news_month, eu_news_month
+
+
+def prepare_files(newspaper):
+    results_file_handler.delete_results_files(newspaper)
+    results_file_handler.create_step1_results_file(newspaper)
+    if settings.WRITE_PROCESSED_NEWS:
+        news_file_handler.delete_processed_news_files(newspaper)
