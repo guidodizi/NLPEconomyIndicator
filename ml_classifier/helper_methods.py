@@ -49,7 +49,7 @@ def options_input_section():
 def print_presentation():
     print(u"\n---------------------------------------------------------------")
     print(u"---------------------------------------------------------------")
-    print(u"Indicador de Incertidumbre Económica para Uruguay (basado en método de Baker et. al.)")
+    print(u"Indicador de Incertidumbre Económica para Uruguay (basado en aprendizaje automático)")
 
 
 def print_processing_message(newspaper):
@@ -80,11 +80,3 @@ def month_year_iter(date_from, date_to):
     for ym in range(ym_start, ym_end):
         y, m = divmod(ym, 12)
         yield y, m+1
-
-
-def load_categories_dictionary():
-    dict_category_epu_news = {}
-    total_categories = settings.CATEGORIES_COUNT
-    for i in range(2, total_categories + 2):
-        dict_category_epu_news[str(i)] = 0
-    return dict_category_epu_news
