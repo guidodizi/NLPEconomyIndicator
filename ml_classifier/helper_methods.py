@@ -65,7 +65,7 @@ def print_processing_message(newspaper):
 
 def print_finish():
     print(u"\n¡Procesamiento finalizado!")
-    print(u"Puede ver los resultados en la carpeta \"/baker/results\" \n")
+    print(u"Puede ver los resultados en la carpeta \"/ml_classifier/results\" \n")
 
 
 # ----- Auxiliar -----
