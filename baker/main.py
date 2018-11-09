@@ -4,7 +4,7 @@ import results_processor
 import settings
 from helper_methods import *
 
-# MAIN
+# MAIN (Baker method)
 print_presentation()
 settings.init()
 

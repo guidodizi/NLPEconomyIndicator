@@ -42,6 +42,7 @@ def generate_training_set():
                 f.close()  
             i += 1                                                               
 
+
 def text_preproccessing():
     data = load_files(r"data")  
     X, y = data.data, data.target  
@@ -86,4 +87,3 @@ def text_preproccessing():
     print(confusion_matrix(y_test,y_pred))  
     print(classification_report(y_test,y_pred))  
     print(accuracy_score(y_test, y_pred))  
-

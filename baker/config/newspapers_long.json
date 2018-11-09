@@ -3,18 +3,18 @@
         "id": "el_observador",
         "name": "El Observador",
         "datefrom": "01-2002",
-        "dateto": "05-2018"
+        "dateto": "10-2018"
     },
     "la_diaria": {
         "id": "la_diaria",
         "name": "La Diaria",
         "datefrom": "08-2009",
-        "dateto": "05-2018"
+        "dateto": "10-2018"
     },
     "busqueda": {
         "id": "busqueda",
         "name": "Búsqueda",
         "datefrom": "04-2012",
-        "dateto": "05-2018"
+        "dateto": "10-2018"
     }
 }
