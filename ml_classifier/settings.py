@@ -17,6 +17,11 @@ def init():
     global FULL_TRAINING_SET_FILEPATH
     global NEWSPAPERS
     global EPU_DATE_RANGE
+    global TAGTOG_PATH
+    global CAT0_PATH
+    global CAT1_PATH
+    global CAT2_PATH
+    global TAGTOG_KEY_NAME
 
     STEP_1_2_3_FILEPATH = "results/ml_step{0}_results_{1}.csv"
     STEP_4_FILEPATH = "results/ml_step4_results_average.csv"
@@ -26,6 +31,13 @@ def init():
     NEWS_COUNT_FILEPATH = "../news/{0}/cant_noticias_{0}.csv"
     SMALL_TRAINING_SET_FILEPATH = "training_sets/small_training_news_60.json"
     FULL_TRAINING_SET_FILEPATH = "training_sets/full_training_news.json"
+
+    TAGTOG_PATH = "training_sets/tagtog/"
+    CAT0_PATH = "data/0/"
+    CAT1_PATH = "data/1/"
+    CAT2_PATH = "data/2/"
+
+    TAGTOG_KEY_NAME = "m_3"
 
     with open('config/newspapers.json', 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)

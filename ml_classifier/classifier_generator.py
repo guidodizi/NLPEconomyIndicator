@@ -4,6 +4,8 @@ import re
 import nltk  
 import pickle  
 import numpy as np  
+import glob
+import os
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split 
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
@@ -13,7 +15,7 @@ from nltk.corpus import stopwords
 from sklearn.datasets import load_files  
 # nltk.download('stopwords')
 
-def generate_training_set():
+def generate_training_set_dataturks():
     path = "training_sets/small_training_news_60.json"
     cat0_path = "data/0/"
     cat1_path = "data/1/"
@@ -42,7 +44,35 @@ def generate_training_set():
                 f.close()  
             i += 1                                                               
 
-
+def generate_training_set_tagtog():  
+    txt_list = [x for x in os.listdir(settings.TAGTOG_PATH) if x.endswith(".txt")]
+    json_list = [x for x in os.listdir(settings.TAGTOG_PATH) if x.endswith(".json")]
+    i = 0
+    for txt in txt_list:
+        f = open(settings.TAGTOG_PATH + txt, "r", encoding="utf-8") 
+        text = f.read()
+        txt_name = txt.rsplit(".",1)[0]        
+        json_name = txt_name + ".ann.json"
+        if json_name in json_list:
+            with open(settings.TAGTOG_PATH + json_name, 'r+', encoding='utf-8') as data_file:
+                data = json.load(data_file)   
+            key = settings.TAGTOG_KEY_NAME                
+            if key in data["metas"]:
+                category = data["metas"][key]["value"]
+                if (category == '0'):
+                    f= open(settings.CAT0_PATH + str(i) + '.txt',"w+")   
+                    f.write(text)                    
+                    f.close()              
+                elif (category == '1'):
+                    f= open(settings.CAT1_PATH + str(i) + '.txt',"w+")
+                    f.write(text)                    
+                    f.close()    
+                elif (category == '2'):
+                    f= open(settings.CAT2_PATH + str(i) + '.txt',"w+")    
+                    f.write(text)                    
+                    f.close()  
+                i += 1            
+                        
 def text_preproccessing():
     data = load_files(r"data")  
     X, y = data.data, data.target  

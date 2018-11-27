@@ -10,26 +10,30 @@ print_presentation()
 settings.init()
 
 # Input sections
-option = options_input_section()
+# option = options_input_section()
+# Train the ML algorithms
+classifier_generator.generate_training_set_tagtog()
+classifier_generator.text_preproccessing() # TODO: make this method (or a new one) to return the best classifier
 
-if (option == "generar_epu"):
-    # Generate EPU index from individual newspaper results
-    results_processor.generate_epu_index()
-else:
-    newspaper = option
-    print_processing_message(newspaper)
 
-    # Train the ML algorithms
-    classifier_generator.generate_training_set()
-    classifier_generator.text_preproccessing() # TODO: make this method (or a new one) to return the best classifier
+# if (option == "generar_epu"):
+#     # Generate EPU index from individual newspaper results
+#     results_processor.generate_epu_index()
+# else:
+#     newspaper = option
+#     print_processing_message(newspaper)
 
-    # Execute news classification (generate raw results)
-    news_classifier.process_news(newspaper) # TODO: pass to this class (or method) the previous classifier
+#     # Train the ML algorithms
+#     classifier_generator.generate_training_set_tagtog()
+#     classifier_generator.text_preproccessing() # TODO: make this method (or a new one) to return the best classifier
 
-    # Scale results by month articles count
-    results_processor.scale_to_relative_count(newspaper)
+#     # Execute news classification (generate raw results)
+#     news_classifier.process_news(newspaper) # TODO: pass to this class (or method) the previous classifier
 
-    # Standardize results to unit standard deviation
-    results_processor.scale_to_unit_standard_deviation(newspaper)
+#     # Scale results by month articles count
+#     results_processor.scale_to_relative_count(newspaper)
 
-print_finish()
+#     # Standardize results to unit standard deviation
+#     results_processor.scale_to_unit_standard_deviation(newspaper)
+
+# print_finish()
