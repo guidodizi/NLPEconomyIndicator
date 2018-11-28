@@ -8,7 +8,8 @@ import xml.etree.ElementTree as ET
 import results_file_handler
 import news_file_handler
 import settings
-from helper_methods import *
+from helper_methods import month_year_iter
+from helper_methods import load_categories_dictionary
 
 
 def process_news(newspaper):
