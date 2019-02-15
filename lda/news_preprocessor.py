@@ -39,6 +39,7 @@ def generate_array_with_news():
 
 
 def format_news_content(original_content):
+    original_content = cleanhtml(original_content)
     news_content = " ".join(original_content.split()) # removes multiple spaces, tabs, and new lines
     news_content = news_content.replace("<strong>", " ")
     news_content = news_content.replace("</strong>", " ")
@@ -102,3 +103,8 @@ def format_news_content(original_content):
     # TODO: remove every HTML tag and any other thing not part from the text
     news_content = " ".join(news_content.split()) # removes multiple spaces, tabs, and new lines (again)
     return news_content
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext
