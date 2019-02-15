@@ -34,9 +34,21 @@ def generate_array_with_news():
             for doc in json_root:
                 if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
                     article = doc['doc']['articulo'].lower()
-                    documents.append(format_news_content(article))
+                    if check_if_news_is_eu(article):
+                        documents.append(format_news_content(article))
     return documents
 
+def check_if_news_is_eu(article):    
+    is_eu = False    
+
+    if ((any(find_whole_word(word)(article) for word in settings.TERMS_BAG[0]["values"]))        
+        and (any(find_whole_word(word)(article) for word in settings.TERMS_BAG[1]["values"]))):
+            is_eu = True
+    
+    return is_eu
+
+def find_whole_word(word):
+    return re.compile(r'\b({0})\b'.format(word), flags=re.IGNORECASE).search
 
 def format_news_content(original_content):
     original_content = cleanhtml(original_content)

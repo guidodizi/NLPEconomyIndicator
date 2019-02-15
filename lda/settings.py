@@ -8,10 +8,15 @@ from datetime import datetime
 
 def init():
     global NEWSPAPERS    
+    global TERMS_BAG
     global NEWS_JSON_FILEPATH
     
-    NEWS_JSON_FILEPATH = "../news/{0}/{1}/{2}/data.json"
-    with open('config/newspapers.json', 'r+', encoding='utf-8') as data_file:
+
+    with open('C:/NLP/NLPEconomyIndicator/lda/config/terms.json', 'r+', encoding='utf-8') as data_file:
+        TERMS_BAG = json.load(data_file)['terms']
+
+    NEWS_JSON_FILEPATH = "C:/NLP/NLPEconomyIndicator/news/{0}/{1}/{2}/data.json"
+    with open('C:/NLP/NLPEconomyIndicator/lda/config/newspapers.json', 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
 
 

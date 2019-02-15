@@ -1,0 +1,24 @@
+{
+	"terms": [
+		{
+			"name": "Economía",
+			"code": "econom",
+			"values": [
+				"economía",
+				"económico",
+				"económica",
+				"inflación"
+			]
+		},
+		{
+			"name": "Incertidumbre",
+			"code": "incert",
+			"values": [
+				"incertidumbre",
+				"incierto",
+				"incierta",
+				"riesgo país"
+			]
+		}
+	]
+}
