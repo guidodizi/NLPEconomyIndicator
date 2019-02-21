@@ -10,7 +10,8 @@ from helper_methods import month_year_iter
 
 def generate_array_with_news():
     
-    documents = []    
+    documents = []   
+    documents_date = [] 
     for paper  in settings.NEWSPAPERS:            
         # No se va a usar porque se tienen pocos años
         date_from = settings.NEWSPAPERS[paper]['datefrom']
@@ -35,8 +36,9 @@ def generate_array_with_news():
                 if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
                     article = doc['doc']['articulo'].lower()
                     if check_if_news_is_eu(article):
-                        documents.append(format_news_content(article))
-    return documents
+                        documents.append(format_news_content(article))                        
+                        documents_date.append(str(month) + "/" + str(year))
+    return documents, documents_date
 
 def check_if_news_is_eu(article):    
     is_eu = False    

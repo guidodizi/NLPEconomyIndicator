@@ -1,30 +1,30 @@
-Topic 0:títulos global amp gobierno país países bonos mercado riesgo uruguay us rendimiento precios tipo renta uruguayos mantener deuda moneda desarrollo millones plazo unidad reservas uruguayo monedas semana índice bcu banco
-Topic 1:fmi deuda crisis fiscal gobierno fondo país economía internacional monetario déficit situación financiero política medidas argentina mercados uruguay ajuste financiera organismo económica reformas banco ayuda políticas problemas fiscales pública incertidumbre
-Topic 2:deuda riesgo país bonos uruguay inversores mercados títulos amp grado calificación plazo gobierno economía inversor inversión países nota emergentes agencia pública argentina interés internacionales fondos emisión años año uruguaya capitales
-Topic 3:eeuu fed mercados tasas petróleo federal reserva interés unidos mercado semana acciones estadounidense economía crudo banco incertidumbre inversores activos analistas precio referencia reunión índice precios europa presidente central estadounidenses baja
-Topic 4:años mundo historia guerra vida política militar libro siglo país gente fuerzas libertad paz pueblo sociedad década políticos conflicto mayoría democracia época realidad crisis allá forma político grupo caso fuerza
-Topic 5:empresas impuesto sector empresa costos áreas servicio año medida internacionales gerente ahorro tema recursos crédito negocio servicios productos firma sistema mercado gente amp comercial fiscal presidente años observador país menores
-Topic 6:gobierno presidente ministro argentina economía país reunión nacional decisión fernández incertidumbre observador ejecutivo semana uruguay prensa argentino lunes situación kirchner josé equipo ministerio martes política cristina medidas ministros miércoles fuentes
-Topic 7:partido elecciones brasil electoral gobierno candidato campaña lula política país político elección presidente rousseff partidos encuestas votos candidatos izquierda corrupción años voto presidencia derecha economía políticos brasileña brasileño octubre vuelta
-Topic 8:año años personas gente país meses uruguayos enero población 10 búsqueda mes económica montevideo punta crisis argentinos turismo 20 cantidad mil marzo incertidumbre 11 diciembre ciudad desempleo febrero nivel últimos
-Topic 9:inflación dólar precios cambio tipo política monetaria año dólares moneda tasa meses central suba economía mercado banco bcu gobierno interés aumento tasas pesos competitividad nivel incertidumbre últimos real precio rango
-Topic 10:europea unión europa países mercosur ue grecia euro españa bloque reino unido europeo italia alemania zona comercio francia europeos integración salida política libre acuerdos negociaciones tratado socios euros comercial proceso
-Topic 11:trump información confianza internacionales materia particular país noticia liderazgo nivel datos acerca medios político sistema presidente incertidumbre crisis comportamiento noticias méxico seguridad análisis universidad camino presidencia casos programa interna económico
-Topic 12:américa venezuela latina chávez región méxico país chile países presidente gobierno maduro cuba unidos brasil política años argentina oposición económica petróleo relaciones gobiernos reformas internacional económico político regional apertura derechos
-Topic 13:unidos obama presidente estadounidense congreso washington eeuu estadounidenses bush casa empleos impuestos economía york campaña martes comisión federal noviembre cámara debate representantes favor recesión semana busca recuperación 2008 anuncio senador
-Topic 14:nbsp soja producción productores precios agricultura trigo toneladas cosecha ganadería granos área campo agro año zonas clima alimentos baja verano precio récord tierra 2011 2012 factor rendimiento altos carne millones
-Topic 15:bancos banco sistema crédito depósitos financiero crisis créditos bancario central dinero financiera préstamos bcu instituciones fondos sector banca activos empresas institución financieras ahorro financiamiento afap pago liquidez riesgo economía mercado
-Topic 16:año sector ventas trimestre caída mes meses industria aumento mercado datos bienes actividad consumo comercio enero informe período servicios julio exportaciones incremento junio industrial producción 12 2012 incertidumbre sectores menor
-Topic 17:país argentina crisis amp gobierno economía analista países crédito banco central presidente sector jorge bancos financieras mundo situación bancario autoridad pueblo monetaria ministro américa fiscal washington argentino alto riesgo batlle
-Topic 18:empresas trabajadores empresa empresarios sector salarios laboral negocios costos industria negociación sectores negocio laborales salario ejecutivo actividad empresarial ronda situación personal servicios puestos acuerdos gobierno productividad cámara salarial incertidumbre condiciones
-Topic 19:energía planta puerto río zona montevideo empresa generación transporte obras plata san fuentes ciudad uruguay agua país petróleo argentina departamento carga construcción brasil obra infraestructura firma industria 000 región sur
-Topic 20:millones us 000 año años dólares 500 mil reservas 100 10 50 30 15 20 200 mes promedio monto mercado 300 país 2015 40 gobierno precio 25 12 cifra pesos
-Topic 21:uruguay argentina mercado precios precio brasil país año carne productos años sector situación mercados exportaciones demanda producción uruguaya oferta importante baja exportación fuerte costos últimos uruguayo ganado internacional crisis industria
-Topic 22:mercado dólar semana puntos bolsa índice bonos títulos dólares banco miércoles baja riesgo cotización pesos unidades valores precio país suba uruguayos búsqueda millones república precios operadores inversores cerró básicos subió
-Topic 23:unidos dólar brasil años argentina us jornada punta uruguay banco precio año mundo leche tasas mercado 10 inversores millones resto san aires eeuu bajó 15 baja empresas económica interés 000
-Topic 24:uruguay país social años desarrollo nacional sociedad forma importante educación políticas política sistema sociales futuro económico personas recursos cambio incertidumbre tema cambios gente proyecto sentido mundo problema punto modelo proceso
-Topic 25:inversión proyecto inversiones gobierno ley empresas proyectos empresa ancap inversores privados construcción obras sector infraestructura uruguay ministerio privada tarifas país asociación privado invertir públicas ejecutivo año estatal millones extranjeros público
-Topic 26:países china mundial mundo unidos emergentes economías global economía crisis crecimiento mercados primas políticas materias internacional europa japón rusia comercio riesgos desarrollo eeuu comerciales precios plazo comercial demanda centrales 2008
-Topic 27:vázquez frente mujica amplio astori fa izquierda tabaré partido danilo oposición lacalle gobierno josé oficialismo gestión senador sectores interna ley partidos dirigentes política nacional electoral mayoría internas proyecto candidato alianza
-Topic 28:gobierno fiscal gasto reforma presupuesto cuentas economía política país público impuesto rendición ministro impuestos presidente pública déficit sistema sectores tributaria educación aumento administración públicas económica recursos actual sector ejecutivo ingresos
-Topic 29:crecimiento año economía pbi actividad años nivel económica tasa económico pib trimestre 2016 inversión caída recuperación aumento expansión producto 2017 inflación últimos menor baja interno niveles incertidumbre consumo desaceleración 2015
+Topic 0:títulos global amp gobierno país países bonos mercado riesgo uruguay
+Topic 1:fmi deuda crisis fiscal gobierno fondo país economía internacional monetario
+Topic 2:deuda riesgo país bonos uruguay inversores mercados títulos amp grado
+Topic 3:eeuu fed mercados tasas petróleo federal reserva interés unidos mercado
+Topic 4:años mundo historia guerra vida política militar libro siglo país
+Topic 5:empresas impuesto sector empresa costos áreas servicio año medida internacionales
+Topic 6:gobierno presidente ministro argentina economía país reunión nacional decisión fernández
+Topic 7:partido elecciones brasil electoral gobierno candidato campaña lula política país
+Topic 8:año años personas gente país meses uruguayos enero población 10
+Topic 9:inflación dólar precios cambio tipo política monetaria año dólares moneda
+Topic 10:europea unión europa países mercosur ue grecia euro españa bloque
+Topic 11:trump información confianza internacionales materia particular país noticia liderazgo nivel
+Topic 12:américa venezuela latina chávez región méxico país chile países presidente
+Topic 13:unidos obama presidente estadounidense congreso washington eeuu estadounidenses bush casa
+Topic 14:nbsp soja producción productores precios agricultura trigo toneladas cosecha ganadería
+Topic 15:bancos banco sistema crédito depósitos financiero crisis créditos bancario central
+Topic 16:año sector ventas trimestre caída mes meses industria aumento mercado
+Topic 17:país argentina crisis amp gobierno economía analista países crédito banco
+Topic 18:empresas trabajadores empresa empresarios sector salarios laboral negocios costos industria
+Topic 19:energía planta puerto río zona montevideo empresa generación transporte obras
+Topic 20:millones us 000 año años dólares 500 mil reservas 100
+Topic 21:uruguay argentina mercado precios precio brasil país año carne productos
+Topic 22:mercado dólar semana puntos bolsa índice bonos títulos dólares banco
+Topic 23:unidos dólar brasil años argentina us jornada punta uruguay banco
+Topic 24:uruguay país social años desarrollo nacional sociedad forma importante educación
+Topic 25:inversión proyecto inversiones gobierno ley empresas proyectos empresa ancap inversores
+Topic 26:países china mundial mundo unidos emergentes economías global economía crisis
+Topic 27:vázquez frente mujica amplio astori fa izquierda tabaré partido danilo
+Topic 28:gobierno fiscal gasto reforma presupuesto cuentas economía política país público
+Topic 29:crecimiento año economía pbi actividad años nivel económica tasa económico
