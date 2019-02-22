@@ -23,6 +23,7 @@ def month_year_iter(date_from, date_to):
         y, m = divmod(ym, 12)
         yield y, m+1
 
+
 def display_topics(model, feature_names, no_top_words):
     f= open("terms.txt","w+")
     for topic_idx, topic in enumerate(model.components_):
@@ -35,6 +36,7 @@ def display_topics(model, feature_names, no_top_words):
                         for i in topic.argsort()[:-no_top_words - 1:-1]]))
         f.write("\n")
 
+
 def create_quantity_list():
     quantity_list = []
     date_from = settings.FULL_DATE['datefrom']
@@ -46,6 +48,7 @@ def create_quantity_list():
         date = quantity_date.Quantity_Date(month, year, settings.NO_TOPICS)  
         quantity_list.append(date)
     return quantity_list            
+
 
 def write_csv_file_step1(quantiy_list):
     filepath = settings.STEP2_FILEPATH
@@ -61,6 +64,7 @@ def write_csv_file_step1(quantiy_list):
             row_data = [str(item.Month)+ '-' + str(item.Year), sum(item.Topics)]
             row_data = row_data + item.Topics
             wr.writerow(row_data)
+
 
 #STEP 2
 #TODO dividir entre la cantidad de noticias por mes
@@ -91,6 +95,7 @@ def scale_to_unit_standard_deviation():
                 col_data.append(row[i]/std_dev_dict[i-1])  
 
             results_file_handler.append_csv_file_row(filepath, col_data)
+
 
 #STEP 4
 def scale_to_100_mean():
