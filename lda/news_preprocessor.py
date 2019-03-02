@@ -9,8 +9,8 @@ import Stemmer
 import settings
 from helper_methods import month_year_iter
 
+
 def generate_array_with_news():
-    
     documents = []   
     documents_date = [] 
     for paper  in settings.NEWSPAPERS:            
@@ -18,18 +18,9 @@ def generate_array_with_news():
         date_from = settings.NEWSPAPERS[paper]['datefrom']
         date_to = settings.NEWSPAPERS[paper]['dateto']
         date_iter = month_year_iter(date_from, date_to)
-        
+
         for date in date_iter:            
-            year, month_not_general = date[0], date[1]
-            # TODO : chequear si estoy guardando bien el mes.
-            month = month_not_general
-            if paper == "el_observador":                
-                if (month_not_general < 10):
-                    month = "0" + str(month_not_general)
-                else:
-                    month = str(month_not_general)
-            elif paper == "busqueda":
-                month = month_not_general - 1
+            year, month = date[0], date[1]
             path = settings.NEWS_JSON_FILEPATH.format(paper, str(year), str(month))
             with open(path, 'r+', encoding='utf-8') as data_file:
                 tree = json.load(data_file)
@@ -43,6 +34,7 @@ def generate_array_with_news():
                         documents_date.append(str(month) + "/" + str(year))
     return documents, documents_date
 
+
 def check_if_news_is_eu(article):    
     is_eu = False    
 
@@ -51,6 +43,7 @@ def check_if_news_is_eu(article):
             is_eu = True
     
     return is_eu
+
 
 def find_whole_word(word):
     return re.compile(r'\b({0})\b'.format(word), flags=re.IGNORECASE).search
@@ -128,6 +121,7 @@ def format_news_content(original_content):
     # TODO: remove every HTML tag and any other thing not part from the text
     news_content = " ".join(news_content.split()) # removes multiple spaces, tabs, and new lines (again)
     return news_content
+
 
 def cleanhtml(raw_html):
   cleanr = re.compile('<.*?>')

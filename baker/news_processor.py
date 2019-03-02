@@ -66,13 +66,8 @@ def process_el_observador():
 
     for date in date_iter:
         year, month = date[0], date[1]
-        monthWith0 = ""
-        if (month < 10):
-            monthWith0 = "0" + str(month)
-        else:
-            monthWith0 = str(month)
         total_news_month = monthly_news_count[str(year)+"-"+str(month)]
-        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(monthWith0))
+        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
         with open(path, 'r+', encoding='utf-8') as data_file:
             tree = json.load(data_file)
         json_root = tree['add']
