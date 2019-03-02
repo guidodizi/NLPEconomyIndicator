@@ -4,6 +4,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
+import Stemmer
 
 import settings
 from helper_methods import month_year_iter
@@ -20,6 +21,7 @@ def generate_array_with_news():
         
         for date in date_iter:            
             year, month_not_general = date[0], date[1]
+            # TODO : chequear si estoy guardando bien el mes.
             month = month_not_general
             if paper == "el_observador":                
                 if (month_not_general < 10):
@@ -36,7 +38,8 @@ def generate_array_with_news():
                 if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
                     article = doc['doc']['articulo'].lower()
                     if check_if_news_is_eu(article):
-                        documents.append(format_news_content(article))                        
+                        article = stem_article(format_news_content(article))
+                        documents.append(article)                        
                         documents_date.append(str(month) + "/" + str(year))
     return documents, documents_date
 
@@ -51,6 +54,14 @@ def check_if_news_is_eu(article):
 
 def find_whole_word(word):
     return re.compile(r'\b({0})\b'.format(word), flags=re.IGNORECASE).search
+
+def stem_article(article):
+    stemmer = Stemmer.Stemmer('spanish')
+    words = article.split(' ')
+    stemmed_words = stemmer.stemWords(words)
+    stemmed_article = ' '.join(word for word in stemmed_words)
+    return stemmed_article
+
 
 def format_news_content(original_content):
     original_content = cleanhtml(original_content)

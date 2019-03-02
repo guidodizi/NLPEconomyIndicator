@@ -29,41 +29,46 @@ tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features= no_features
 tf = tf_vectorizer.fit_transform(documents)
 tf_feature_names = tf_vectorizer.get_feature_names()
 
-print (no_features)
-print (len(documents))
-print (len(documents_date))
-
 # Run NMF
 # nmf = NMF(n_components=no_topics, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(tfidf)
 
+#################### ALGORITMO PARA CORRER CON UN K DADO E IMPRIMIR LOS TOPICOS ##########################
 # Run LDA
-lda_algorithm = LatentDirichletAllocation(n_components=settings.NO_TOPICS, max_iter=5, learning_method='online', learning_offset=50.,random_state=0)
-lda = lda_algorithm.fit(tf)
+# lda_algorithm = LatentDirichletAllocation(n_components=settings.NO_TOPICS, max_iter=5, learning_method='online', learning_offset=50.,random_state=0)
+# lda = lda_algorithm.fit(tf)
 
-# En esta variable esta cada uno de los documentos con un arreglo de los 30 topicos y que valor tiene para cada 1
-documents_categorized_with_topics = lda_algorithm.transform(tf)
+# # En esta variable esta cada uno de los documentos con un arreglo de los 30 topicos y que valor tiene para cada 1
+# documents_categorized_with_topics = lda_algorithm.transform(tf)
 
-quantity_list = helper_methods.create_quantity_list()
+# quantity_list = helper_methods.create_quantity_list()
 
-index = 0
-for doc_cat in documents_categorized_with_topics:        
-    topic = np.where(doc_cat == doc_cat.max())[0][0]
-    month = int(documents_date[index].split('/')[0])
-    year = int(documents_date[index].split('/')[1])
-    # se puede mejorar perfomance 
-    for obj in quantity_list:
-        if obj.Month == month and obj.Year == year:
-            obj.Topics[topic] += 1
-            break    
-    index += 1
+# index = 0
+# for doc_cat in documents_categorized_with_topics:        
+#     topic = np.where(doc_cat == doc_cat.max())[0][0]
+#     month = int(documents_date[index].split('/')[0])
+#     year = int(documents_date[index].split('/')[1])
+#     # se puede mejorar perfomance 
+#     for obj in quantity_list:
+#         if obj.Month == month and obj.Year == year:
+#             obj.Topics[topic] += 1
+#             break    
+#     index += 1
 
-no_top_words = 10
-# helper_methods.display_topics(nmf, tfidf_feature_names, no_top_words)
-helper_methods.display_topics(lda, tf_feature_names, no_top_words)
+# no_top_words = 10
+# # helper_methods.display_topics(nmf, tfidf_feature_names, no_top_words)
+# topic_words = helper_methods.display_topics(lda, tf_feature_names, no_top_words)
 
-helper_methods.write_csv_file_step1(quantity_list)
+# helper_methods.write_csv_file_step1(quantity_list)
 
-helper_methods.scale_to_unit_standard_deviation()
+# helper_methods.scale_to_unit_standard_deviation()
 
-helper_methods.scale_to_100_mean()
+# helper_methods.scale_to_100_mean()
 
+#################### ALGORITMO PARA IMPRIMIR UN DOCUMENTO DE CADA TOPICO
+# helper_methods.print_documents_with_topics(documents, documents_categorized_with_topics,topic_words)
+
+#################### ALGORITMO PARA BUSCAR MEJOR K#################
+#helper_methods.get_best_number_of_topic(tf)
+
+#################### ALGOTIMO ARTICULO QUE HACE TODO########################
+helper_methods.grid_search_best_components(tf, documents, tf_vectorizer)

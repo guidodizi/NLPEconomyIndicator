@@ -4,7 +4,16 @@ import sys
 import quantity_date
 import csv
 import numpy as np
+import pandas as pd
+
 from datetime import datetime
+from sklearn.decomposition import NMF, LatentDirichletAllocation
+from sklearn.model_selection import GridSearchCV
+
+# Plotting tools
+import pyLDAvis
+import pyLDAvis.sklearn
+import matplotlib.pyplot as plt
 
 import results_file_handler
 import settings
@@ -25,15 +34,18 @@ def month_year_iter(date_from, date_to):
 
 def display_topics(model, feature_names, no_top_words):
     f= open("terms.txt","w+")
+    topic_words = []
     for topic_idx, topic in enumerate(model.components_):
-        
+        words = " ".join([feature_names[i]
+                        for i in topic.argsort()[:-no_top_words - 1:-1]])
         print ("Topic %d:" % (topic_idx))
-        print (" ".join([feature_names[i]
-                        for i in topic.argsort()[:-no_top_words - 1:-1]]))
+        print (words)
         f.write("Topic %d:" % (topic_idx))
-        f.write(" ".join([feature_names[i]
-                        for i in topic.argsort()[:-no_top_words - 1:-1]]))
+        f.write(words)        
         f.write("\n")
+        topic_words.append(words)
+    
+    return topic_words
 
 def create_quantity_list():
     quantity_list = []
@@ -119,3 +131,130 @@ def scale_to_100_mean():
                 data.append(row[i]*mean_coef_dict[i-1])
 
             results_file_handler.append_csv_file_row(filepath, data)
+
+
+def print_documents_with_topics(documents, documents_with_topics, topic_words):
+    
+    data = []
+    index = 0
+    topics_showed = []
+    for doc in documents_with_topics:
+        if len(topics_showed) == settings.NO_TOPICS:
+            break
+        topic_index = np.where(doc == doc.max())[0][0]      
+        if topic_index not in topics_showed:  
+            topics_showed.append(topic_index)
+            data.append({"noticia": documents[index], "palabras_tema": topic_words[topic_index], 'tema': str(topic_index)})
+        index += 1
+    
+    with open(settings.DOCUMENTS_FILEPATH, 'w', encoding='utf-8') as outfile:
+        json.dump(data, outfile, ensure_ascii=False)
+
+
+def get_best_number_of_topic(tf_documents):
+
+    prob_for_no_topic = []    
+    for no_topics in range(8,40):
+        
+        lda_algorithm = LatentDirichletAllocation(n_components=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0)
+        lda_algorithm.fit(tf_documents)
+        documents_categorized_with_topics = lda_algorithm.transform(tf_documents)
+        sum_prob = 0
+
+        for doc in documents_categorized_with_topics:
+            doc_prob = max(doc)
+            sum_prob += doc_prob
+
+        sum_prob = sum_prob / len(documents_categorized_with_topics)
+        prob_for_no_topic.append({"no_topics": no_topics, "prob":sum_prob})
+        print (no_topics)
+
+    with open(settings.NO_TOPICS_FILEPATH, 'w', encoding='utf-8') as outfile:
+        json.dump(prob_for_no_topic, outfile, ensure_ascii=False)
+
+    
+def grid_search_best_components(data_vectorized, documents, tf_vectorizer):
+    # Define Search Param
+    
+    #search_params = {'n_components': [6,7,8,9,10,11,12,15,20,25,30] , 'learning_decay': [.9]}
+    search_params = {'n_components': [9], 'learning_decay': [.9]}
+
+    # Init the Model
+    lda = LatentDirichletAllocation()
+
+    # Init Grid Search Class
+    model = GridSearchCV(lda, param_grid=search_params)
+
+    # Do the Grid Search
+    model.fit(data_vectorized)
+
+    # Best Model
+    best_lda_model = model.best_estimator_
+
+    # Model Parameters
+    print("Best Model's Params: ", model.best_params_)
+
+    # Log Likelihood Score
+    print("Best Log Likelihood Score: ", model.best_score_)
+
+    # Perplexity
+    print("Model Perplexity: ", best_lda_model.perplexity(data_vectorized))
+
+
+    # # Get Log Likelyhoods from Grid Search Output
+    # n_topics = [6,7,8,9,10,11,12,15,20,25,30]    
+    ### NO EXISTE EL grid_scores_
+    # log_likelyhoods_7 = [round(gscore.mean_validation_score) for gscore in model.grid_scores_ if gscore.parameters['learning_decay']==0.7]
+    # log_likelyhoods_9 = [round(gscore.mean_validation_score) for gscore in model.grid_scores_ if gscore.parameters['learning_decay']==0.9]
+
+    # # Show graph
+    # plt.figure(figsize=(12, 8))    
+    # plt.plot(n_topics, log_likelyhoods_7, label='0.7')
+    # plt.plot(n_topics, log_likelyhoods_9, label='0.9')
+    # plt.title("Choosing Optimal LDA Model")
+    # plt.xlabel("Num Topics")
+    # plt.ylabel("Log Likelyhood Scores")
+    # plt.legend(title='Learning decay', loc='best')
+    # plt.show()
+
+    # Create Document - Topic Matrix
+    lda_output = best_lda_model.transform(data_vectorized)
+
+    # column names
+    #### best_lda_model.n_topics me da nulo y explota
+    # topicnames = ["Topic" + str(i) for i in range(best_lda_model.n_topics)]
+    topicnames = ["Topic" + str(i) for i in range(9)]
+
+    # index names
+    docnames = ["Doc" + str(i) for i in range(len(documents))]
+
+    # Make the pandas dataframe
+    df_document_topic = pd.DataFrame(np.round(lda_output, 2), columns=topicnames, index=docnames)
+
+    # Get dominant topic for each document
+    dominant_topic = np.argmax(df_document_topic.values, axis=1)
+    df_document_topic['dominant_topic'] = dominant_topic
+
+    # Styling
+    def color_green(val):
+        color = 'green' if val > .1 else 'black'
+        return 'color: {col}'.format(col=color)
+
+    def make_bold(val):
+        weight = 700 if val > .1 else 400
+        return 'font-weight: {weight}'.format(weight=weight)
+
+    # Apply Style
+    df_document_topics = df_document_topic.head(15).style.applymap(color_green).applymap(make_bold)
+    # falta ver como imprimir df_document_topics 
+    df_document_topics
+
+    df_topic_distribution = df_document_topic['dominant_topic'].value_counts().reset_index(name="Num Documents")
+    df_topic_distribution.columns = ['Topic Num', 'Num Documents']
+    # falta ver como imprimir df_topic_distribution 
+    df_topic_distribution   
+
+    ## explota dice que necesita IPython
+    pyLDAvis.enable_notebook()
+    panel = pyLDAvis.sklearn.prepare(best_lda_model, data_vectorized, tf_vectorizer, mds='tsne')
+    panel

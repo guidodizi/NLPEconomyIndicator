@@ -16,6 +16,8 @@ def init():
     global STEP3_FILEPATH    
     global RESULT_FILEPATH
     global NO_TOPICS
+    global DOCUMENTS_FILEPATH
+    global NO_TOPICS_FILEPATH
 
     NO_TOPICS = 30
 
@@ -23,7 +25,9 @@ def init():
     STEP2_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step2.csv"
     STEP3_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step3.csv"    
     RESULT_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_epu.csv"
-    
+    DOCUMENTS_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/documents_with_topics.json"
+    NO_TOPICS_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/n_topics_prob_8_40.json"
+
     with open('C:/NLP/NLPEconomyIndicator/lda/config/full_date.json', 'r+', encoding='utf-8') as data_file:
         FULL_DATE = json.load(data_file)
 

@@ -1,30 +1,30 @@
-Topic 0:año crecimiento economía trimestre actividad meses tasa nivel datos caída pbi económica desempleo recuperación incertidumbre expansión mes informe desaceleración menor económico inflación ritmo años aumento consumo período últimos junio anual
-Topic 1:mujica vázquez astori frente amplio gobierno tabaré presidente uruguay josé ministro búsqueda economía izquierda tema ley impuesto sectores interna reunión participación inversión presidencia inversiones uruguayos equipo cambios observador temas proyecto
-Topic 2:fmi fondo monetario deuda internacional organismo millones año us apoyo programa argentina banco pbi crisis producto grecia pública país semana reformas economía financiero fiscal gobierno años incertidumbre 2014 financiamiento bruto
-Topic 3:empresas empresa inversión trabajadores mercado inversiones negocios empresarios negocio uruguay desarrollo costos información años laboral proyectos servicios nivel condiciones forma incertidumbre importante búsqueda rentabilidad proyecto caso recursos calidad director actividad
-Topic 4:000 millones dólares us año reservas argentina gobierno 500 país argentinos plan años dinero 20 10 mes fondos pagar 15 100 empresas 30 diciembre personas capital meses argentino exterior mil
-Topic 5:brasil política economía políticas lula mercados reformas crisis gobierno económica crecimiento países monetaria presidente interés económico tasas país inflación económicas riesgos central años incertidumbre financieros banco políticos economías medidas mundial
-Topic 6:2016 2017 2015 presupuesto gobierno cuentas ejecutivo año proyecto educación 2014 ministerio nacional recursos aumento pública ley equipo públicas observador propuesta salud millones economía incertidumbre económico incremento fuentes administración trabajadores
-Topic 7:nbsp 2009 crisis 2010 2008 crédito año consumo internacional 2011 financiera nivel meses sistema caída ingresos financiamiento tendencia período marzo 2012 enero baja confianza febrero situación niveles financiero recuperación ingreso
-Topic 8:unidos eeuu fed petróleo estadounidense federal mercados reserva tasas interés energía precios mercado precio semana economía acciones europa mundo baja guerra primas materias presidente reunión activos incertidumbre mundial analistas principales
-Topic 9:precios año precio inflación mercado dólar productos meses carne baja aumento cambio uruguay consumo suba competitividad ventas tipo caída exportaciones 10 últimos brasil mes demanda bienes fuerte situación incertidumbre evolución
-Topic 10:china países mundial producción soja crecimiento mundo global productores demanda mercados primas economías materias emergentes internacional economía precios desarrollo años europa eeuu importante unidos 2008 2013 2012 incertidumbre área plazo
-Topic 11:fiscal gobierno gasto economía déficit inflación política crecimiento público aumento ajuste inversión deuda año país públicas actual económica pib pbi nivel años medidas ingresos situación impuestos fiscales políticas cambio salarios
-Topic 12:gobierno fondo millones fmi ministro depósitos impuestos argentina altos país congreso difícil privados presidente ley impuesto proyecto económica confianza públicos público internacional mantener argentinos incierto bonos jefe fiscal gasto prensa
-Topic 13:banco central decisión presidente gobierno reunión ministro prensa uruguay situación país autoridades jueves montevideo economía semana grupo lunes miércoles viernes observador equipo martes director información república búsqueda ministerio incertidumbre fuentes
-Topic 14:partido gobierno política elecciones frente electoral izquierda político campaña candidato partidos fa amplio oposición presidente país elección mayoría políticos años presidencia sectores dirigentes líder gestión economía nacional cambio incertidumbre pública
-Topic 15:uruguay argentina país región países brasil américa latina años economía chile mundo crisis año uruguaya internacional uruguayo situación nivel argentino mundial unidos económica regional crecimiento uruguayos argentinos últimos importante incertidumbre
-Topic 16:años país social mundo vida gente nacional sociedad personas historia sistema política forma futuro educación salud sociales población tema seguridad realidad presidente políticas económica caso proyecto reforma cambio incertidumbre proceso
-Topic 17:dólar dólares cambio bcu mercado banco pesos moneda tipo central monetaria inflación tasas tasa política interés local cotización incertidumbre suba agentes plazo millones economía meses nivel cambios precio volatilidad uruguay
-Topic 18:trump méxico comercio 2017 noviembre país particular electoral partido importante relación presidente elección panorama proceso uruguayo nivel perspectiva pagar estadounidense cambios elecciones años efecto cambio estabilidad apoyo resultado forma impuestos
-Topic 19:país déficit economía fiscal ministro agentes exterior financieros difícil importante alto riesgo región jueves especialmente gobierno partido privado falta partidos político desempleo sector mundo forma monetario meta fondo 2002 tema
-Topic 20:deuda riesgo país bonos inversores mercados uruguay títulos amp grado gobierno emergentes plazo nota países economía pública mercado inversión internacionales fondos años uruguayos financieros uruguaya pago locales nivel capitales año
-Topic 21:europea países unión mercosur europa ue comercio euro grecia españa bloque europeo zona comercial unidos libre salida acuerdos comerciales brasil país mercados crisis negociaciones exportaciones proceso política mundo región relaciones
-Topic 22:sector industria actividad construcción sectores privado mercado cámara producción nacional comercio situación empresas productores asociación servicios demanda uruguay país incertidumbre privados comercial problemas aumento inversión costos año presidente observador impuestos
-Topic 23:puntos bolsa mercado semana índice bonos riesgo inversores baja títulos dólar miércoles tasas país precios valores básicos suba uruguayos bajó interés cerró banco global acciones caída 10 año mercados cotización
-Topic 24:bancos crisis sistema financiero depósitos crédito banco financiera activos instituciones riesgo fondos capital financieras economía financieros dinero deuda interés 2002 fondo plazo caso efectos capitales tasas privados pago problema situación
-Topic 25:us millones año mil años precio promedio 50 100 000 10 15 500 oferta 30 semana mercado venta incertidumbre 20 costo empresa precios país 60 40 economía ventas marzo enero
-Topic 26:amp calidad crédito latina américa argentina crisis países financieras país nota económicas méxico sector capacidad chile bajó mercados bancos emergentes caída principales deuda factores 15 empresas mercado región conjunto capitales
-Topic 27:venezuela chávez presidente oposición país petróleo gobierno líder elecciones américa situación latina control región inflación anunció elección año pese octubre enero gobiernos oficial cargo apoyo prensa mantiene unidos régimen problemas
-Topic 28:año 14 cierre ministro millones gobiernos banco frente dólar dólares central medidas incertidumbre us economía ajuste congreso jefe país pago económico gobierno comisión pesos situación atrás peso monetaria local demanda
-Topic 29:gobierno presidente ministro país economía ley ejecutivo incertidumbre medidas proyecto semana reforma nacional parlamento comisión cámara política propuesta negociación meses argentina tema anunció negociaciones congreso ministerio martes observador económica luis
+Topic 0:títulos global amp gobierno país países bonos mercado riesgo uruguay
+Topic 1:fmi deuda crisis fiscal gobierno fondo país economía internacional monetario
+Topic 2:deuda riesgo país bonos uruguay inversores mercados títulos amp grado
+Topic 3:eeuu fed mercados tasas petróleo federal reserva interés unidos mercado
+Topic 4:años mundo historia guerra vida política militar libro siglo país
+Topic 5:empresas impuesto sector empresa costos áreas servicio año medida internacionales
+Topic 6:gobierno presidente ministro argentina economía país reunión nacional decisión fernández
+Topic 7:partido elecciones brasil electoral gobierno candidato campaña lula política país
+Topic 8:año años personas gente país meses uruguayos enero población 10
+Topic 9:inflación dólar precios cambio tipo política monetaria año dólares moneda
+Topic 10:europea unión europa países mercosur ue grecia euro españa bloque
+Topic 11:trump información confianza internacionales materia particular país noticia liderazgo nivel
+Topic 12:américa venezuela latina chávez región méxico país chile países presidente
+Topic 13:unidos obama presidente estadounidense congreso washington eeuu estadounidenses bush casa
+Topic 14:nbsp soja producción productores precios agricultura trigo toneladas cosecha ganadería
+Topic 15:bancos banco sistema crédito depósitos financiero crisis créditos bancario central
+Topic 16:año sector ventas trimestre caída mes meses industria aumento mercado
+Topic 17:país argentina crisis amp gobierno economía analista países crédito banco
+Topic 18:empresas trabajadores empresa empresarios sector salarios laboral negocios costos industria
+Topic 19:energía planta puerto río zona montevideo empresa generación transporte obras
+Topic 20:millones us 000 año años dólares 500 mil reservas 100
+Topic 21:uruguay argentina mercado precios precio brasil país año carne productos
+Topic 22:mercado dólar semana puntos bolsa índice bonos títulos dólares banco
+Topic 23:unidos dólar brasil años argentina us jornada punta uruguay banco
+Topic 24:uruguay país social años desarrollo nacional sociedad forma importante educación
+Topic 25:inversión proyecto inversiones gobierno ley empresas proyectos empresa ancap inversores
+Topic 26:países china mundial mundo unidos emergentes economías global economía crisis
+Topic 27:vázquez frente mujica amplio astori fa izquierda tabaré partido danilo
+Topic 28:gobierno fiscal gasto reforma presupuesto cuentas economía política país público
+Topic 29:crecimiento año economía pbi actividad años nivel económica tasa económico
