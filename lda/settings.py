@@ -21,21 +21,25 @@ def init():
 
     NO_TOPICS = 30
 
-    STEP1_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step1.csv"
-    STEP2_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step2.csv"
-    STEP3_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step3.csv"    
-    RESULT_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_epu.csv"
-    DOCUMENTS_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/documents_with_topics.json"
-    NO_TOPICS_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/n_topics_prob_8_40.json"
+    # TODO: por ahora se usa para poder debuggear -> despues sacar y usar paths relativos
+    base_dir = "C:/NLP/"
+    # base_dir = "C:/Tesis/"
 
-    with open('C:/NLP/NLPEconomyIndicator/lda/config/full_date.json', 'r+', encoding='utf-8') as data_file:
+    STEP1_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/lda_step1.csv"
+    STEP2_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/lda_step2.csv"
+    STEP3_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/lda_step3.csv"
+    RESULT_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/lda_epu.csv"
+    DOCUMENTS_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/documents_with_topics.json"
+    NO_TOPICS_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/n_topics_prob_8_40.json"
+
+    with open(base_dir + "NLPEconomyIndicator/lda/config/full_date.json", 'r+', encoding='utf-8') as data_file:
         FULL_DATE = json.load(data_file)
 
-    with open('C:/NLP/NLPEconomyIndicator/lda/config/terms.json', 'r+', encoding='utf-8') as data_file:
+    with open(base_dir + "NLPEconomyIndicator/lda/config/terms.json", 'r+', encoding='utf-8') as data_file:
         TERMS_BAG = json.load(data_file)['terms']
 
-    NEWS_JSON_FILEPATH = "C:/NLP/NLPEconomyIndicator/news/{0}/{1}/{2}/data.json"
-    with open('C:/NLP/NLPEconomyIndicator/lda/config/newspapers.json', 'r+', encoding='utf-8') as data_file:
+    NEWS_JSON_FILEPATH = base_dir + "NLPEconomyIndicator/news/{0}/{1}/{2}/data.json"
+    with open(base_dir + "NLPEconomyIndicator/lda/config/newspapers.json", 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
 
 
