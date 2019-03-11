@@ -10,7 +10,7 @@ import settings
 from helper_methods import month_year_iter
 
 
-def generate_array_with_news():
+def generate_array_with_news(with_stemming):
     documents = []   
     documents_date = [] 
     for paper  in settings.NEWSPAPERS:            
@@ -29,7 +29,10 @@ def generate_array_with_news():
                 if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
                     article = doc['doc']['articulo'].lower()
                     if check_if_news_is_eu(article):
-                        article = stem_article(format_news_content(article))
+                        if (with_stemming):
+                            article = stem_article(format_news_content(article))
+                        else:
+                            article = format_news_content(article)
                         documents.append(article)                        
                         documents_date.append(str(month) + "/" + str(year))
     return documents, documents_date

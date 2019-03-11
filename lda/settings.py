@@ -19,7 +19,7 @@ def init():
     global DOCUMENTS_FILEPATH
     global NO_TOPICS_FILEPATH
 
-    NO_TOPICS = 30
+    NO_TOPICS = 9
 
     STEP1_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step1.csv"
     STEP2_FILEPATH = "C:/NLP/NLPEconomyIndicator/lda/results/lda_step2.csv"
