@@ -27,11 +27,21 @@ def init():
     global COLUMNS_COUNT_3
     global EPU_DATE_RANGE
     global WRITE_PROCESSED_NEWS
+    global PROCESS_FROM_EU_NEWS_ONLY
+
+    WRITE_PROCESSED_NEWS = True # This writes classified news into "/news/_non_economy/", "/news/_economy/" and "/news/_eu/" directories.
+    PROCESS_FROM_EU_NEWS_ONLY = True # Makes processing faster. This can be set to True when the "/news/_eu/" directory exists and has news.
 
     STEP_1_2_3_FILEPATH = "results/step{0}_results_{1}.csv"
     STEP_4_FILEPATH = "results/step4_results_average.csv"
     EPU_INDEX_FILEPATH = "results/epu_index_uruguay.csv"
-    NEWS_JSON_FILEPATH = "../news/{0}/{1}/{2}/data.json"
+
+    if PROCESS_FROM_EU_NEWS_ONLY:
+        WRITE_PROCESSED_NEWS = False # It should not write news to "/news/_eu/" directory.
+        NEWS_JSON_FILEPATH = "../news/_eu/{0}/{1}/{2}/data.json"
+    else:
+        NEWS_JSON_FILEPATH = "../news/{0}/{1}/{2}/data.json"
+
     NEWS_ECONOMY_JSON_FILEPATH = "../news/_economy/{0}/{1}/{2}/data.json"
     NEWS_ECONOMY_DIRECTORY = "../news/_economy/{0}"
     NEWS_EU_JSON_FILEPATH = "../news/_eu/{0}/{1}/{2}/data.json"
@@ -56,8 +66,6 @@ def init():
         'datefrom': get_initial_date(NEWSPAPERS),
         'dateto': get_last_date(NEWSPAPERS)
     }
-
-    WRITE_PROCESSED_NEWS = True
 
 
 def get_initial_date(NEWSPAPERS):

@@ -61,8 +61,9 @@ def write_news_to_file(doc, file_path):
 
 def create_and_write_file(doc, file_path):
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    docs_array = []
-    docs_array.append(doc)
+    docs_array = {}
+    docs_array["add"] = []
+    docs_array["add"].append(doc)
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(docs_array, f, ensure_ascii=False)
 
@@ -70,7 +71,7 @@ def create_and_write_file(doc, file_path):
 def append_to_file(doc, file_path):
     with open(file_path, encoding='utf-8') as feedsjson:
         docs_array = json.load(feedsjson)
-    docs_array.append(doc)
+    docs_array["add"].append(doc)
 
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(docs_array, f, ensure_ascii=False)
