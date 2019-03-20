@@ -21,7 +21,7 @@ else:
         algorithm, fit_algorithm = results_processor.lda_algorithm(tf)
         
     elif (option == "guidedlda"):
-        algorithm, fit_algorithm = results_processor.guided_lda(tf)
+        algorithm, fit_algorithm = results_processor.guided_lda(tf,tf_vectorizer, with_stemming)
     
     topic_words, documents_categorized_with_topics = results_processor.get_and_print_results(tf, tf_vectorizer, algorithm,fit_algorithm, documents_date)
     

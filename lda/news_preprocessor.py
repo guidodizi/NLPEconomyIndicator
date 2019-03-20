@@ -8,6 +8,7 @@ import Stemmer
 
 import settings
 from helper_methods import month_year_iter
+from string import digits
 
 
 def generate_array_with_news(with_stemming):
@@ -127,6 +128,9 @@ def format_news_content(original_content):
 
 
 def cleanhtml(raw_html):
-  cleanr = re.compile('<.*?>')
-  cleantext = re.sub(cleanr, '', raw_html)
-  return cleantext
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+
+    remove_digits = str.maketrans('', '', digits)
+    res = cleantext.translate(remove_digits)
+    return res
