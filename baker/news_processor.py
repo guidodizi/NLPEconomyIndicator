@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import csv
 import json
+import os.path
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -66,13 +67,19 @@ def process_el_observador():
 
     for date in date_iter:
         year, month = date[0], date[1]
-        total_news_month = monthly_news_count[str(year)+"-"+str(month)]
-        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
-        with open(path, 'r+', encoding='utf-8') as data_file:
-            tree = json.load(data_file)
-        json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
+        total_news_month = monthly_news_count[str(year)+"-"+str(month)]
+        economy_news_month = 0
+        epu_news_month = 0
+        eu_news_month = 0
+
+        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
+        if os.path.isfile(path): # File exists
+            with open(path, 'r+', encoding='utf-8') as data_file:
+                tree = json.load(data_file)
+            json_root = tree['add']
+            _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
+
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -87,16 +94,22 @@ def process_la_diaria():
 
     count_path = settings.NEWS_COUNT_FILEPATH.format(newspaper)
     monthly_news_count = read_news_count_from_csv(count_path)
-
+    
     for date in date_iter:
         year, month = date[0], date[1]
-        total_news_month = monthly_news_count[str(year)+"-"+str(month)]
-        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
-        with open(path, 'r+', encoding='utf-8') as data_file:
-            tree = json.load(data_file)
-        json_root = tree['add']
         dict_category_epu_news = load_categories_dictionary()
-        _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
+        total_news_month = monthly_news_count[str(year)+"-"+str(month)]
+        economy_news_month = 0
+        epu_news_month = 0
+        eu_news_month = 0
+        
+        path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
+        if os.path.isfile(path): # File exists
+            with open(path, 'r+', encoding='utf-8') as data_file:
+                tree = json.load(data_file)
+            json_root = tree['add']
+            _, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
+
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)
 
@@ -131,11 +144,16 @@ def process_busqueda():
 
     for date in date_iter:
         year, month = date[0], date[1]
+        dict_category_epu_news = load_categories_dictionary()
+        
         path = settings.NEWS_JSON_FILEPATH.format(newspaper, str(year), str(month))
+        if settings.PROCESS_FROM_EU_NEWS_ONLY:
+            path = path.replace("/_eu", "") # Busqueda total_news_month is calculated while processing all news
+
         with open(path, 'r+', encoding='utf-8') as data_file:
             tree = json.load(data_file)
         json_root = tree['add']
-        dict_category_epu_news = load_categories_dictionary()
+        
         total_news_month, economy_news_month, epu_news_month, eu_news_month = process_json_news(json_root, dict_category_epu_news, newspaper, month, year)
         results_file_handler.save_step1_results(
             newspaper, month, year, total_news_month, economy_news_month, epu_news_month, eu_news_month, dict_category_epu_news)

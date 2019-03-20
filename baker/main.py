@@ -2,6 +2,7 @@
 import news_processor
 import results_processor
 import settings
+import time
 from helper_methods import *
 
 # MAIN (Baker method)
@@ -13,8 +14,10 @@ option = options_input_section()
 
 if (option == "generar_epu"):
     # Generate EPU index from individual newspaper results
+    start_time = time.time()
     results_processor.generate_epu_index()
 else:
+    start_time = time.time()
     newspaper = option
     print_processing_message(newspaper)
 
@@ -28,3 +31,4 @@ else:
     results_processor.scale_to_unit_standard_deviation(newspaper)
 
 print_finish()
+print("\n--- Tiempo de ejecución: %s segundos --- \n" % (round(time.time() - start_time, 1)))
