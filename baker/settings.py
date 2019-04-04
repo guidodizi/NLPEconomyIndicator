@@ -29,8 +29,8 @@ def init():
     global WRITE_PROCESSED_NEWS
     global PROCESS_FROM_EU_NEWS_ONLY
 
-    WRITE_PROCESSED_NEWS = True # This writes classified news into "/news/_non_economy/", "/news/_economy/" and "/news/_eu/" directories.
-    PROCESS_FROM_EU_NEWS_ONLY = True # Makes processing faster. This can be set to True when the "/news/_eu/" directory exists and has news.
+    WRITE_PROCESSED_NEWS = False # This writes classified news into "/news/_non_economy/", "/news/_economy/" and "/news/_eu/" directories.
+    PROCESS_FROM_EU_NEWS_ONLY = False # Makes processing faster. This can be set to True when the "/news/_eu/" directory exists and has news.
 
     STEP_1_2_3_FILEPATH = "results/step{0}_results_{1}.csv"
     STEP_4_FILEPATH = "results/step4_results_average.csv"
