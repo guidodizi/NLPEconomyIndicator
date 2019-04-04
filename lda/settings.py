@@ -18,6 +18,8 @@ def init():
     global NO_TOPICS
     global DOCUMENTS_FILEPATH
     global NO_TOPICS_FILEPATH
+    global TERMS_FILEPATH
+    global TERMS_COUNT_FILEPATH
 
     NO_TOPICS = 9
 
@@ -31,6 +33,8 @@ def init():
     RESULT_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/lda_epu.csv"
     DOCUMENTS_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/documents_with_topics.json"
     NO_TOPICS_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/n_topics_prob_8_40.json"
+    TERMS_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/terms.csv"
+    TERMS_COUNT_FILEPATH = base_dir + "NLPEconomyIndicator/lda/results/terms_count.csv"
 
     with open(base_dir + "NLPEconomyIndicator/lda/config/full_date.json", 'r+', encoding='utf-8') as data_file:
         FULL_DATE = json.load(data_file)
@@ -38,7 +42,7 @@ def init():
     with open(base_dir + "NLPEconomyIndicator/lda/config/terms.json", 'r+', encoding='utf-8') as data_file:
         TERMS_BAG = json.load(data_file)['terms']
 
-    NEWS_JSON_FILEPATH = base_dir + "NLPEconomyIndicator/news/{0}/{1}/{2}/data.json"
+    NEWS_JSON_FILEPATH = base_dir + "NLPEconomyIndicator/news/_eu/{0}/{1}/{2}/data.json"
     with open(base_dir + "NLPEconomyIndicator/lda/config/newspapers.json", 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
 

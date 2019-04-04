@@ -27,7 +27,7 @@ def month_year_iter(date_from, date_to):
 
 
 def display_topics(model, feature_names, no_top_words):
-    f= open("terms.txt","w+")
+    f= open('terms.txt',"w+")
     topic_words = []
     for topic_idx, topic in enumerate(model.components_):
         words = " ".join([feature_names[i]
@@ -38,9 +38,39 @@ def display_topics(model, feature_names, no_top_words):
         f.write(words)        
         f.write("\n")
         topic_words.append(words)
+
+    with open(settings.TERMS_FILEPATH, mode='w') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for topic_idx, topic in enumerate(model.exp_dirichlet_component_):
+            row = []
+            for i in topic.argsort():
+                prob = topic[i]
+                if prob > 0.005:
+                    row = [feature_names[i]] + row
+            row = ["Topic " + str(topic_idx)] + row
+            csv_writer.writerow(row)
     
     return topic_words
 
+def get_count_terms_csv ():
+    terms = {}
+    with open(settings.TERMS_FILEPATH) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        
+        for row in csv_reader:
+            for term in row:
+                if term in terms:
+                    terms[term] = terms[term] + 1
+                else:
+                    terms[term]= 1
+
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        for idx, term in enumerate(terms):
+            csv_writer.writerow([term, terms[idx]])
+            
+    
+
+    
 
 def input_options_message():
     print(u"\nIndique la operación a realizar:")
@@ -171,7 +201,7 @@ def scale_to_100_mean():
             date = row[0]
             data = [date]
 
-            for i in range(1, settings.NO_TOPICS):
+            for i in range(1, len(row)):
                 data.append(row[i]*mean_coef_dict[i-1])
 
             results_file_handler.append_csv_file_row(filepath, data)
