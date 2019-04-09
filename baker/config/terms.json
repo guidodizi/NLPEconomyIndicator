@@ -7,8 +7,7 @@
 				"economía",
 				"económico",
 				"económica",
-				"inflación",
-				"crisis económica"
+				"inflación"
 			]
 		},
 		{
@@ -17,9 +16,7 @@
 			"values": [
 				"incertidumbre",
 				"incierto",
-				"incierta",
-				"riesgo",
-				"riesgo país"
+				"incierta"
 			]
 		},
 		{
@@ -132,80 +129,6 @@
 				"devaluación",
 				"intervenciones del bcu",
 				"jerome powell"
-			]
-		},
-		{
-			"name": "Política de salud",
-			"code": "pol_salud",
-			"values": [
-				"asse",
-				"snis",
-				"ministerio de salud pública",
-				"banco de previsión social",
-				"fonasa",
-				"bps",
-				"msp"
-			]
-		},
-		{
-			"name": "Política de regulación financiera",
-			"code": "pol_reg_financiera",
-			"required": "False",
-			"values": [
-				"supervisión bancaria",
-				"supervisión de bancos",
-				"supervisión de ahorros",
-				"reforma financiera",
-				"tratado de basilea",
-				"requerimiento de capital",
-				"regla de volcker",
-				"prueba de estrés bancaria",
-				"seguro de depósito",
-				"bolsa de valores de montevideo",
-				"rescate",
-				"ley de inclusión financiera",
-				"ministerio de economía y finanzas",
-				"asesoría macroeconómica",
-				"superintendencia de instituciones de intermediación financiera",
-				"siif",
-				"mef",
-				"corrida bancaria",
-				"crisis de 2002"
-			]
-		},
-		{
-			"name": "Política de regulación",
-			"code": "pol_regulacion",
-			"values": [
-				"regulación financiera",
-				"derechos sindicales",
-				"ley de negociación colectiva",
-				"dirección nacional de trabajo",
-				"salario mínimo",
-				"política de competencia",
-				"política de fusiones",
-				"monopolio",
-				"patentes",
-				"derechos de autor",
-				"prácticas no competitivas de negocios",
-				"ley de competencia",
-				"fijación de precios",
-				"política energética",
-				"topes al comercio",
-				"protección de medio ambiente",
-				"política de inmigración",
-				"dinama",
-				"dirección nacional de medio ambiente",
-				"ministerio de industria",
-				"energía y minería",
-				"ministerio de vivienda",
-				"ordenamiento territorial y medio ambiente",
-				"carolina cosse",
-				"roberto kreimermann",
-				"raúl sendic",
-				"daniel martinez",
-				"jorge lepra",
-				"restricciones de comercio"
 			]
 		},
 		{
