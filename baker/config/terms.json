@@ -1,104 +1,355 @@
 {
-    "terms": [
-        {
-            "name": "Economía",
-            "code": "econom",
-            "values": ["economía", "económico", "económica", "economista", "comercio", "inflación"]
-        },
-        {
-            "name": "Incertidumbre",
-            "code": "incert",
-            "values": ["incertidumbre", "incierto", "incierta", "riesgo", "riesgo país"]
-        },
-        {
-            "name": "Política impositiva",
-            "code": "pol_impositiva",
-            "values": ["impuestos", "impuesto", "impositivo", "gravado"]
-        },
-        {
-            "name": "Política de gasto gubernamental",
-            "code": "pol_gasto_gub",
-            "values": ["gasto gubernamental", "gasto del gobierno", "presupuesto departamental", "equilibrio presupuestal", 
-                "gasto en defensa", "gasto social", "estímulo fiscal", "déficit fiscal", "deuda nacional", "tope de deuda", 
-                "déficit gubernamental", "déficit del gobierno", "equilibrar el presupuesto", "afap", "ley de cincuentones", 
-                "conflicto poder judicial", "reforma caja militar"]
-        },
-        {
-            "name": "Política fiscal",
-            "code": "pol_fiscal",
-            "values": ["ajuste fiscal", "política fiscal", "ley de presupuesto", "rendición de cuentas", "déficit fiscal", 
-                "espacio fiscal", "deuda pública", "sostenibilidad fiscal", "déficit estructural", "endeudamiento público", 
-                "regla fiscal", "programa fiscal", "restricción fiscal", "política tarifaria", "tarifas públicas"]
-        },
-        {
-            "name": "Política monetaria",
-            "code": "pol_monetaria",
-            "values": ["reserva federal", "la fed", "oferta monetaria", "operaciones de mercado abierto", "política monetaria", 
-                "tasa interés fed", "tasa de interés depósitos overnight", "la fed", "bernanke", "volker", "greenspan", "yellen", 
-                "banco central", "tasa de interés", "ventana de descuento", "banco central europeo", "banco de inglaterra",
-                "banco central de alemania", "banco de china", "banco de japón", "banco de francia", "banco de italia", 
-                "banco de españa", "bcu", "banco central del uruguay", "comité de política monetaria", "ministerio de economía y finanzas", 
-                "copom", "oficina de planeamiento y presupuesto",  "opp", "mario bergara", "álvaro garcía", "ramón díaz", "fernando lorenzo", 
-                "danilo astori", "isaac alfie"," alejandro atchugarry", "andrés masoller", "andrés bensión", "luis mosca", "ignacio de posadas"]
-        },
-        {
-            "name": "Política de salud",
-            "code": "pol_salud",
-            "values": ["cuidado de la salud", "prescripción de medicamentos", "política de drogas", "mala práxis médica", "responsabilidad médica", 
-                "asse", "snis", "mutualismo", "ministerio de salud pública", "seguro privado de salud", "banco de previsión social", "fonasa", 
-                "bps", "devolución fonasa", "subsidios por invalidez", "subisidio por maternidad"]
-        },
-        {
-            "name": "Política de seguridad nacional",
-            "code": "pol_seguridad_nacional",
-            "values": ["seguridad nacional", "guerra", "conflicto militar", "terrorismo", "terror", "9/11", "gasto en defensa", "gasto militar", 
-                "acción policial", "fuerzas armadas", "cierre de bases", "abastecimiento militar", "invasión militar", "embargo militar"]
-        },
-        {
-            "name": "Política de regulación financiera",
-            "code": "pol_regulacion_financiera",
-            "values": ["supervisión bancaria", "supervisión de bancos", "supervisión de ahorros", "reforma financiera", "tratado de basilea", 
-                "requerimiento de capital", "regla de volcker", "prueba de estrés bancaria", "comisión de values", "seguro de depósito", 
-                "bolsa de values de montevideo", " rescate", "ley de inclusión financiera", "ministerio de economía y finanzas", 
-                "asesoría macroeconómica", "superintendencia de instituciones de intermediación financiera", "siif"]
-        },
-        {
-            "name": "Política de regulación",
-            "code": "pol_regulacion",
-            "values": ["regulación financiera", "préstamo", "derechos sindicales", "ley de negociación colectiva", "consejo nacional de trabajo", 
-                "dirección nacional de trabajo", "salario mínimo", "salario mínimo", "derecho al trabajo", "salarios y horas", 
-                "compensación de los trabajadores", "requisitos de aviso anticipado", "empleo voluntario", "asistencia de ajustes comerciales", 
-                "oportunidad de empleo equitativa", "política de competencia", "política de fusiones", "monopolio", "patentes", "derechos de autor", 
-                "comisión de comercio", "prácticas no competitivas de negocios", "ley de competencia", "fijación de precios", "acción de clase", 
-                "ley de cuidado de salud", "daños punitivos", "mala praxis médica", "política energética", "impuesto a la energía", "impuesto al carbón", 
-                "topes al comercio", "restricciones de perforación", "control de polución", "restricciones de medio ambiente", "acta de aire limpio", 
-                "acta de agua limpia (o algo parecido que tengamos aquí en uy)", "agencia de protección de medio ambiente", "política de inmigración", 
-                "dinama", "dirección nacional de medio ambiente", "ministerio de industria", "energía y minería", "ministerio de vivienda", 
-                "ordenamiento territorial y medio ambiente. carolina cosse", "roberto kreimermann", "raul sendic", "daniel martinez", "jorge lepra", 
-                "josé villar", "pedro bordaberry", "sergio abreu"]
-        },
-        {
-            "name": "Política de deuda soberana y crisis monetaria",
-            "code": "pol_deuda_crisis",
-            "values": ["deuda soberana", "crisis monetaria", "colapso de moneda", "devaluación monetaria", "revaluación monetaria", "manipulación monetaria", 
-                "crisis del euro", "crisis de la eurozona", "crisis financiera europea", "deuda europea", "crisis financiera asiática", "crisis asiática", 
-                "crisis financiera rusa", "crisis rusa", "tipo de cambio", "letras de regulación monetaria", "lrm", "obligaciones negociables", "on", 
-                "tipo de cambio", "dólar", "euro", "bono global", "emisión de deuda", "vencimiento de deuda"]
-        },
-        {
-            "name": "Política de programas de derechos",
-            "code": "pol_prog_derechos",
-            "values": ["programas de derechos", "gasto en derechos", "programas de gobierno", "seguridad social", "bienestar", "gobierno", "reforma de bienestar", 
-                "seguro de desempleo", "beneficios de desempleo", "cupones de comida", "seguro por invalidez", "programa de asistencia nutricional", 
-                "crédito tributario por ingreso", "asistencia pública", "subsidio del gobierno a la vivienda", "panes", "mides", "ministerio de desarrollo social", 
-                "canasta básica", "canasta de alimentación", "canasta de medicamentos"]
-        },
-        {
-            "name": "Política comercial",
-            "code": "pol_comercial",
-            "values": ["tarifas de importación", "impuestos de importación", "barreras de importación", "subsidios gubernamentales", "subsidio gubernamental", 
-                "omc", "organización mundial del comercio", "tratado comercial", "acuerdo comercial", "política comercial", "ronda doha", "ronda uruguay", 
-                "gatt", "dumping", "tlc", "tratado de libre comercio", "nafta", "alca", "restricción de importaciones", "unión europea"]
-        }
-    ]
+	"terms": [
+		{
+			"name": "Economía",
+			"code": "econom",
+			"values": [
+				"economía",
+				"económico",
+				"económica",
+				"inflación",
+				"crisis económica"
+			]
+		},
+		{
+			"name": "Incertidumbre",
+			"code": "incert",
+			"values": [
+				"incertidumbre",
+				"incierto",
+				"incierta",
+				"riesgo",
+				"riesgo país"
+			]
+		},
+		{
+			"name": "Política impositiva",
+			"code": "pol_impositiva",
+			"values": [
+				"impuestos",
+				"impuesto",
+				"impositivo",
+				"gravado",
+				"subsidio",
+				"subsidios",
+				"imesi",
+				"iva",
+				"irpf"
+			]
+		},
+		{
+			"name": "Política de gasto gubernamental",
+			"code": "pol_gasto_gub",
+			"values": [
+				"gasto gubernamental",
+				"gasto del gobierno",
+				"presupuesto departamental",
+				"equilibrio presupuestal",
+				"gasto en defensa",
+				"gasto social",
+				"estímulo fiscal",
+				"déficit fiscal",
+				"deuda nacional",
+				"tope de deuda",
+				"déficit gubernamental",
+				"déficit del gobierno",
+				"equilibrar el presupuesto",
+				"afap",
+				"ley de cincuentones",
+				"conflicto poder judicial",
+				"reforma caja militar",
+				"espacio fiscal",
+				"deuda de la seguridad social",
+				"déficit de la seguridad social",
+				"caja policial",
+				"caja militar",
+				"cajas paraestatales",
+				"caja bancaria",
+				"caja notarial",
+				"caja profesional"
+			]
+		},
+		{
+			"name": "Política fiscal",
+			"code": "pol_fiscal",
+			"values": [
+				"ajuste fiscal",
+				"política fiscal",
+				"ley de presupuesto",
+				"rendición de cuentas",
+				"déficit fiscal",
+				"espacio fiscal",
+				"deuda pública",
+				"sostenibilidad fiscal",
+				"déficit estructural",
+				"endeudamiento público",
+				"regla fiscal",
+				"programa fiscal",
+				"restricción fiscal",
+				"política tarifaria",
+				"tarifas públicas",
+				"política anticíclica",
+				"gasto social",
+				"gasto fiscal",
+				"financiamiento del gasto"
+			]
+		},
+		{
+			"name": "Política monetaria",
+			"code": "pol_monetaria",
+			"values": [
+				"reserva federal",
+				"fed",
+				"oferta monetaria",
+				"operaciones de mercado abierto",
+				"política monetaria",
+				"tasa interés fed",
+				"tasa de interés depósitos overnight",
+				"bernanke",
+				"volker",
+				"greenspan",
+				"yellen",
+				"banco central",
+				"tasa de interés",
+				"banco central europeo",
+				"banco de españa",
+				"bcu",
+				"banco central del uruguay",
+				"comité de política monetaria",
+				"ministerio de economía y finanzas",
+				"copom",
+				"oficina de planeamiento y presupuesto",
+				"opp",
+				"bergara",
+				"álvaro garcía",
+				"fernando lorenzo",
+				"astori",
+				"masoller",
+				"azucena arbeleche",
+				"daude",
+				"kamil",
+				"mef",
+				"devaluación",
+				"intervenciones del bcu",
+				"jerome powell"
+			]
+		},
+		{
+			"name": "Política de salud",
+			"code": "pol_salud",
+			"values": [
+				"asse",
+				"snis",
+				"ministerio de salud pública",
+				"banco de previsión social",
+				"fonasa",
+				"bps",
+				"msp"
+			]
+		},
+		{
+			"name": "Política de regulación financiera",
+			"code": "pol_reg_financiera",
+			"required": "False",
+			"values": [
+				"supervisión bancaria",
+				"supervisión de bancos",
+				"supervisión de ahorros",
+				"reforma financiera",
+				"tratado de basilea",
+				"requerimiento de capital",
+				"regla de volcker",
+				"prueba de estrés bancaria",
+				"seguro de depósito",
+				"bolsa de valores de montevideo",
+				"rescate",
+				"ley de inclusión financiera",
+				"ministerio de economía y finanzas",
+				"asesoría macroeconómica",
+				"superintendencia de instituciones de intermediación financiera",
+				"siif",
+				"mef",
+				"corrida bancaria",
+				"crisis de 2002"
+			]
+		},
+		{
+			"name": "Política de regulación",
+			"code": "pol_regulacion",
+			"values": [
+				"regulación financiera",
+				"derechos sindicales",
+				"ley de negociación colectiva",
+				"dirección nacional de trabajo",
+				"salario mínimo",
+				"política de competencia",
+				"política de fusiones",
+				"monopolio",
+				"patentes",
+				"derechos de autor",
+				"prácticas no competitivas de negocios",
+				"ley de competencia",
+				"fijación de precios",
+				"política energética",
+				"topes al comercio",
+				"protección de medio ambiente",
+				"política de inmigración",
+				"dinama",
+				"dirección nacional de medio ambiente",
+				"ministerio de industria",
+				"energía y minería",
+				"ministerio de vivienda",
+				"ordenamiento territorial y medio ambiente",
+				"carolina cosse",
+				"roberto kreimermann",
+				"raúl sendic",
+				"daniel martinez",
+				"jorge lepra",
+				"restricciones de comercio"
+			]
+		},
+		{
+			"name": "Política de deuda soberana y crisis monetaria",
+			"code": "pol_deuda_crisis",
+			"values": [
+				"deuda soberana",
+				"crisis monetaria",
+				"colapso de moneda",
+				"devaluación monetaria",
+				"revaluación monetaria",
+				"manipulación monetaria",
+				"crisis del euro",
+				"crisis de la eurozona",
+				"crisis financiera europea",
+				"deuda europea",
+				"crisis financiera asiática",
+				"crisis asiática",
+				"crisis financiera rusa",
+				"crisis rusa",
+				"tipo de cambio",
+				"letras de regulación monetaria",
+				"lrm",
+				"obligaciones negociables",
+				"on",
+				"tipo de cambio",
+				"dólar",
+				"euro",
+				"bono global",
+				"emisión de deuda",
+				"vencimiento de deuda",
+				"devaluación",
+				"pigs",
+				"quantitative easing",
+				"qe",
+				"política de tasas de interés",
+				"soft landing",
+				"credit crunch",
+				"sudden stop",
+				"fondo monetario",
+				"fmi",
+				"riesgo país",
+				"calificadoras de riesgo",
+				"moody´s",
+				"standard & poor´s",
+				"s&p",
+				"fitch"
+			]
+		},
+		{
+			"name": "Política de programas de derechos",
+			"code": "pol_prog_derechos",
+			"values": [
+				"programas de gobierno",
+				"seguridad social",
+				"bienestar",
+				"gobierno",
+				"seguro de desempleo",
+				"beneficios de desempleo",
+				"asistencia pública",
+				"subsidio del gobierno a la vivienda",
+				"panes",
+				"mides",
+				"ministerio de desarrollo social",
+				"canasta básica",
+				"canasta de alimentación",
+				"afam",
+				"sistema de prestaciones sociales",
+				"sistema de seguridad nacional",
+				"plan de equidad",
+				"renta básica"
+			]
+		},
+		{
+			"name": "Política comercial",
+			"code": "pol_comercial",
+			"values": [
+				"tarifas de importación",
+				"impuestos de importación",
+				"barreras de importación",
+				"subsidios gubernamentales",
+				"subsidio gubernamental",
+				"omc",
+				"organización mundial del comercio",
+				"tratado comercial",
+				"acuerdo comercial",
+				"política comercial",
+				"ronda doha",
+				"ronda uruguay",
+				"gatt",
+				"dumping",
+				"tlc",
+				"tratado de libre comercio",
+				"nafta",
+				"alca",
+				"restricción de importaciones",
+				"unión europea",
+				"aranceles",
+				"barreras arancelarias",
+				"barreras no alancelarias",
+				"licencias de importación",
+				"problemas en la frontera"
+			]
+		},
+		{
+			"name": "Otras políticas",
+			"code": "otras_politicas",
+			"values": [
+				"gobierno",
+				"autoridades",
+				"parlamento",
+				"legislación",
+				"regulación",
+				"ley",
+				"senado",
+				"cámara de representantes",
+				"diputados",
+				"cámara de senadores",
+				"casa de gobierno",
+				"poder ejecutivo",
+				"presidente"
+			]
+		},
+		{
+			"name": "Autoridades internacionales",
+			"code": "autoridades_intls",
+			"values": [
+				"trump",
+				"obama",
+				"bush",
+				"temer",
+				"lula",
+				"cfk",
+				"cristina kirchner",
+				"cristina fernández",
+				"macri",
+				"néstor kirchner",
+				"merkel",
+				"sarkozy",
+				"macron",
+				"hollande",
+				"rajoy",
+				"aznar"
+			]
+		}
+	]
 }

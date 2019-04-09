@@ -1,7 +1,6 @@
 {
 	"terms": [
 		{
-			"id": 0,
 			"name": "Economía",
 			"code": "econom",
 			"values": [
@@ -13,7 +12,6 @@
 			]
 		},
 		{
-			"id": 1,
 			"name": "Incertidumbre",
 			"code": "incert",
 			"values": [
@@ -25,7 +23,6 @@
 			]
 		},
 		{
-			"id": 2,
 			"name": "Política impositiva",
 			"code": "pol_impositiva",
 			"values": [
@@ -41,7 +38,6 @@
 			]
 		},
 		{
-			"id": 3,
 			"name": "Política de gasto gubernamental",
 			"code": "pol_gasto_gub",
 			"values": [
@@ -74,7 +70,6 @@
 			]
 		},
 		{
-			"id": 4,
 			"name": "Política fiscal",
 			"code": "pol_fiscal",
 			"values": [
@@ -100,7 +95,6 @@
 			]
 		},
 		{
-			"id": 5,
 			"name": "Política monetaria",
 			"code": "pol_monetaria",
 			"values": [
@@ -141,7 +135,6 @@
 			]
 		},
 		{
-			"id": 6,
 			"name": "Política de salud",
 			"code": "pol_salud",
 			"values": [
@@ -155,7 +148,6 @@
 			]
 		},
 		{
-			"id": 7,
 			"name": "Política de regulación financiera",
 			"code": "pol_reg_financiera",
 			"required": "False",
@@ -182,7 +174,6 @@
 			]
 		},
 		{
-			"id": 8,
 			"name": "Política de regulación",
 			"code": "pol_regulacion",
 			"values": [
@@ -218,7 +209,6 @@
 			]
 		},
 		{
-			"id": 9,
 			"name": "Política de deuda soberana y crisis monetaria",
 			"code": "pol_deuda_crisis",
 			"values": [
@@ -266,7 +256,6 @@
 			]
 		},
 		{
-			"id": 10,
 			"name": "Política de programas de derechos",
 			"code": "pol_prog_derechos",
 			"values": [
@@ -291,7 +280,6 @@
 			]
 		},
 		{
-			"id": 11,
 			"name": "Política comercial",
 			"code": "pol_comercial",
 			"values": [
@@ -323,7 +311,6 @@
 			]
 		},
 		{
-			"id": 12,
 			"name": "Otras políticas",
 			"code": "otras_politicas",
 			"values": [
@@ -343,7 +330,6 @@
 			]
 		},
 		{
-			"id": 13,
 			"name": "Autoridades internacionales",
 			"code": "autoridades_intls",
 			"values": [
