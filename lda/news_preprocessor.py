@@ -5,6 +5,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 import Stemmer
+import os.path
 
 import settings
 from helper_methods import month_year_iter
@@ -14,29 +15,37 @@ from string import digits
 def generate_array_with_news(with_stemming):
     documents = []   
     documents_date = [] 
+    obs_documents = []   
+    obs_documents_date = [] 
+    
     for paper  in settings.NEWSPAPERS:            
         # No se va a usar porque se tienen pocos años
         date_from = settings.NEWSPAPERS[paper]['datefrom']
         date_to = settings.NEWSPAPERS[paper]['dateto']
         date_iter = month_year_iter(date_from, date_to)
 
+        print (paper)
         for date in date_iter:            
             year, month = date[0], date[1]
             path = settings.NEWS_JSON_FILEPATH.format(paper, str(year), str(month))
-            with open(path, 'r+', encoding='utf-8') as data_file:
-                tree = json.load(data_file)
-            json_root = tree['add']                        
-            for doc in json_root:
-                if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
-                    article = doc['doc']['articulo'].lower()
-                    if check_if_news_is_eu(article):
-                        if (with_stemming):
-                            article = stem_article(format_news_content(article))
-                        else:
-                            article = format_news_content(article)
-                        documents.append(article)                        
-                        documents_date.append(str(month) + "/" + str(year))
-    return documents, documents_date
+            if os.path.isfile(path): # File exists
+                with open(path, 'r+', encoding='utf-8') as data_file:
+                    tree = json.load(data_file)
+                json_root = tree['add']                        
+                for doc in json_root:
+                    if doc is not None and doc['doc'] is not None and doc['doc']['articulo'] != "":
+                        article = doc['doc']['articulo'].lower()
+                        if check_if_news_is_eu(article):
+                            if (with_stemming):
+                                article = stem_article(format_news_content(article))
+                            else:
+                                article = format_news_content(article)
+                            documents.append(article)                        
+                            documents_date.append(str(month) + "/" + str(year))
+                            if paper == 'el_observador':
+                                obs_documents.append(article)                        
+                                obs_documents_date.append(str(month) + "/" + str(year))
+    return documents, documents_date, obs_documents, obs_documents_date
 
 
 def check_if_news_is_eu(article):    

@@ -2,3 +2,4 @@ news
 *.pyc
 ml_classifier/data
 lda/terms.txt
+lda/results

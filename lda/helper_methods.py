@@ -41,7 +41,7 @@ def display_topics(model, feature_names, no_top_words):
 
     with open(settings.TERMS_FILEPATH, mode='w') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        for topic_idx, topic in enumerate(model.exp_dirichlet_component_):
+        for topic_idx, topic in enumerate(model.components_):
             row = []
             for i in topic.argsort():
                 prob = topic[i]
@@ -107,8 +107,8 @@ def options_input_section():
             option = "guidedlda"
             stemming = False
             input_ok = True
-        elif input_opt == "3":
-            option = "bestk"
+        elif input_opt == "5":
+            option = "bestk"            
             input_ok = True
         else:
             print("\nOpción inválida.\n")

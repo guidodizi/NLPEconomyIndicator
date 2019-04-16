@@ -16,12 +16,14 @@ def init():
     global STEP3_FILEPATH    
     global RESULT_FILEPATH
     global NO_TOPICS
+    global UMBRAL_DOCUMENTS
     global DOCUMENTS_FILEPATH
     global NO_TOPICS_FILEPATH
     global TERMS_FILEPATH
     global TERMS_COUNT_FILEPATH
 
-    NO_TOPICS = 9
+    NO_TOPICS = 8
+    UMBRAL_DOCUMENTS = 4
 
     # TODO: por ahora se usa para poder debuggear -> despues sacar y usar paths relativos
     base_dir = "C:/NLP/"
@@ -42,7 +44,7 @@ def init():
     with open(base_dir + "NLPEconomyIndicator/lda/config/terms.json", 'r+', encoding='utf-8') as data_file:
         TERMS_BAG = json.load(data_file)['terms']
 
-    NEWS_JSON_FILEPATH = base_dir + "NLPEconomyIndicator/news/_eu/{0}/{1}/{2}/data.json"
+    NEWS_JSON_FILEPATH = base_dir + "NLPEconomyIndicator/news/{0}/{1}/{2}/data.json"
     with open(base_dir + "NLPEconomyIndicator/lda/config/newspapers.json", 'r+', encoding='utf-8') as data_file:
         NEWSPAPERS = json.load(data_file)
 

@@ -34,6 +34,7 @@ def get_documents_vecotirzed(with_stemming):
         stop_words_spanish = frozenset(stemmer.stemWords(["0","1","2","3","4","5","6","7","8","9","_","a","actualmente","acuerdo","adelante","ademas","además","adrede","afirmó","agregó","ahi","ahora","ahí","al","algo","alguna","algunas","alguno","algunos","algún","alli","allí","alrededor","ambos","ampleamos","antano","antaño","ante","anterior","antes","apenas","aproximadamente","aquel","aquella","aquellas","aquello","aquellos","aqui","aquél","aquélla","aquéllas","aquéllos","aquí","arriba","arribaabajo","aseguró","asi","así","atras","aun","aunque","ayer","añadió","aún","b","bajo","bastante","bien","breve","buen","buena","buenas","bueno","buenos","c","cada","casi","cerca","cierta","ciertas","cierto","ciertos","cinco","claro","comentó","como","con","conmigo","conocer","conseguimos","conseguir","considera","consideró","consigo","consigue","consiguen","consigues","contigo","contra","cosas","creo","cual","cuales","cualquier","cuando","cuanta","cuantas","cuanto","cuantos","cuatro","cuenta","cuál","cuáles","cuándo","cuánta","cuántas","cuánto","cuántos","cómo","d","da","dado","dan","dar","de","debajo","debe","deben","debido","decir","dejó","del","delante","demasiado","demás","dentro","deprisa","desde","despacio","despues","después","detras","detrás","dia","dias","dice","dicen","dicho","dieron","diferente","diferentes","dijeron","dijo","dio","donde","dos","durante","día","días","dónde","e","ejemplo","el","ella","ellas","ello","ellos","embargo","empleais","emplean","emplear","empleas","empleo","en","encima","encuentra","enfrente","enseguida","entonces","entre","era","erais","eramos","eran","eras","eres","es","esa","esas","ese","eso","esos","esta","estaba","estabais","estaban","estabas","estad","estada","estadas","estado","estados","estais","estamos","estan","estando","estar","estaremos","estará","estarán","estarás","estaré","estaréis","estaría","estaríais","estaríamos","estarían","estarías","estas","este","estemos","esto","estos","estoy","estuve","estuviera","estuvierais","estuvieran","estuvieras","estuvieron","estuviese","estuvieseis","estuviesen","estuvieses","estuvimos","estuviste","estuvisteis","estuviéramos","estuviésemos","estuvo","está","estábamos","estáis","están","estás","esté","estéis","estén","estés","ex","excepto","existe","existen","explicó","expresó","f","fin","final","fue","fuera","fuerais","fueran","fueras","fueron","fuese","fueseis","fuesen","fueses","fui","fuimos","fuiste","fuisteis","fuéramos","fuésemos","g","general","gran","grandes","gueno","h","ha","haber","habia","habida","habidas","habido","habidos","habiendo","habla","hablan","habremos","habrá","habrán","habrás","habré","habréis","habría","habríais","habríamos","habrían","habrías","habéis","había","habíais","habíamos","habían","habías","hace","haceis","hacemos","hacen","hacer","hacerlo","haces","hacia","haciendo","hago","han","has","hasta","hay","haya","hayamos","hayan","hayas","hayáis","he","hecho","hemos","hicieron","hizo","horas","hoy","hube","hubiera","hubierais","hubieran","hubieras","hubieron","hubiese","hubieseis","hubiesen","hubieses","hubimos","hubiste","hubisteis","hubiéramos","hubiésemos","hubo","i","igual","incluso","indicó","informo","informó","intenta","intentais","intentamos","intentan","intentar","intentas","intento","ir","j","junto","k","l","la","lado","largo","las","le","lejos","les","llegó","lleva","llevar","lo","los","luego","lugar","m","mal","manera","manifestó","mas","mayor","me","mediante","medio","mejor","mencionó","menos","menudo","mi","mia","mias","mientras","mio","mios","mis","misma","mismas","mismo","mismos","modo","momento","mucha","muchas","mucho","muchos","muy","más","mí","mía","mías","mío","míos","n","nada","nadie","ni","ninguna","ningunas","ninguno","ningunos","ningún","no","nos","nosotras","nosotros","nuestra","nuestras","nuestro","nuestros","nueva","nuevas","nuevo","nuevos","nunca","o","ocho","os","otra","otras","otro","otros","p","pais","para","parece","parte","partir","pasada","pasado","paìs","peor","pero","pesar","poca","pocas","poco","pocos","podeis","podemos","poder","podria","podriais","podriamos","podrian","podrias","podrá","podrán","podría","podrían","poner","por","por qué","porque","posible","primer","primera","primero","primeros","principalmente","pronto","propia","propias","propio","propios","proximo","próximo","próximos","pudo","pueda","puede","pueden","puedo","pues","q","qeu","que","quedó","queremos","quien","quienes","quiere","quiza","quizas","quizá","quizás","quién","quiénes","qué","r","raras","realizado","realizar","realizó","repente","respecto","s","sabe","sabeis","sabemos","saben","saber","sabes","sal","salvo","se","sea","seamos","sean","seas","segun","segunda","segundo","según","seis","ser","sera","seremos","será","serán","serás","seré","seréis","sería","seríais","seríamos","serían","serías","seáis","señaló","si","sido","siempre","siendo","siete","sigue","siguiente","sin","sino","sobre","sois","sola","solamente","solas","solo","solos","somos","son","soy","soyos","su","supuesto","sus","suya","suyas","suyo","suyos","sé","sí","sólo","t","tal","tambien","también","tampoco","tan","tanto","tarde","te","temprano","tendremos","tendrá","tendrán","tendrás","tendré","tendréis","tendría","tendríais","tendríamos","tendrían","tendrías","tened","teneis","tenemos","tener","tenga","tengamos","tengan","tengas","tengo","tengáis","tenida","tenidas","tenido","tenidos","teniendo","tenéis","tenía","teníais","teníamos","tenían","tenías","tercera","ti","tiempo","tiene","tienen","tienes","toda","todas","todavia","todavía","todo","todos","total","trabaja","trabajais","trabajamos","trabajan","trabajar","trabajas","trabajo","tras","trata","través","tres","tu","tus","tuve","tuviera","tuvierais","tuvieran","tuvieras","tuvieron","tuviese","tuvieseis","tuviesen","tuvieses","tuvimos","tuviste","tuvisteis","tuviéramos","tuviésemos","tuvo","tuya","tuyas","tuyo","tuyos","tú","u","ultimo","un","una","unas","uno","unos","usa","usais","usamos","usan","usar","usas","uso","usted","ustedes","v","va","vais","valor","vamos","van","varias","varios","vaya","veces","ver","verdad","verdadera","verdadero","vez","vosotras","vosotros","voy","vuestra","vuestras","vuestro","vuestros","w","x","y","ya","yo","z","él","éramos","ésa","ésas","ése","ésos","ésta","éstas","éste","éstos","última","últimas","último","últimos"
                                     "td","tr","com","width","img","class","height","src","table","gif","hspace","tbody","border", "style", 
                                     "right", "style","margin","ltr","blockquote","qu","nbsp",
+                                    
                                     "año","años","millones","país","países","gente","personas","forma",
                                     "uruguay","gobierno","economía","crisis","mercado","precios","política","banco","precio","sector","semana",
                                     "incertidumbre","nivel","índice","puntos","baja","mes","sistema","desarrollo","economías","aumento","meses","económica","últimos"
@@ -46,59 +47,65 @@ def get_documents_vecotirzed(with_stemming):
         stop_words_spanish = frozenset(["0","1","2","3","4","5","6","7","8","9","_","a","actualmente","acuerdo","adelante","ademas","además","adrede","afirmó","agregó","ahi","ahora","ahí","al","algo","alguna","algunas","alguno","algunos","algún","alli","allí","alrededor","ambos","ampleamos","antano","antaño","ante","anterior","antes","apenas","aproximadamente","aquel","aquella","aquellas","aquello","aquellos","aqui","aquél","aquélla","aquéllas","aquéllos","aquí","arriba","arribaabajo","aseguró","asi","así","atras","aun","aunque","ayer","añadió","aún","b","bajo","bastante","bien","breve","buen","buena","buenas","bueno","buenos","c","cada","casi","cerca","cierta","ciertas","cierto","ciertos","cinco","claro","comentó","como","con","conmigo","conocer","conseguimos","conseguir","considera","consideró","consigo","consigue","consiguen","consigues","contigo","contra","cosas","creo","cual","cuales","cualquier","cuando","cuanta","cuantas","cuanto","cuantos","cuatro","cuenta","cuál","cuáles","cuándo","cuánta","cuántas","cuánto","cuántos","cómo","d","da","dado","dan","dar","de","debajo","debe","deben","debido","decir","dejó","del","delante","demasiado","demás","dentro","deprisa","desde","despacio","despues","después","detras","detrás","dia","dias","dice","dicen","dicho","dieron","diferente","diferentes","dijeron","dijo","dio","donde","dos","durante","día","días","dónde","e","ejemplo","el","ella","ellas","ello","ellos","embargo","empleais","emplean","emplear","empleas","empleo","en","encima","encuentra","enfrente","enseguida","entonces","entre","era","erais","eramos","eran","eras","eres","es","esa","esas","ese","eso","esos","esta","estaba","estabais","estaban","estabas","estad","estada","estadas","estado","estados","estais","estamos","estan","estando","estar","estaremos","estará","estarán","estarás","estaré","estaréis","estaría","estaríais","estaríamos","estarían","estarías","estas","este","estemos","esto","estos","estoy","estuve","estuviera","estuvierais","estuvieran","estuvieras","estuvieron","estuviese","estuvieseis","estuviesen","estuvieses","estuvimos","estuviste","estuvisteis","estuviéramos","estuviésemos","estuvo","está","estábamos","estáis","están","estás","esté","estéis","estén","estés","ex","excepto","existe","existen","explicó","expresó","f","fin","final","fue","fuera","fuerais","fueran","fueras","fueron","fuese","fueseis","fuesen","fueses","fui","fuimos","fuiste","fuisteis","fuéramos","fuésemos","g","general","gran","grandes","gueno","h","ha","haber","habia","habida","habidas","habido","habidos","habiendo","habla","hablan","habremos","habrá","habrán","habrás","habré","habréis","habría","habríais","habríamos","habrían","habrías","habéis","había","habíais","habíamos","habían","habías","hace","haceis","hacemos","hacen","hacer","hacerlo","haces","hacia","haciendo","hago","han","has","hasta","hay","haya","hayamos","hayan","hayas","hayáis","he","hecho","hemos","hicieron","hizo","horas","hoy","hube","hubiera","hubierais","hubieran","hubieras","hubieron","hubiese","hubieseis","hubiesen","hubieses","hubimos","hubiste","hubisteis","hubiéramos","hubiésemos","hubo","i","igual","incluso","indicó","informo","informó","intenta","intentais","intentamos","intentan","intentar","intentas","intento","ir","j","junto","k","l","la","lado","largo","las","le","lejos","les","llegó","lleva","llevar","lo","los","luego","lugar","m","mal","manera","manifestó","mas","mayor","me","mediante","medio","mejor","mencionó","menos","menudo","mi","mia","mias","mientras","mio","mios","mis","misma","mismas","mismo","mismos","modo","momento","mucha","muchas","mucho","muchos","muy","más","mí","mía","mías","mío","míos","n","nada","nadie","ni","ninguna","ningunas","ninguno","ningunos","ningún","no","nos","nosotras","nosotros","nuestra","nuestras","nuestro","nuestros","nueva","nuevas","nuevo","nuevos","nunca","o","ocho","os","otra","otras","otro","otros","p","pais","para","parece","parte","partir","pasada","pasado","paìs","peor","pero","pesar","poca","pocas","poco","pocos","podeis","podemos","poder","podria","podriais","podriamos","podrian","podrias","podrá","podrán","podría","podrían","poner","por","por qué","porque","posible","primer","primera","primero","primeros","principalmente","pronto","propia","propias","propio","propios","proximo","próximo","próximos","pudo","pueda","puede","pueden","puedo","pues","q","qeu","que","quedó","queremos","quien","quienes","quiere","quiza","quizas","quizá","quizás","quién","quiénes","qué","r","raras","realizado","realizar","realizó","repente","respecto","s","sabe","sabeis","sabemos","saben","saber","sabes","sal","salvo","se","sea","seamos","sean","seas","segun","segunda","segundo","según","seis","ser","sera","seremos","será","serán","serás","seré","seréis","sería","seríais","seríamos","serían","serías","seáis","señaló","si","sido","siempre","siendo","siete","sigue","siguiente","sin","sino","sobre","sois","sola","solamente","solas","solo","solos","somos","son","soy","soyos","su","supuesto","sus","suya","suyas","suyo","suyos","sé","sí","sólo","t","tal","tambien","también","tampoco","tan","tanto","tarde","te","temprano","tendremos","tendrá","tendrán","tendrás","tendré","tendréis","tendría","tendríais","tendríamos","tendrían","tendrías","tened","teneis","tenemos","tener","tenga","tengamos","tengan","tengas","tengo","tengáis","tenida","tenidas","tenido","tenidos","teniendo","tenéis","tenía","teníais","teníamos","tenían","tenías","tercera","ti","tiempo","tiene","tienen","tienes","toda","todas","todavia","todavía","todo","todos","total","trabaja","trabajais","trabajamos","trabajan","trabajar","trabajas","trabajo","tras","trata","través","tres","tu","tus","tuve","tuviera","tuvierais","tuvieran","tuvieras","tuvieron","tuviese","tuvieseis","tuviesen","tuvieses","tuvimos","tuviste","tuvisteis","tuviéramos","tuviésemos","tuvo","tuya","tuyas","tuyo","tuyos","tú","u","ultimo","un","una","unas","uno","unos","usa","usais","usamos","usan","usar","usas","uso","usted","ustedes","v","va","vais","valor","vamos","van","varias","varios","vaya","veces","ver","verdad","verdadera","verdadero","vez","vosotras","vosotros","voy","vuestra","vuestras","vuestro","vuestros","w","x","y","ya","yo","z","él","éramos","ésa","ésas","ése","ésos","ésta","éstas","éste","éstos","última","últimas","último","últimos"
                                     "td","tr","com","width","img","class","height","src","table","gif","hspace","tbody","border", "style", 
                                     "right", "style","margin","ltr","blockquote","qu",
+                                    
                                     "año","años","nbsp","millones","país","países","gente","personas","forma",
                                     "uruguay","gobierno","economía","crisis","mercado","precios","política","banco","precio","sector","semana",
                                     "incertidumbre","nivel","índice","puntos","baja","mes","sistema","desarrollo","economías","aumento","meses","económica","últimos",
                                     "mercados","tipo","situación","políticas","actividad","datos","menor","promedio","político","medidas","uruguayos","bancos",
                                     "junio","enero","febrero","marzo","abril","mayo","julio","agosto","setiembre","septiembre","octubre","noviembre","diciembre",
-                                    "lunes","martes","miércoles","jueves","viernes","sábado","domingo"])
+                                    "lunes","martes","miércoles","jueves","viernes","sábado","domingo"
+                                    
+                                    ])
     
-    documents, documents_date = news_preprocessor.generate_array_with_news(with_stemming)
+    documents, documents_date, obs_documents, obs_documents_date = news_preprocessor.generate_array_with_news(with_stemming)
     
     no_features = 2500
 
     tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, max_features= no_features, stop_words=stop_words_spanish)
-    tf = tf_vectorizer.fit_transform(documents)    
+    documents_vectorized = tf_vectorizer.fit_transform(documents)    
+    obs_documents_vectorized = tf_vectorizer.fit_transform(obs_documents)    
 
     print ("Documentos preprocesados")
-    return documents, documents_date, tf, tf_vectorizer
+    return documents, documents_date, documents_vectorized, tf_vectorizer, obs_documents, obs_documents_date, obs_documents_vectorized
 
 def lda_algorithm(tf):
     
-    # LDA can only use raw term counts for LDA because it is a probabilistic graphical model        
-    lda_algorithm = LatentDirichletAllocation(n_components=settings.NO_TOPICS, max_iter=5, learning_method='online', learning_offset=50.,random_state=0)
+    # LDA can only use raw term counts for LDA because it is a probabilistic graphical model     
+    lda_algorithm = LatentDirichletAllocation(n_components=settings.NO_TOPICS, 
+                                            max_iter=5, learning_method='online', learning_offset=50.,random_state=0,
+                                            doc_topic_prior=0.2, topic_word_prior=0.5)
     lda = lda_algorithm.fit(tf)  
     return lda_algorithm, lda  
 
-def guided_lda(tf,tf_vectorizer, with_stemming):
+def guided_lda(documents_vectorized,tf_vectorizer, with_stemming):
 
     word2id = dict((v, idx) for idx, v in enumerate(tf_vectorizer.get_feature_names()))
 
-    guided_lda_algorithm = guidedlda.GuidedLDA(n_topics=9, n_iter=100)
+    guided_lda_algorithm = guidedlda.GuidedLDA(n_topics=8, n_iter=50, alpha=0.2,eta=0.8)
 
 
     if (with_stemming):
         stemmer = Stemmer.Stemmer('spanish')
         
-        seed_topic_list = [stemmer.stemWords(["impuestos","impuesto","impositivo"]),
-                        stemmer.stemWords(["gubernamental","gasto"]),
-                        stemmer.stemWords(["ajuste","fiscal"]),
-                        stemmer.stemWords(["federal", "monetaria"]),
-                        stemmer.stemWords(["deuda","crisis","moneda"]),                        
-                        stemmer.stemWords(["tarifas","importación"]),
-                        stemmer.stemWords(["gobierno","autoridades","parlamento"])                                 
+        seed_topic_list = [stemmer.stemWords(["impuestos", "impuesto", "impositivo", "gravado", "subsidio", "subsidios", "imesi", "iva", "irpf"]),
+                        stemmer.stemWords(["gasto", "presupuesto", "fiscal", "déficit", "deuda"]),
+                        stemmer.stemWords(["ajuste", "rendición","sostenibilidad", "endeudamiento"]),
+                        stemmer.stemWords(["fed", "monetaria", "devaluación", "tasa", "bcu"]),
+                        stemmer.stemWords(["crisis", "moneda", "bono", "emisión", "vencimiento"]),                        
+                        stemmer.stemWords(["tarifas", "aranceles", "barreras", "omc", "mercosur"]),
+                        stemmer.stemWords(["Trump", "Obama", "Lula", "Merkel", "Kirchner"]),
+                        stemmer.stemWords(["gobierno", "parlamento", "ley", "diputados", "senadores"])                                 
                         ]
     else:
-        seed_topic_list = [["impuestos","impuesto","impositivo"],
-                        ["gubernamental","gasto"],
-                        ["ajuste","fiscal"],
-                        ["federal", "monetaria"],
-                        ["deuda","crisis","moneda"],                         
-                        ["importación","tarifas"],
-                        ["gobierno","autoridades","parlamento"]                                 
+        seed_topic_list = [["impuestos", "impuesto", "impositivo", "gravado", "subsidio", "subsidios", "imesi", "iva", "irpf"],
+                        ["gasto", "presupuesto", "fiscal", "déficit", "deuda"],
+                        ["ajuste", "rendición","sostenibilidad", "endeudamiento"],
+                        ["fed", "monetaria", "devaluación", "tasa", "bcu"],
+                        ["crisis", "moneda", "bono", "emisión", "vencimiento"],                        
+                        ["tarifas", "aranceles", "barreras", "omc", "mercosur"],
+                        ["Trump", "Obama", "Lula", "Merkel", "Kirchner"],
+                        ["gobierno", "parlamento", "ley", "diputados", "senadores"]                                 
                         ]
-
-
 
     print ("guidedLda algorithm")
     seed_topics = {}    
@@ -107,16 +114,22 @@ def guided_lda(tf,tf_vectorizer, with_stemming):
             if word in word2id:
                 seed_topics[word2id[word]] = t_id            
         
-    guided_lda = guided_lda_algorithm.fit(tf, seed_topics=seed_topics, seed_confidence=1)    
+    guided_lda = guided_lda_algorithm.fit(documents_vectorized, seed_topics=seed_topics, seed_confidence=0.8)    
     print ("guidedLda fit")    
     return guided_lda_algorithm, guided_lda
 
-def get_and_print_results(tf, tf_vectorizer, algorithm,fit_algorithm, documents_date):
+def get_and_print_results(documents_vectorized, tf_vectorizer, algorithm,fit_algorithm, documents_date):
+    
+    #imprimir catergorias en ciruclos
+    panel = pyLDAvis.sklearn.prepare(fit_algorithm, documents_vectorized, tf_vectorizer)
+    pyLDAvis.save_html(panel,'results/guidedlda_topic_graph.html')
+
     # En esta variable esta cada uno de los documentos con un arreglo de los 30 topicos y que valor tiene para cada 1
-    documents_categorized_with_topics = algorithm.transform(tf)
+    documents_categorized_with_topics = algorithm.transform(documents_vectorized)
     quantity_list = helper_methods.create_quantity_list()
 
-    umbral_probability = ((1/settings.NO_TOPICS) * 4)
+    umbral = settings.UMBRAL_DOCUMENTS # probar con 3, 4, 5
+    umbral_probability = ((1/settings.NO_TOPICS) * umbral)
     # contar cantidad de veces que apaparece cada topico
     index = 0
     for doc_cat in documents_categorized_with_topics:                
@@ -189,12 +202,14 @@ def get_best_number_of_topic(tf_documents):
 def grid_search_best_components(data_vectorized, documents, tf_vectorizer):
     # Define Search Param
     
-    #search_params = {'n_components': [6,7,8,9,10,11,12,15,20,25,30] , 'learning_decay': [.9]}
-    search_params = {'n_components': [8,9,10], 'doc_topic_prior': [0.2,0.5,0.8], 'topic_word_prior': [0.2,0.5,0.8]}
+    # search_params = {'n_components': [8,9,10,11,12,15,20,25,30] , 'learning_decay': [.9]}
+    # search_params = {'n_components': [6,7,8,9,10], 'doc_topic_prior': [0.2,0.5,0.8], 'topic_word_prior': [0.2,0.5,0.8]}
+    search_params = {'n_components': [8], 'doc_topic_prior': [0.2], 'topic_word_prior': [0.5]}
 
     # Init the Model
     lda = LatentDirichletAllocation()
 
+    print ("GridSearch")
     # Init Grid Search Class
     model = GridSearchCV(lda, param_grid=search_params)
 
@@ -212,8 +227,7 @@ def grid_search_best_components(data_vectorized, documents, tf_vectorizer):
 
     # Perplexity
     print("Model Perplexity: ", best_lda_model.perplexity(data_vectorized))
-
-
+    
     # # Get Log Likelyhoods from Grid Search Output
     # n_topics = [6,7,8,9,10,11,12,15,20,25,30]    
     ### NO EXISTE EL grid_scores_
@@ -231,43 +245,43 @@ def grid_search_best_components(data_vectorized, documents, tf_vectorizer):
     # plt.show()
 
     # Create Document - Topic Matrix
-    lda_output = best_lda_model.transform(data_vectorized)
+    # lda_output = best_lda_model.transform(data_vectorized)
 
-    # column names
-    #### best_lda_model.n_topics me da nulo y explota
-    # topicnames = ["Topic" + str(i) for i in range(best_lda_model.n_topics)]
-    topicnames = ["Topic" + str(i) for i in range(9)]
+    # # column names
+    # #### best_lda_model.n_topics me da nulo y explota
+    # # topicnames = ["Topic" + str(i) for i in range(best_lda_model.n_topics)]
+    # topicnames = ["Topic" + str(i) for i in range(9)]
 
-    # index names
-    docnames = ["Doc" + str(i) for i in range(len(documents))]
+    # # index names
+    # docnames = ["Doc" + str(i) for i in range(len(documents))]
 
-    # Make the pandas dataframe
-    df_document_topic = pd.DataFrame(np.round(lda_output, 2), columns=topicnames, index=docnames)
+    # # Make the pandas dataframe
+    # df_document_topic = pd.DataFrame(np.round(lda_output, 2), columns=topicnames, index=docnames)
 
-    # Get dominant topic for each document
-    dominant_topic = np.argmax(df_document_topic.values, axis=1)
-    df_document_topic['dominant_topic'] = dominant_topic
+    # # Get dominant topic for each document
+    # dominant_topic = np.argmax(df_document_topic.values, axis=1)
+    # df_document_topic['dominant_topic'] = dominant_topic
 
-    # Styling
-    def color_green(val):
-        color = 'green' if val > .1 else 'black'
-        return 'color: {col}'.format(col=color)
+    # # Styling
+    # def color_green(val):
+    #     color = 'green' if val > .1 else 'black'
+    #     return 'color: {col}'.format(col=color)
 
-    def make_bold(val):
-        weight = 700 if val > .1 else 400
-        return 'font-weight: {weight}'.format(weight=weight)
+    # def make_bold(val):
+    #     weight = 700 if val > .1 else 400
+    #     return 'font-weight: {weight}'.format(weight=weight)
 
-    # Apply Style
-    df_document_topics = df_document_topic.head(15).style.applymap(color_green).applymap(make_bold)
-    # falta ver como imprimir df_document_topics 
-    df_document_topics
+    # # Apply Style
+    # df_document_topics = df_document_topic.head(15).style.applymap(color_green).applymap(make_bold)
+    # # falta ver como imprimir df_document_topics 
+    # df_document_topics
 
-    df_topic_distribution = df_document_topic['dominant_topic'].value_counts().reset_index(name="Num Documents")
-    df_topic_distribution.columns = ['Topic Num', 'Num Documents']
-    # falta ver como imprimir df_topic_distribution 
-    df_topic_distribution   
+    # df_topic_distribution = df_document_topic['dominant_topic'].value_counts().reset_index(name="Num Documents")
+    # df_topic_distribution.columns = ['Topic Num', 'Num Documents']
+    # # falta ver como imprimir df_topic_distribution 
+    # df_topic_distribution   
 
-    ## explota dice que necesita IPython
-    pyLDAvis.enable_notebook()
-    panel = pyLDAvis.sklearn.prepare(best_lda_model, data_vectorized, tf_vectorizer, mds='tsne')
-    panel
+    # ## explota dice que necesita IPython
+    # pyLDAvis.enable_notebook()
+    panel = pyLDAvis.sklearn.prepare(best_lda_model, data_vectorized, tf_vectorizer, mds='mmds')
+    pyLDAvis.save_html(panel,'lda_topic_graph_grid_mmds_sinSW.html')
